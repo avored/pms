@@ -38,7 +38,7 @@ class ProjectController extends Controller {
         
         $project = Project::create($request->all());
         
-        return $project;
+        //return $project;
         return redirect('/project');
     }
 
