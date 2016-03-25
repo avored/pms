@@ -15,4 +15,15 @@ class People extends Model
         'mobile_phone',
         'email'
     ];
+
+
+    /**
+     * Get the projects associated with tie given people.
+     *
+     * @return \Illuminate\Datebase\Eloquent\Relations\BelongsToMany
+     */
+    public function projects()
+    {
+        return $this->belongsToMany('App\Projects');
+    }
 }

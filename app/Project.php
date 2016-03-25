@@ -62,4 +62,14 @@ class Project extends Model {
 
     }
 
+    /**
+     * Get the peoples associated with the given Projects
+     *
+     * @return \Illuminate\Datebase\Eloquent\Relations\BelongsToMany
+     */
+    public function peoples()
+    {
+        return $this->belongsToMany('App\People')->withTimestamps();
+    }
+
 }

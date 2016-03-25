@@ -103,3 +103,32 @@ if (isset($project)) {
         @endif
     </div>
 </div>
+
+
+<?php
+        /** todo in_array and bring value as an array
+         *
+         **/
+$value = "";
+if (isset($project)) {
+    $value = $project->people;
+}
+?>
+<div class="form-group{{ $errors->has('people') ? ' has-error' : '' }}">
+    <label class="col-md-2 control-label">People</label>
+
+    <div class="col-md-8">
+        <select name="people[]" class="select2 form-control" multiple="multiple">
+            <option  value=''>please select</option>
+            @foreach($peopleOptions as $id => $peopleName)
+                <option <?php echo ($value == $id) ? "selected" : ""; ?> value='{{ $id }}'>{{ $peopleName }}</option>
+            @endforeach
+        </select>
+
+        @if ($errors->has('people'))
+            <span class="help-block">
+            <strong>{{ $errors->first('people') }}</strong>
+        </span>
+        @endif
+    </div>
+</div>

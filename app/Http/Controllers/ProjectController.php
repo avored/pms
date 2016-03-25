@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Project;
 use App\Http\Requests\ProjectRequest;
 use App\Http\Controllers\Controller;
+use App\People;
 
 class ProjectController extends Controller {
 
@@ -25,7 +26,13 @@ class ProjectController extends Controller {
 
     public function create() {
 
-        return view('project.create');
+        $allPeoples  = People::all();
+        foreach($allPeoples as $people) {
+            $peopleOptions[$people->id] = $people->first_name . " " . $people->last_name;
+        }
+
+        return view('project.create')
+            ->with('peopleOptions', $peopleOptions);
     }
 
     /**
@@ -45,7 +52,15 @@ class ProjectController extends Controller {
     public function edit($id) {
 
         $project = Project::findorfail($id);
-        return view('project.edit')->with('project', $project);
+        $allPeoples  = People::all();
+        foreach($allPeoples as $people) {
+            $peopleOptions[$people->id] = $people->first_name . " " . $people->last_name;
+        }
+
+
+
+        return view('project.edit')->with('project', $project)
+                                    ->with('peopleOptions', $peopleOptions);
     }
 
     /**
@@ -59,6 +74,8 @@ class ProjectController extends Controller {
         //return $request->all();
         $project = Project::findorfail($id);
         $project->update($request->all());
+
+        $this->syncPeoples($project, $request->input('people'));
 
         return redirect('/project');
     }
@@ -84,5 +101,17 @@ class ProjectController extends Controller {
 
         $project = Project::findorfail($id);
         return view('project.show')->with('project', $project);
+    }
+
+
+    /**
+     * Sync up the list of peoples in the database
+     *
+     * @param  Project $project
+     * @param  array   $peoples
+     */
+    private function syncPeoples(Project $project, array $peoples)
+    {
+        $project->peoples()->sync($peoples);
     }
 }
