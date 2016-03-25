@@ -121,7 +121,7 @@ if (isset($project)) {
         <select name="people[]" class="select2 form-control" multiple="multiple">
             <option  value=''>please select</option>
             @foreach($peopleOptions as $id => $peopleName)
-                <option <?php echo ($value == $id) ? "selected" : ""; ?> value='{{ $id }}'>{{ $peopleName }}</option>
+                <option <?php echo (in_array($id , $projectPeople)) ? "selected" : ""; ?> value='{{ $id }}'>{{ $peopleName }}</option>
             @endforeach
         </select>
 

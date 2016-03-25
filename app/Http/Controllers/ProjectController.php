@@ -45,6 +45,7 @@ class ProjectController extends Controller {
         
         $project = Project::create($request->all());
         
+        $this->syncPeoples($project, $request->input('people'));
         //return $project;
         return redirect('/project');
     }
@@ -57,9 +58,12 @@ class ProjectController extends Controller {
             $peopleOptions[$people->id] = $people->first_name . " " . $people->last_name;
         }
 
+        $projectPeople = $project->peoples()->lists('people_id')->toArray();
+
 
 
         return view('project.edit')->with('project', $project)
+                                    ->with('projectPeople', $projectPeople)
                                     ->with('peopleOptions', $peopleOptions);
     }
 
