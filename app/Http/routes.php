@@ -36,4 +36,5 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home', 'HomeController@index');
     Route::resource('/project', 'ProjectController');
     Route::resource('/people', 'PeopleController');
+    Route::resource('/task', 'TaskController');
 });
