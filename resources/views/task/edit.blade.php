@@ -3,14 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <h4 class="title">Create Project</h4>
+        <h4 class="title">Create Task</h4>
         <div class="col-md-12">
             <form class="form-horizontal" role="form" method="POST" 
-                  action="{{ route('project.update', $project->id) }}">
+                  action="{{ route('task.update', $task->id) }}">
                 {!! csrf_field() !!}
                 <input type="hidden" name="_method" value="PUT" />
 
-                @include('project._fields')
+                @include('task._fields')
 
 
                 <div class="form-group">
