@@ -18,7 +18,7 @@
                             Info
                         </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation"  class="active">
                         <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
                             Task
                         </a>
@@ -28,7 +28,7 @@
                             Stages
                         </a>
                     </li>
-                    <li role="presentation" class="active">
+                    <li role="presentation">
                         <a href="#people" aria-controls="settings" role="tab" data-toggle="tab">
                             People
                         </a>
@@ -41,13 +41,22 @@
                         <h5>Info</h5>
                         
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="profile">
+                    <div role="tabpanel" class="tab-pane active" id="profile">
                         <h5>Task</h5>
+                        <div class="pull-right">
+                            <a href="/project/{{ $project->id }}/task/create" class="btn btn-primary"> Create Task</a>
+                        </div>
+
+                        @include('project.task-show')
+                        @if(isset($taskCreate) && $taskCreate === true)
+                            @include('project.task-create');
+                        @endif
+
                     </div>
                     <div role="tabpanel" class="tab-pane" id="messages">
                         <h5>Stages</h5>
                     </div>
-                    <div role="tabpanel" class="tab-pane active" id="people">
+                    <div role="tabpanel" class="tab-pane" id="people">
                         <h5>People</h5>
                     </div>
                 </div>

@@ -5,17 +5,18 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model {
-
+class Task extends Model
+{
     protected $fillable = [
+        'project_id',
         'title',
         'description',
         'status',
         'start_date',
         'due_date',
     ];
-    protected $dates = ['start_date', 'due_date'];
 
+    protected $dates = ['start_date','due_date'];
     /**
      * Scope a query to only include active users.
      *
@@ -34,7 +35,6 @@ class Task extends Model {
         //var_dump(Carbon::parse($date));die;
         $this->attributes['start_date'] = Carbon::parse($date);
     }
-
     /**
      * Set the published_at arttribute.
      *
@@ -53,7 +53,6 @@ class Task extends Model {
         //var_dump(Carbon::parse($date));die;
         return Carbon::parse($this->attributes['start_date'])->format('d-m-Y');
     }
-
     /**
      * Set the published_at arttribute.
      *
@@ -61,6 +60,16 @@ class Task extends Model {
      */
     public function getDueDateAttribute() {
         return Carbon::parse($this->attributes['due_date'])->format('d-m-Y');
+    }
+
+    /**
+     * An Task is belongs to a Project.
+     *
+     * @return \Illuminate\Datebase\Eloquent\Relations\BelongsTo
+     */
+    public function Project()
+    {
+        return $this->belongsTo('App\Project');
     }
 
 }

@@ -72,4 +72,14 @@ class Project extends Model {
         return $this->belongsToMany('App\People')->withTimestamps();
     }
 
+    /**
+     * A Project can have many tasks
+     *
+     * @return \Illuminate\Datebase\Eloquent\Relations\HasMany
+     */
+    public function tasks()
+    {
+        return $this->hasMany('App\Task');
+    }
+
 }

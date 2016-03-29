@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskRequest;
 use App\Project;
 use App\Http\Requests\ProjectRequest;
 use App\Http\Controllers\Controller;
 use App\People;
+use App\Task;
 
-class ProjectController extends Controller {
+class ProjectController extends Controller
+{
 
     /**
      * Create a new controller instance.
@@ -19,15 +22,17 @@ class ProjectController extends Controller {
         $this->middleware('auth');
     }
 
-    public function index() {
+    public function index()
+    {
         $projects = Project::enable()->get();
         return view('project.index')->with('projects', $projects);
     }
 
-    public function create() {
+    public function create()
+    {
 
-        $allPeoples  = People::all();
-        foreach($allPeoples as $people) {
+        $allPeoples = People::all();
+        foreach ($allPeoples as $people) {
             $peopleOptions[$people->id] = $people->first_name . " " . $people->last_name;
         }
 
@@ -37,34 +42,31 @@ class ProjectController extends Controller {
 
     /**
      * @param ProjectRequest $request
-     * 
-     * 
+     *
+     *
      */
-    public function store(ProjectRequest $request) {
+    public function store(ProjectRequest $request)
+    {
 
-        
+
         $project = Project::create($request->all());
-        
-        $this->syncPeoples($project, $request->input('people'));
+
         //return $project;
         return redirect('/project');
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
 
         $project = Project::findorfail($id);
-        $allPeoples  = People::all();
-        foreach($allPeoples as $people) {
+        $allPeoples = People::all();
+        foreach ($allPeoples as $people) {
             $peopleOptions[$people->id] = $people->first_name . " " . $people->last_name;
         }
 
-        $projectPeople = $project->peoples()->lists('people_id')->toArray();
-
-
 
         return view('project.edit')->with('project', $project)
-                                    ->with('projectPeople', $projectPeople)
-                                    ->with('peopleOptions', $peopleOptions);
+            ->with('peopleOptions', $peopleOptions);
     }
 
     /**
@@ -72,7 +74,8 @@ class ProjectController extends Controller {
      *
      *
      */
-    public function update($id , ProjectRequest $request) {
+    public function update($id, ProjectRequest $request)
+    {
 
 
         //return $request->all();
@@ -85,13 +88,13 @@ class ProjectController extends Controller {
     }
 
 
-
     /**
      * @param ProjectRequest $request
      *
      *
      */
-    public function destroy($id) {
+    public function destroy($id)
+    {
 
 
         $project = Project::findorfail($id);
@@ -101,7 +104,8 @@ class ProjectController extends Controller {
     }
 
 
-    public function show($id) {
+    public function show($id)
+    {
 
         $project = Project::findorfail($id);
         return view('project.show')->with('project', $project);
@@ -112,10 +116,44 @@ class ProjectController extends Controller {
      * Sync up the list of peoples in the database
      *
      * @param  Project $project
-     * @param  array   $peoples
+     * @param  array $peoples
      */
     private function syncPeoples(Project $project, array $peoples)
     {
         $project->peoples()->sync($peoples);
+    }
+
+    protected function getProjectView($project)
+    {
+
+
+        $view = view('project.show')->with('project', $project)
+        ;
+
+        return $view;
+
+    }
+
+
+    public function createTask($projectId)
+    {
+
+        $project = Project::findorfail($projectId);
+
+        $view = $this->getProjectView($project);
+        $view->with('taskCreate', true);
+
+        return $view;
+    }
+
+    public function storeTask($projectId,  TaskRequest $request)
+    {
+
+        $project = Project::findorfail($projectId);
+        $task = Task::create($request->all());
+
+        $view = $this->getProjectView($project);
+
+        return $view;
     }
 }
