@@ -154,6 +154,6 @@ class ProjectController extends Controller
 
         $view = $this->getProjectView($project);
 
-        return $view;
+        return redirect('/project/'. $projectId);
     }
 }

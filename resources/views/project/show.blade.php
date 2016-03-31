@@ -57,7 +57,14 @@
                         <h5>Stages</h5>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="people">
+
                         <h5>People</h5>
+
+                        <div class="pull-right">
+                            <a href="/project/{{ $project->id }}/task/create" class="btn btn-primary"> Create Task</a>
+                        </div>
+
+                        @include('project.people-show')
                     </div>
                 </div>
 
