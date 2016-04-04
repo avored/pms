@@ -81,5 +81,15 @@ class Project extends Model {
     {
         return $this->hasMany('App\Task');
     }
+    
+       /**
+     * A Project can have many stages
+     *
+     * @return \Illuminate\Datebase\Eloquent\Relations\HasMany
+     */
+    public function stages()
+    {
+        return $this->hasMany('App\Stage');
+    }
 
 }
