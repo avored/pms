@@ -1,11 +1,28 @@
+
+<?php 
+if(!isset($stageId)) {
+    $stageId = 0;
+}
+
+while($stages = $project->getChildStages($stageId)) { 
+
+    
+    
+if($stages->count() <= 0) {
+    break;
+}
+$stageId = $stages->first()->id;
+?>
+    <?php
+    
+    foreach($stages as $stage) {
+    ?>
+<p>&nbsp;</p>
 <div class="row">
-
-
     <div class="col-md-3 col-md-offset-3" style="padding: 10px;background-color: #269abc">
-        Start
+        <?php echo $stage->title; ?>
         <div class=" pull-right dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -17,6 +34,8 @@
         </div>
     </div>
 </div>
+    <?php } //end foreach?>
+<?php } //end of while ?>
 
 
 
@@ -57,13 +76,14 @@
                         <div class="col-md-8">
                             <input type="title" class="form-control" name="title" value="">
                         </div>
+                        <input type="hidden" value="0" name="parent_id" />
                     </div>
 
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </form>
         </div>

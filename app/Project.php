@@ -91,5 +91,15 @@ class Project extends Model {
     {
         return $this->hasMany('App\Stage');
     }
+    
+    public function getChildStages($stageId) {
+        
+        
+        $stages = Stage::where('parent_id','=',$stageId)
+                        ->where('project_id','=',$this->attributes['id'])->get();
+        
+      
+        return $stages;
+    }
 
 }

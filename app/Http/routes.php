@@ -37,6 +37,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('/project', 'ProjectController');
     Route::get('/project/{projectId}/task/create', 'ProjectController@createTask');
     Route::post('/project/{projectId}/task', 'ProjectController@storeTask');
+    
+    Route::post('/project/{projectId}/stage', 'ProjectController@storeStage');
 
     Route::resource('/people', 'PeopleController');
     Route::resource('/task', 'TaskController');

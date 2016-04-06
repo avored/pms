@@ -96,10 +96,38 @@ if (isset($project)) {
 
     <div class="col-md-8">
         <input type="deadline" class="datetimepicker-date form-control" name="deadline" value="<?php echo e($value); ?>">
-
         <?php if($errors->has('deadline')): ?>
         <span class="help-block">
             <strong><?php echo e($errors->first('deadline')); ?></strong>
+        </span>
+        <?php endif; ?>
+    </div>
+</div>
+
+
+<?php
+        /** todo in_array and bring value as an array
+         *
+         **/
+$value = "";
+if (isset($project)) {
+    $value = $project->people;
+}
+?>
+<div class="form-group<?php echo e($errors->has('people') ? ' has-error' : ''); ?>">
+    <label class="col-md-2 control-label">People</label>
+
+    <div class="col-md-8">
+        <select name="people[]" class="select2 form-control" multiple="multiple">
+            <option  value=''>please select</option>
+                <?php foreach($peopleOptions as $id => $peopleName): ?>
+                    <option <?php echo (isset($projectPeople) && in_array($id , $projectPeople)) ? "selected" : ""; ?> value='<?php echo e($id); ?>'><?php echo e($peopleName); ?></option>
+                <?php endforeach; ?>
+        </select>
+
+        <?php if($errors->has('people')): ?>
+            <span class="help-block">
+            <strong><?php echo e($errors->first('people')); ?></strong>
         </span>
         <?php endif; ?>
     </div>
