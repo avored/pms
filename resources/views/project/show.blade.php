@@ -18,12 +18,12 @@
                             Info
                         </a>
                     </li>
-                    <li role="presentation"  class="active">
+                    <li role="presentation"  >
                         <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
                             Task
                         </a>
                     </li>
-                    <li role="presentation" >
+                    <li role="presentation"  class="active">
                         <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">
                             Stages
                         </a>
@@ -41,7 +41,7 @@
                         <h5>Info</h5>
                         
                     </div>
-                    <div role="tabpanel" class="tab-pane active" id="profile">
+                    <div role="tabpanel" class="tab-pane" id="profile">
                         <h5>Task</h5>
                         <div class="pull-right">
                             <a href="/project/{{ $project->id }}/task/create" class="btn btn-primary"> Create Task</a>
@@ -53,7 +53,7 @@
                         @endif
 
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="messages">
+                    <div role="tabpanel" class="tab-pane active" id="messages">
                         <h5>Stages</h5>
                          @include('project.stage-show')
                     </div>
