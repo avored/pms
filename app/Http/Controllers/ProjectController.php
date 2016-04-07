@@ -147,7 +147,15 @@ class ProjectController extends Controller {
 
         $project = Project::findorfail($projectId);
         $request->merge(['project_id' => $projectId]);
-        $task = Stage::create($request->all());
+
+        if(empty($request->get('parent_id')) === true) {
+            $stage = Stage::findorfail($request->get('id'));
+            $stage->update($request->all());
+
+        } else {
+            Stage::create($request->all());
+        }
+
 
         //$view = $this->getProjectView($project);
         
