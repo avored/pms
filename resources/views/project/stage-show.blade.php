@@ -10,6 +10,20 @@ while($stages = $project->getChildStages($stageId)) {
     
 if($stages->count() <= 0) {
     break;
+} else {
+    $class = "col-md-1 col-md-offset-0";
+    if($stages->count() == 1) {
+        $class = "col-md-4 col-md-offset-4";
+    }
+    if($stages->count() == 2) {
+        $class = "col-md-4 col-md-offset-%d";
+    }
+    if($stages->count() == 3) {
+        $class = "col-md-2 col-md-offset-%d";
+    }
+    if($stages->count() == 4) {
+        $class = "col-md-2 col-md-offset-1";
+    }
 }
 $stageId = $stages->first()->id;
 ?>
@@ -17,10 +31,11 @@ $stageId = $stages->first()->id;
 <div class="row">
 
 <?php
-    
+    $i = 0;
     foreach($stages as $stage) {
+        $i++;
     ?>
-    <div class="col-md-3 col-md-offset-3" style="padding: 10px;background-color: #269abc">
+    <div class="<?php printf ($class, $i); ?>" style="padding: 10px;background-color: #269abc">
         <?php echo $stage->title; ?>
         <div class=" pull-right dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
