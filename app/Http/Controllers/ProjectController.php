@@ -113,6 +113,20 @@ class ProjectController extends Controller {
     private function syncPeoples(Project $project, array $peoples) {
         $project->peoples()->sync($peoples);
     }
+    
+      /**
+     * @param ProjectRequest $request
+     *
+     *
+     */
+    public function destroyPeople($projectId,$projectPeopleId) {
+
+
+        $project = Project::findorfail($projectId);
+        $project->peoples()->detach($projectPeopleId);
+
+        return redirect('/project/'. $projectId);
+    }
 
     protected function getProjectView($project) {
 

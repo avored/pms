@@ -30,6 +30,11 @@
 
                 <td>
                     <a href='{!! route("people.show", $projectPeople->id) !!}' title="View People">View</a> &nbsp;
+                    <form  method="post" action="{!! url('/project/'. $project->id . '/people/' . $projectPeople->id) !!}">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        {!! csrf_field() !!}
+                        <a href='#' onclick="jQuery(this).parent('form:first').submit()">Delete</a> &nbsp;
+                    </form>
                 </td>
             </tr>
             @endforeach

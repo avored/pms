@@ -39,6 +39,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/project/{projectId}/task', 'ProjectController@storeTask');
     
     Route::post('/project/{projectId}/stage', 'ProjectController@storeStage');
+    Route::delete('/project/{projectId}/people/{peopleId}', 'ProjectController@destroyPeople');
 
     Route::resource('/people', 'PeopleController');
     Route::resource('/task', 'TaskController');
