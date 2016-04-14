@@ -4,7 +4,7 @@ if (isset($people)) {
     $value = $people->identifier;
 }
 ?>
-<div class="form-group{{ $errors->has('identifier') ? ' has-error' : '' }}">
+<!--<div class="form-group{{ $errors->has('identifier') ? ' has-error' : '' }}">
     <label class="col-md-2 control-label">Identifier</label>
 
     <div class="col-md-8">
@@ -16,15 +16,27 @@ if (isset($people)) {
         </span>
         @endif
     </div>
+</div>-->
+<div class="row">
+    <div class="input-field col s6">
+        <input placeholder="Placeholder" 
+               id="identifier" name="identifier" 
+               type="text" 
+               required aria-required="true"
+               data-error="wrong" data-success="right"
+               
+               
+               class="validate">
+        <label for="identifier">Identifier</label>
+    </div>
 </div>
 
-
 <?php
-    $value = "";
-    $fieldName = "first_name";
-    if (isset($people)) {
-        $value = $people->$fieldName;
-    }
+$value = "";
+$fieldName = "first_name";
+if (isset($people)) {
+    $value = $people->$fieldName;
+}
 ?>
 <div class="form-group{{ $errors->has($fieldName) ? ' has-error' : '' }}">
     <label class="col-md-2 control-label">First Name</label>
@@ -33,7 +45,7 @@ if (isset($people)) {
         <input type="{{  $fieldName }}" class="form-control" name="{{ $fieldName }}" value="{{ $value }}">
 
         @if ($errors->has($fieldName))
-            <span class="help-block">
+        <span class="help-block">
             <strong>{{ $errors->first($fieldName) }}</strong>
         </span>
         @endif
@@ -54,7 +66,7 @@ if (isset($people)) {
         <input type="{{  $fieldName }}" class="form-control" name="{{ $fieldName }}" value="{{ $value }}">
 
         @if ($errors->has($fieldName))
-            <span class="help-block">
+        <span class="help-block">
             <strong>{{ $errors->first($fieldName) }}</strong>
         </span>
         @endif
@@ -75,7 +87,7 @@ if (isset($people)) {
         <input type="{{  $fieldName }}" class="form-control" name="{{ $fieldName }}" value="{{ $value }}">
 
         @if ($errors->has($fieldName))
-            <span class="help-block">
+        <span class="help-block">
             <strong>{{ $errors->first($fieldName) }}</strong>
         </span>
         @endif
@@ -97,7 +109,7 @@ if (isset($people)) {
         <input type="{{  $fieldName }}" class="form-control" name="{{ $fieldName }}" value="{{ $value }}">
 
         @if ($errors->has($fieldName))
-            <span class="help-block">
+        <span class="help-block">
             <strong>{{ $errors->first($fieldName) }}</strong>
         </span>
         @endif
@@ -119,7 +131,7 @@ if (isset($people)) {
         <input type="{{  $fieldName }}" class="form-control" name="{{ $fieldName }}" value="{{ $value }}">
 
         @if ($errors->has($fieldName))
-            <span class="help-block">
+        <span class="help-block">
             <strong>{{ $errors->first($fieldName) }}</strong>
         </span>
         @endif

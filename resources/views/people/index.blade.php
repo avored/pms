@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
     <div class="row">
-        <div class="pull-right">
+        <div class="right">
             <a href='/people/create' class="btn btn-primary">Create</a>
-            <hr/>
+            <br/>
         </div>
+        <p>&nbsp;</p>
         <h5 class="title">Peoples</h5>
         
     </div>
@@ -18,7 +18,8 @@
         @if(count($peoples) <= 0)
             <div class="text-warning"> Sorry No Peoples Found</div>
         @else
-        <table class="table table-hover">
+        <table  class="striped responsive-table">
+            <thead>
             <tr>
                 <th>ID</th>
                 <th>Identifier</th>
@@ -26,7 +27,10 @@
                 <th>Last Name</th>
                 <th>Action</th>
             </tr>
+            </thead>
+            <tbody>
             @foreach($peoples as $people)
+            
             <tr>
                 <td>{{ $people->id}}</td>
                 <td>{{ $people->identifier}}</td>
@@ -43,9 +47,9 @@
                 </td>
             </tr>
             @endforeach
+            </tbody>
         </table>
         @endif
         </div>
     </div>
-</div>
 @endsection
