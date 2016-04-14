@@ -1,11 +1,11 @@
 <?php $__env->startSection('content'); ?>
-<div class="container">
+
     <div class="row">
-        <div class="pull-right">
+        <div class="right">
             <a href='/project/create' class="btn btn-primary">Create</a>
-            <hr/>
+            <br/>
         </div>
-        <h5 class="title">Projects</h5>
+        <h3 class="title">Projects</h3>
         
     </div>
     
@@ -16,16 +16,20 @@
         <?php if(count($projects) <= 0): ?>
             <div class="text-warning"> Sorry No Projects Found</div>
         <?php else: ?>
-        <table class="table table-hover">
+        <table class="table-responsive striped highlight bordered">
             <tr>
                 <th>ID</th>
                 <th>Title</th>
+                <th>Start Date</th>
+                <th>Due Date</th>
                 <th>Action</th>
             </tr>
             <?php foreach($projects as $project): ?>
             <tr>
                 <td><?php echo e($project->id); ?></td>
                 <td><?php echo e($project->title); ?></td>
+                <td> <?php echo e($project->start_date); ?></td>
+                <td><?php echo e($project->due_date); ?></td>
                 <td>
                     <a href='<?php echo route('project.show', $project->id); ?>' title="View Project">View</a> &nbsp;
                     <a href='<?php echo route('project.edit', $project->id); ?>'>Edit</a> &nbsp;
@@ -42,7 +46,5 @@
         <?php endif; ?>
         </div>
     </div>
-</div>
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -12,10 +12,10 @@ class Project extends Model {
         'description',
         'status',
         'start_date',
-        'deadline',
+        'due_date',
     ];
 
-    protected $dates = ['start_date','deadline'];
+    protected $dates = ['start_date','due_date'];
     /**
      * Scope a query to only include active users.
      *
@@ -39,8 +39,8 @@ class Project extends Model {
      *
      * @param $date
      */
-    public function setDeadlineAttribute($date) {
-        $this->attributes['deadline'] = Carbon::parse($date);
+    public function setDueDateAttribute($date) {
+        $this->attributes['due_date'] = Carbon::parse($date);
     }
 
     /**
@@ -57,8 +57,8 @@ class Project extends Model {
      *
      * @param $date
      */
-    public function getDeadlineAttribute() {
-        return Carbon::parse($this->attributes['deadline'])->format('d-m-Y');
+    public function getDueDateAttribute() {
+        return Carbon::parse($this->attributes['due_date'])->format('d-m-Y');
 
     }
 

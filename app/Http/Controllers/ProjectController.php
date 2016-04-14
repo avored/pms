@@ -37,6 +37,7 @@ class ProjectController extends Controller {
         }
 
         return view('project.create')
+                        ->with('projectPeople', [])
                         ->with('peopleOptions', $peopleOptions);
     }
 
