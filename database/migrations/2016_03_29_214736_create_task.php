@@ -15,6 +15,7 @@ class CreateTask extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('project_id');
+            $table->integer('assign_to_people_id');
             $table->string('title');
             $table->text('description');
             $table->enum('status', ['ENABLE', 'DISABLE', 'DELETED'])->default('ENABLE');
