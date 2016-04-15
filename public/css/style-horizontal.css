@@ -1,0 +1,49 @@
+#main,footer {
+  padding-left: 0px;
+}
+header .brand-logo {
+  margin: 1px 0px;
+  padding: 0 10px;
+}
+header .brand-logo img{ 
+  width: 172px;
+}
+#horizontal-nav{
+    margin-top: 64px;
+    z-index: -1;
+}
+@media only screen and (min-width: 993px) {
+  #content{
+	margin-top: 65px;
+	}
+}
+
+.doughnut-chart-status{
+  top: -85px;
+}
+/*----------------------------------------
+    Horizontal Menu
+------------------------------------------*/
+#horizontal-nav ul li{
+  text-align: center;
+}
+#horizontal-nav ul li a i{
+  height: 0px;
+  line-height: 45px;
+  font-size: 1.4rem;
+}
+#horizontal-nav ul li a span{
+  position: relative;
+  top: 12px;
+}
+#horizontal-nav .dropdown-menu span i{
+  line-height: 65px;
+}
+.dropdown-horizontal-list li a{
+  min-width: 150px;
+  text-align: left;
+  font-size: 1.0rem;
+  padding: 10px;
+  font-weight: 400;
+}
+
