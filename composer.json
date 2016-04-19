@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "kris/laravel-form-builder": "1.6.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

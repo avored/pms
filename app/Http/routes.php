@@ -43,4 +43,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('/people', 'PeopleController');
     Route::resource('/task', 'TaskController');
+    Route::resource('/project-type', 'ProjectTypeController');
+    
+    
+    Route::get('/setup', 'SetupController@index');
 });
