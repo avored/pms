@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Mage2\Common\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
+        'Mage2\Common\Events\SomeEvent' => [
+            'Mage2\Common\Listeners\EventListener',
         ],
     ];
 

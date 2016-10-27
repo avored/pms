@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Mage2\Common\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
