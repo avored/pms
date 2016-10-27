@@ -1,4 +1,4 @@
-# Project Management System
+# Laravel based Project Management System
 
 [![Total Downloads](https://poser.pugx.org/lmage2/project-management-system/d/total.svg)](https://packagist.org/packages/mage2/project-management-system)
 
