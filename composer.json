@@ -21,6 +21,7 @@
         ],
         "psr-4": {
             "App\\": "app/",
+            "Mage2\\Common\\": "modules/base/Mage2/Common/",
             "Mage2\\Framework\\": "packages/mage2/framework/src/"
         }
     },
