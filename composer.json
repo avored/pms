@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "mage2/project-management-system",
+    "description": "Laravel5 Based Project Management System.",
+    "keywords": ["framework", "laravel", "Project Management System"],
     "license": "MIT",
     "type": "project",
     "require": {
