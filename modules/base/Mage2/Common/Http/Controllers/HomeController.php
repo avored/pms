@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Mage2\Common\Http\Controllers;
 
 use Illuminate\Http\Request;
 

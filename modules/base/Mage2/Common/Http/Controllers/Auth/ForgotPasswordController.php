@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Mage2\Common\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Mage2\Common\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller

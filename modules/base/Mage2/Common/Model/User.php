@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Mage2\Common\Model;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Mage2\Common\Http\Controllers\Auth;
 
-use App\User;
+use Mage2\Common\Model\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use Mage2\Common\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
