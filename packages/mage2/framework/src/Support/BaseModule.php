@@ -1,8 +1,11 @@
 <?php
+
 namespace Mage2\Framework\Support;
 
-use Illuminate\Support\ServiceProvider as LaravelModule;
+use Illuminate\Support\ServiceProvider as Container;
 
-class BaseModule extends LaravelModule {
-    
+class BaseModule extends Container {
+
+ 
+
 }

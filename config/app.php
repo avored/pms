@@ -176,7 +176,7 @@ return [
         Mage2\Common\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         Mage2\Common\Providers\EventServiceProvider::class,
-        Mage2\Common\Providers\RouteServiceProvider::class,
+        Mage2\Common\Module::class,
 
     ],
 
