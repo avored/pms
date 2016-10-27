@@ -2,7 +2,7 @@
     "name": "mage2/project-management-system",
     "description": "Laravel5 Based Project Management System.",
     "keywords": ["framework", "laravel", "Project Management System"],
-    "license": "MIT",
+    "license": "GPL-3.0",
     "type": "project",
     "require": {
         "php": ">=5.6.4",
@@ -21,7 +21,8 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "Mage2\\Common\\": "modules/base/Mage2/Common/",
+            "Mage2\\System\\": "modules/base/Mage2/System/",
+            "Mage2\\Project\\": "modules/base/Mage2/Project/",
             "Mage2\\Framework\\": "packages/mage2/framework/src/"
         }
     },

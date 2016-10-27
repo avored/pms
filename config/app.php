@@ -172,11 +172,11 @@ return [
         /*
          * Application Service Providers...
          */
-        Mage2\Common\Providers\AppServiceProvider::class,
-        Mage2\Common\Providers\AuthServiceProvider::class,
+        Mage2\System\Providers\AppServiceProvider::class,
+        Mage2\System\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
-        Mage2\Common\Providers\EventServiceProvider::class,
-        Mage2\Common\Module::class,
+        Mage2\System\Providers\EventServiceProvider::class,
+        Mage2\System\Module::class,
 
     ],
 

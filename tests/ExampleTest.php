@@ -13,7 +13,6 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->visit('/')
-             ->see('Laravel');
+        $this->visit('/')->see('Mage2 Project Management System');
     }
 }
