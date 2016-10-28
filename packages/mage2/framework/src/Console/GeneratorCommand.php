@@ -64,7 +64,19 @@ abstract class GeneratorCommand extends Command
 
         $this->makeDirectory($path);
 
-        $replaceName = $moduleName ."\\Controllers\\". $name;
+        switch ($this->type) {
+            case "Controller":
+                $replaceName = $moduleName ."\\Controllers\\". $name;
+            break;
+        
+            case "Model":
+                $replaceName = $moduleName ."\\Models\\". $name;
+            break;
+        
+            default :
+                $replaceName = $moduleName . $name;
+            break;
+        }
         $this->files->put($path, $this->buildClass($replaceName));
 
         $this->info($this->type.' created successfully.');
@@ -78,6 +90,7 @@ abstract class GeneratorCommand extends Command
      */
     protected function alreadyExists($moduleName , $rawName)
     {
+        
         $moduleName = $this->parseName($moduleName);
         $name = $this->parseName($rawName);
 
@@ -92,7 +105,19 @@ abstract class GeneratorCommand extends Command
      */
     protected function getPath($moduleName, $name)
     {
-        $path = $moduleName . DIRECTORY_SEPARATOR . "Controllers" . DIRECTORY_SEPARATOR .$name;
+         switch ($this->type) {
+            case "Controller":
+                $path = $moduleName . DIRECTORY_SEPARATOR . "Controllers" . DIRECTORY_SEPARATOR .$name;
+            break;
+        
+            case "Model":
+                $path = $moduleName . DIRECTORY_SEPARATOR . "Models" . DIRECTORY_SEPARATOR .$name;
+            break;
+        
+            default :
+                $path = $moduleName . DIRECTORY_SEPARATOR  .$name;
+            break;
+        }
 
         return $this->laravel['path.module'].'/'.str_replace('\\', '/', $path).'.php';
     }

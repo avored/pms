@@ -18,7 +18,7 @@ use Illuminate\Foundation\Console\TestMakeCommand;
 use Illuminate\Foundation\Console\MailMakeCommand;
 use Illuminate\Foundation\Console\RouteListCommand;
 use Illuminate\Foundation\Console\EventMakeCommand;
-use Illuminate\Foundation\Console\ModelMakeCommand;
+
 use Illuminate\Foundation\Console\ViewClearCommand;
 use Illuminate\Session\Console\SessionTableCommand;
 use Illuminate\Foundation\Console\PolicyMakeCommand;
@@ -41,6 +41,7 @@ use Illuminate\Database\Console\Seeds\SeederMakeCommand;
 use Illuminate\Foundation\Console\NotificationMakeCommand;
 use Illuminate\Notifications\Console\NotificationTableCommand;
 
+use Mage2\Framework\Foundation\Console\ModelMakeCommand;
 use Mage2\Framework\Routing\Console\ControllerMakeCommand;
 use Illuminate\Support\ServiceProvider;
 
@@ -93,7 +94,7 @@ class ArtisanServiceProvider extends ServiceProvider
         //'ListenerMake' => 'command.listener.make',
         //'MailMake' => 'command.mail.make',
         //'MiddlewareMake' => 'command.middleware.make',
-        //'ModelMake' => 'command.model.make',
+        'ModelMake' => 'command.model.make',
         //'NotificationMake' => 'command.notification.make',
         //'NotificationTable' => 'command.notification.table',
         //'PolicyMake' => 'command.policy.make',
@@ -159,6 +160,18 @@ class ArtisanServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.controller.make', function ($app) {
             return new ControllerMakeCommand($app['files']);
+        });
+    }
+    
+     /**
+     * Register the command.
+     *
+     * @return void
+     */
+    protected function registerModelMakeCommand()
+    {
+        $this->app->singleton('command.model.make', function ($app) {
+            return new ModelMakeCommand($app['files']);
         });
     }
 
@@ -356,17 +369,7 @@ class ArtisanServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * Register the command.
-     *
-     * @return void
-     */
-    protected function registerModelMakeCommand()
-    {
-        $this->app->singleton('command.model.make', function ($app) {
-            return new ModelMakeCommand($app['files']);
-        });
-    }
+   
 
     /**
      * Register the command.
