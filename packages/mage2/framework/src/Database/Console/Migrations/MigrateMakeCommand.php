@@ -2,6 +2,7 @@
 
 namespace Mage2\Framework\Database\Console\Migrations;
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
 use Illuminate\Database\Migrations\MigrationCreator;
 
@@ -45,9 +46,9 @@ class MigrateMakeCommand extends BaseCommand
      * @param  \Illuminate\Support\Composer  $composer
      * @return void
      */
-    public function __construct(MigrationCreator $creator, Composer $composer)
+    public function __construct(MigrationCreator $creator, Composer $composer, Filesystem $fileSystem)
     {
-        parent::__construct();
+        parent::__construct($fileSystem);
 
         $this->creator = $creator;
         $this->composer = $composer;
