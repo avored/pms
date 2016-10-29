@@ -1,4 +1,9 @@
 <div class="form-group">
     <label for="DUMMYFIELDNAME">DUMMYLABEL</label>
-    <input type="text" class="form-control" id="DUMMYFIELDNAME" placeholder="DUMMYLABEL" value="DUMMYVALUE">
+    <input  type="text" 
+            class="form-control" 
+            id="DUMMYFIELDNAME" 
+            DUMMYATTRIBUTES 
+            placeholder="DUMMYLABEL" 
+            value="DUMMYVALUE" />
 </div>

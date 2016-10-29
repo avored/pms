@@ -120,12 +120,16 @@ class FormGenerator {
      *
      * @param  string  $fieldName
      * @param  string  $label
+     * @param  array  $attributes
      * @return $stub
      */
-    public function text($fieldName, $label = "") {
+    public function text($fieldName, $label = "" , $attributes = []) {
         $stub = $this->files->get($this->getStub('text'));
-
-        $this->replaceStubText($stub, "DUMMYFIELDNAME", $fieldName)->replaceStubText($stub, "DUMMYLABEL", $label);
+        $attributeText = $this->getAttributeText($attributes);
+        $this->replaceStubText($stub, "DUMMYFIELDNAME", $fieldName);
+        $this->replaceStubText($stub, "DUMMYLABEL", $label);
+        
+        $this->replaceStubText($stub, "DUMMYATTRIBUTES", $attributeText);
 
         $this->setValue($stub, $fieldName);
 
@@ -145,6 +149,23 @@ class FormGenerator {
 
         $this->replaceStubText($stub, "DUMMYBUTTONTEXT", $buttonText);
         return $stub;
+    }
+    
+     /**
+     * get the attribuet text from given array
+     * 
+     * @todo add attribute feature and etc
+     *
+     * @param  string  $buttonText
+     * @return $stub
+     */
+    public function getAttributeText($attributes = []) {
+        $attributeText = "";
+        foreach($attributes as $attKey => $attVal) {
+            $attributeText .= $attKey . "=" . $attVal;
+        }
+        
+        return $attributeText;
     }
 
     /**

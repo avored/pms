@@ -19,7 +19,7 @@
                             
                             {!! Form::text('first_name', 'First Name') !!}
                             {!! Form::text('last_name', 'Last Name') !!}
-                            {!! Form::text('email', 'Email') !!}
+                            {!! Form::text('email', 'Email',['disabled' => true]) !!}
                             {!! Form::submit('Save') !!}
                             
                             {!! Form::close() !!}
