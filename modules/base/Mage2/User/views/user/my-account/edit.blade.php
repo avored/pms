@@ -16,7 +16,9 @@
                         <div class="panel-body">
 
 
-                            {{ Form::label() }}
+                            {!! Form::text('first_name', 'First Name') !!}
+                            {!! Form::text('last_name', 'Last Name') !!}
+                            {!! Form::text('email', 'Email') !!}
 
                         </div>
                     </div>
