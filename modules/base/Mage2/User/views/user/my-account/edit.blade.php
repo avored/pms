@@ -17,7 +17,7 @@
                             
                             {!! Form::bind($user, ['method' => 'POST', 'action' => route('my-account.update')]) !!}
                             
-                            {!! Form::text('first_name', 'First Name') !!}
+                            {!! Form::text('first_name', 'First Name',['autofocus' => true]) !!}
                             {!! Form::text('last_name', 'Last Name') !!}
                             {!! Form::text('email', 'Email',['disabled' => true]) !!}
                             {!! Form::submit('Save') !!}

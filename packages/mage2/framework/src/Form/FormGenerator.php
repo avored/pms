@@ -123,14 +123,14 @@ class FormGenerator {
      * @param  array  $attributes
      * @return $stub
      */
-    public function text($fieldName, $label = "" , $attributes = []) {
+    public function text($fieldName, $label = "", $attributes = []) {
+
         $stub = $this->files->get($this->getStub('text'));
-        $attributeText = $this->getAttributeText($attributes);
+
         $this->replaceStubText($stub, "DUMMYFIELDNAME", $fieldName);
         $this->replaceStubText($stub, "DUMMYLABEL", $label);
-        
-        $this->replaceStubText($stub, "DUMMYATTRIBUTES", $attributeText);
 
+        $this->setAttributeTextOfStub($stub, $attributes);
         $this->setValue($stub, $fieldName);
 
         return $stub;
@@ -144,14 +144,31 @@ class FormGenerator {
      * @param  string  $buttonText
      * @return $stub
      */
-    public function submit($buttonText = "Save") {
+    public function setAttributeTextOfStub(&$stub, $attributes = []) {
+        $attributeText = $this->getAttributeText($attributes);
+        $this->replaceStubText($stub, "DUMMYATTRIBUTES", $attributeText);
+
+        return $this;
+    }
+
+    /**
+     * get the text field using stub template 
+     * 
+     * @todo add attribute feature and etc
+     *
+     * @param  string  $buttonText
+     * @return $stub
+     */
+    public function submit($buttonText = "Save", $attributes = []) {
         $stub = $this->files->get($this->getStub('submit'));
 
         $this->replaceStubText($stub, "DUMMYBUTTONTEXT", $buttonText);
+        $this->setAttributeTextOfStub($stub, $attributes);
+
         return $stub;
     }
-    
-     /**
+
+    /**
      * get the attribuet text from given array
      * 
      * @todo add attribute feature and etc
@@ -161,10 +178,10 @@ class FormGenerator {
      */
     public function getAttributeText($attributes = []) {
         $attributeText = "";
-        foreach($attributes as $attKey => $attVal) {
+        foreach ($attributes as $attKey => $attVal) {
             $attributeText .= $attKey . "=" . $attVal;
         }
-        
+
         return $attributeText;
     }
 
