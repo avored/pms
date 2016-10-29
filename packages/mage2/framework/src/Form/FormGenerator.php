@@ -66,6 +66,18 @@ class FormGenerator {
         $this->csrfToken = $csrfToken;
     }
 
+      /**
+     * get the text field using stub template 
+     * 
+     * @todo add attribute feature and etc
+     *
+     * @param  string  $fieldName
+     * @param  string  $label
+     * @return $stub
+     */
+    public function bind($model) {
+        $this->model = $model;
+    }
     /**
      * get the text field using stub template 
      * 
@@ -78,30 +90,33 @@ class FormGenerator {
     public function text($fieldName, $label = "") {
         $stub = $this->files->get($this->getStub('text'));
         
-        $this->replaceFieldName($stub, $fieldName)->replaceLabel($stub, $label);
+        $this->replaceStubText($stub, "DUMMYFIELDNAME" ,$fieldName)->replaceStubText($stub, "DUMMYLABEL" ,$label);
+        return $stub;
+    }
+    /**
+     * get the text field using stub template 
+     * 
+     * @todo add attribute feature and etc
+     *
+     * @param  string  $buttonText
+     * @return $stub
+     */
+    public function submit($buttonText= "Save") {
+        $stub = $this->files->get($this->getStub('submit'));
+        
+        $this->replaceStubText($stub, "DUMMYBUTTONTEXT", $buttonText);
         return $stub;
     }
 
     /**
-     * Replace the dummy field name for the given stub.
+     * Replace the dummy stub textfor the given stub.
      *
      * @param  string  $stub
      * @param  string  $fieldName
      * @return $this
      */
-    protected function replaceFieldName(&$stub, $fieldName) {
-        $stub = str_replace('DUMMYFIELDNAME', $fieldName, $stub);
-        return $this;
-    }
-    /**
-     * Replace the label for the given stub.
-     *
-     * @param  string  $stub
-     * @param  string  $fieldName
-     * @return $this
-     */
-    protected function replaceLabel(&$stub, $label) {
-        $stub = str_replace('DUMMYLABEL', $label, $stub);
+    protected function replaceStubText(&$stub, $dummyText,  $fieldName) {
+        $stub = str_replace($dummyText, $fieldName, $stub);
         return $this;
     }
 

@@ -19,6 +19,7 @@
                             {!! Form::text('first_name', 'First Name') !!}
                             {!! Form::text('last_name', 'Last Name') !!}
                             {!! Form::text('email', 'Email') !!}
+                            {!! Form::submit('Save') !!}
 
                         </div>
                     </div>
