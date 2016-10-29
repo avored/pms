@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -172,6 +173,7 @@ return [
         /*
          * Application Service Providers...
          */
+        Mage2\Framework\Form\FormServiceProvider::class,
         Mage2\System\Providers\AppServiceProvider::class,
         Mage2\System\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -226,6 +228,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Form' => Mage2\Framework\Form\Contracts\FormFacade::class,
 
     ],
 
