@@ -14,13 +14,15 @@
                             Profile Info
                         </div>
                         <div class="panel-body">
-
-
+                            
+                            {!! Form::bind($user, ['method' => 'POST', 'action' => route('my-account.update')]) !!}
+                            
                             {!! Form::text('first_name', 'First Name') !!}
                             {!! Form::text('last_name', 'Last Name') !!}
                             {!! Form::text('email', 'Email') !!}
                             {!! Form::submit('Save') !!}
-
+                            
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>

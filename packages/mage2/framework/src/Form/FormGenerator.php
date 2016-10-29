@@ -66,18 +66,53 @@ class FormGenerator {
         $this->csrfToken = $csrfToken;
     }
 
-      /**
-     * get the text field using stub template 
+    /**
+     * bind the form with model
      * 
      * @todo add attribute feature and etc
      *
-     * @param  string  $fieldName
-     * @param  string  $label
+     * @param  Object  $model
+     * @param  Array  $dummyReplacement
      * @return $stub
      */
-    public function bind($model) {
+    public function bind($model, $dummyReplacement = []) {
         $this->model = $model;
+        $stub = $this->open($dummyReplacement);
+
+        return $stub;
     }
+
+    /**
+     * get the form open stub template
+     * 
+     * @todo add attribute feature and etc
+     *
+     * @param  Array  $dummyReplacement
+     * @return $stub
+     */
+    public function open($dummyReplacement = []) {
+        $stub = $this->files->get($this->getStub('form-open'));
+
+        foreach ($dummyReplacement as $dummyText => $replacement) {
+            $this->replaceStubText($stub, strtoupper("DUMMY" . $dummyText), $replacement);
+        }
+
+        $csrfStub = $this->files->get($this->getStub('_csrf'));
+        $this->replaceStubText($csrfStub, "DUMMYCSRF", $this->csrfToken);
+        $stub = $stub . $csrfStub;
+
+        return $stub;
+    }
+
+    /**
+     * get the form closestub template
+     * @return $stub
+     */
+    public function close() {
+        $stub = $this->files->get($this->getStub('form-close'));
+        return $stub;
+    }
+
     /**
      * get the text field using stub template 
      * 
@@ -89,10 +124,14 @@ class FormGenerator {
      */
     public function text($fieldName, $label = "") {
         $stub = $this->files->get($this->getStub('text'));
-        
-        $this->replaceStubText($stub, "DUMMYFIELDNAME" ,$fieldName)->replaceStubText($stub, "DUMMYLABEL" ,$label);
+
+        $this->replaceStubText($stub, "DUMMYFIELDNAME", $fieldName)->replaceStubText($stub, "DUMMYLABEL", $label);
+
+        $this->setValue($stub, $fieldName);
+
         return $stub;
     }
+
     /**
      * get the text field using stub template 
      * 
@@ -101,9 +140,9 @@ class FormGenerator {
      * @param  string  $buttonText
      * @return $stub
      */
-    public function submit($buttonText= "Save") {
+    public function submit($buttonText = "Save") {
         $stub = $this->files->get($this->getStub('submit'));
-        
+
         $this->replaceStubText($stub, "DUMMYBUTTONTEXT", $buttonText);
         return $stub;
     }
@@ -115,7 +154,21 @@ class FormGenerator {
      * @param  string  $fieldName
      * @return $this
      */
-    protected function replaceStubText(&$stub, $dummyText,  $fieldName) {
+    protected function setValue(&$stub, $fieldName) {
+
+        $value = (isset($this->model->$fieldName)) ? $this->model->$fieldName : "";
+        $this->replaceStubText($stub, "DUMMYVALUE", $value);
+        return $this;
+    }
+
+    /**
+     * Replace the dummy stub textfor the given stub.
+     *
+     * @param  string  $stub
+     * @param  string  $fieldName
+     * @return $this
+     */
+    protected function replaceStubText(&$stub, $dummyText, $fieldName) {
         $stub = str_replace($dummyText, $fieldName, $stub);
         return $this;
     }
