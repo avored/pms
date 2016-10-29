@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group DUMMYERRORCLASS">
     <label for="DUMMYFIELDNAME">DUMMYLABEL</label>
     <input  type="text" 
             class="form-control" 

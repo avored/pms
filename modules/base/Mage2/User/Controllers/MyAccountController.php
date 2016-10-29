@@ -37,8 +37,11 @@ class MyAccountController extends Controller
      * @return redirect
      */
     public function update(UserRequest $request) {
-        return $request->all();
+
         $user = Auth::user();
-        return view('user.my-account.edit')->with('user', $user);
+
+        $user->update($request->all());
+        return redirect()->route('my-account.index');
+
     }
 }

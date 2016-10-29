@@ -141,8 +141,8 @@ class FormGenerator {
         $this->replaceStubText($stub, "DUMMYLABEL", $label);
 
         $this->setAttributeTextOfStub($stub, $attributes);
-        $this->setValue($stub, $fieldName);
-        $this->setErrorStub($stub, $fieldName);
+
+        $this->setErrorStubAndValue($stub, $fieldName);
 
         return $stub;
     }
@@ -155,13 +155,27 @@ class FormGenerator {
      * @param  string  $buttonText
      * @return $stub
      */
-    public function setErrorStub(&$stub, $fieldName) {
+    public function setErrorStubAndValue(&$stub, $fieldName) {
 
+        $errorClass = "";
+        $dummyErrorMessageStub = "";
+        $errors = $this->request->session()->get('errors');
+        $value = (isset($this->model->$fieldName)) ? $this->model->$fieldName : "";
+
+        if(NULL !== $errors && $errors->has($fieldName)) {
         $dummyErrorMessageStub = $this->files->get($this->getStub('error'));
-  
-        
-        //dd($this->request->session()->errors());
-        
+            $this->replaceStubText($dummyErrorMessageStub, "DUMMYERRORMESSAGE" , $errors->first($fieldName));
+            $errorClass = "has-error";
+
+            if($this->request->session()->hasOldInput($fieldName)) {
+                $value = $this->request->session()->getOldInput($fieldName);
+            }
+        }
+
+        $this->replaceStubText($stub, "DUMMYERRORTEXT", $dummyErrorMessageStub);
+        $this->replaceStubText($stub, "DUMMYERRORCLASS", $errorClass);
+        $this->replaceStubText($stub, "DUMMYVALUE", $value);
+
         return $this;
     }
 
@@ -214,19 +228,6 @@ class FormGenerator {
         return $attributeText;
     }
 
-    /**
-     * Replace the dummy stub textfor the given stub.
-     *
-     * @param  string  $stub
-     * @param  string  $fieldName
-     * @return $this
-     */
-    protected function setValue(&$stub, $fieldName) {
-
-        $value = (isset($this->model->$fieldName)) ? $this->model->$fieldName : "";
-        $this->replaceStubText($stub, "DUMMYVALUE", $value);
-        return $this;
-    }
 
     /**
      * Replace the dummy stub textfor the given stub.
