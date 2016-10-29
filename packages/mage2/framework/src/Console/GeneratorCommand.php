@@ -73,6 +73,10 @@ abstract class GeneratorCommand extends Command
                 $replaceName = $moduleName ."\\Models\\". $name;
             break;
         
+            case "Request":
+                $replaceName = $moduleName ."\\Requests\\". $name;
+            break;
+        
             default :
                 $replaceName = $moduleName . $name;
             break;
@@ -112,6 +116,10 @@ abstract class GeneratorCommand extends Command
         
             case "Model":
                 $path = $moduleName . DIRECTORY_SEPARATOR . "Models" . DIRECTORY_SEPARATOR .$name;
+            break;
+        
+            case "Request":
+                $path = $moduleName . DIRECTORY_SEPARATOR . "Requests" . DIRECTORY_SEPARATOR .$name;
             break;
         
             default :

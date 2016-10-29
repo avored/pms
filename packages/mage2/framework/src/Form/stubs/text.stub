@@ -3,6 +3,7 @@
     <input  type="text" 
             class="form-control" 
             id="DUMMYFIELDNAME" 
+            name="DUMMYFIELDNAME" 
             DUMMYATTRIBUTES 
             placeholder="DUMMYLABEL" 
             value="DUMMYVALUE" />

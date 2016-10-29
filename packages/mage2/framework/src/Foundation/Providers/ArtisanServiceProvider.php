@@ -31,7 +31,6 @@ use Illuminate\Foundation\Console\ConfigClearCommand;
 use Illuminate\Foundation\Console\ConsoleMakeCommand;
 use Illuminate\Foundation\Console\EnvironmentCommand;
 use Illuminate\Foundation\Console\KeyGenerateCommand;
-use Illuminate\Foundation\Console\RequestMakeCommand;
 use Illuminate\Foundation\Console\ListenerMakeCommand;
 use Illuminate\Foundation\Console\ProviderMakeCommand;
 use Illuminate\Foundation\Console\ClearCompiledCommand;
@@ -41,6 +40,8 @@ use Illuminate\Database\Console\Seeds\SeederMakeCommand;
 use Illuminate\Foundation\Console\NotificationMakeCommand;
 use Illuminate\Notifications\Console\NotificationTableCommand;
 
+
+use Mage2\Framework\Foundation\Console\RequestMakeCommand;
 use Mage2\Framework\Foundation\Console\ModelMakeCommand;
 use Mage2\Framework\Routing\Console\ControllerMakeCommand;
 use Illuminate\Support\ServiceProvider;
@@ -101,7 +102,7 @@ class ArtisanServiceProvider extends ServiceProvider
         //'ProviderMake' => 'command.provider.make',
         //'QueueFailedTable' => 'command.queue.failed-table',
         //'QueueTable' => 'command.queue.table',
-        //'RequestMake' => 'command.request.make',
+        'RequestMake' => 'command.request.make',
         //'SeederMake' => 'command.seeder.make',
         //'SessionTable' => 'command.session.table',
         //'Serve' => 'command.serve',
