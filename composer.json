@@ -23,6 +23,7 @@
             "App\\": "app/",
             "Mage2\\System\\": "modules/base/Mage2/System/",
             "Mage2\\Project\\": "modules/base/Mage2/Project/",
+            "Mage2\\User\\": "modules/base/Mage2/User/",
             "Mage2\\Framework\\": "packages/mage2/framework/src/"
         }
     },

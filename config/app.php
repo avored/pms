@@ -177,6 +177,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         Mage2\System\Providers\EventServiceProvider::class,
         Mage2\System\Module::class,
+        Mage2\User\Module::class,
 
     ],
 
