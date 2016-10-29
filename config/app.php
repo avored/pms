@@ -144,7 +144,6 @@ return [
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Cache\CacheServiceProvider::class,
-        Mage2\Framework\Foundation\Providers\ConsoleServiceProvider::class,
         Illuminate\Cookie\CookieServiceProvider::class,
         Illuminate\Database\DatabaseServiceProvider::class,
         Illuminate\Encryption\EncryptionServiceProvider::class,
@@ -167,13 +166,14 @@ return [
         /*
          * Package Service Providers...
          */
+        Mage2\Framework\Foundation\Providers\ConsoleServiceProvider::class,
+        Mage2\Framework\Form\FormServiceProvider::class,
 
         //
 
         /*
          * Application Service Providers...
          */
-        Mage2\Framework\Form\FormServiceProvider::class,
         Mage2\System\Providers\AppServiceProvider::class,
         Mage2\System\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -229,7 +229,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Mage2\Framework\Form\Contracts\FormFacade::class,
-
     ],
 
 ];

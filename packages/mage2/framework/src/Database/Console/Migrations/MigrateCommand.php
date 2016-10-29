@@ -6,6 +6,7 @@ use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Database\Migrations\Migrator;
 use Symfony\Component\Console\Input\InputOption;
 use Illuminate\Filesystem\Filesystem;
+use Mage2\Framework\Database\Console\Migrations\BaseCommand;
 
 class MigrateCommand extends BaseCommand
 {

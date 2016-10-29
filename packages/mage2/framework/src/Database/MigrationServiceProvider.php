@@ -2,12 +2,11 @@
 
 namespace Mage2\Framework\Database;
 
-use Mage2\Framework\Support\BaseModule;
 use Illuminate\Database\Migrations\Migrator;
 use Mage2\Framework\Database\Console\Migrations\MigrateMakeCommand;
 use Mage2\Framework\Database\Console\Migrations\MigrateCommand;
 
-
+use Illuminate\Database\MigrationServiceProvider as LaravelMigrationServiceProvider;
 use Illuminate\Database\Migrations\MigrationCreator;
 use Illuminate\Database\Console\Migrations\ResetCommand;
 use Illuminate\Database\Console\Migrations\StatusCommand;
@@ -16,7 +15,7 @@ use Illuminate\Database\Console\Migrations\RefreshCommand;
 use Illuminate\Database\Console\Migrations\RollbackCommand;
 use Illuminate\Database\Migrations\DatabaseMigrationRepository;
 
-class MigrationServiceProvider extends BaseModule
+class MigrationServiceProvider extends LaravelMigrationServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -124,8 +123,7 @@ class MigrationServiceProvider extends BaseModule
     protected function registerMigrateCommand()
     {
         $this->app->singleton('command.migrate', function ($app) {
-            $files = $app['files'];
-            return new MigrateCommand($app['migrator'], $files);
+            return new MigrateCommand($app['migrator'], $app['files']);
         });
     }
 
