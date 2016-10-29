@@ -5,6 +5,7 @@ namespace Mage2\User\Controllers;
 use Illuminate\Http\Request;
 use Mage2\System\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Mage2\User\Requests\UserRequest;
 
 
 class MyAccountController extends Controller
@@ -32,10 +33,10 @@ class MyAccountController extends Controller
     }
     /**
      * Show the Edit Users Page/
-     *
-     * @return \Illuminate\Http\Response
+     * @param \Mage2\User\Requests\UserRequest
+     * @return redirect
      */
-    public function update(Request $request) {
+    public function update(UserRequest $request) {
         return $request->all();
         $user = Auth::user();
         return view('user.my-account.edit')->with('user', $user);

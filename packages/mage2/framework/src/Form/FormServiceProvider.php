@@ -33,7 +33,8 @@ class FormServiceProvider extends  ServiceProvider {
     protected function registerFormBuilder()
     {
         $this->app->singleton('form', function ($app) {
-            $form = new FormGenerator($app['files'], $app['url'], $app['view'], $app['session.store']->getToken());
+            //dd(($app['request']->session()));
+            $form = new FormGenerator($app['files'], $app['url'], $app['request'] ,$app['view'], $app['session.store']->getToken());
             return $form->setSessionStore($app['session.store']);
         });
     }

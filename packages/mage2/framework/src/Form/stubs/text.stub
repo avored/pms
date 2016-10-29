@@ -7,4 +7,6 @@
             DUMMYATTRIBUTES 
             placeholder="DUMMYLABEL" 
             value="DUMMYVALUE" />
+
+        DUMMYERRORTEXT
 </div>

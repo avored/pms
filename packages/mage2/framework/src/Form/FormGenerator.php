@@ -6,6 +6,7 @@ use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Session\SessionInterface;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Http\Request;
 
 class FormGenerator {
 
@@ -22,6 +23,12 @@ class FormGenerator {
      * @var \Illuminate\Contracts\Routing\UrlGenerator
      */
     protected $url;
+    /**
+     * The URL generator instance.
+     *
+     * @var \Illuminate\Http\Request
+     */
+    protected $request;
 
     /**
      * The View factory instance.
@@ -56,12 +63,14 @@ class FormGenerator {
      *
      * @param  \Illuminate\Filesystem\                      $fileSystem
      * @param  \Illuminate\Contracts\Routing\UrlGenerator   $url
+     * @param  \Illuminate\Http\Request                     $request
      * @param  \Illuminate\Contracts\View\Factory           $view
      * @param  string                                       $csrfToken
      */
-    public function __construct(Filesystem $fileSystem, UrlGenerator $url, Factory $view, $csrfToken) {
+    public function __construct(Filesystem $fileSystem, UrlGenerator $url, Request $request ,Factory $view, $csrfToken) {
         $this->files = $fileSystem;
         $this->url = $url;
+        $this->request = $request;
         $this->view = $view;
         $this->csrfToken = $csrfToken;
     }
@@ -101,6 +110,7 @@ class FormGenerator {
         $this->replaceStubText($csrfStub, "DUMMYCSRF", $this->csrfToken);
         $stub = $stub . $csrfStub;
 
+        
         return $stub;
     }
 
@@ -132,8 +142,27 @@ class FormGenerator {
 
         $this->setAttributeTextOfStub($stub, $attributes);
         $this->setValue($stub, $fieldName);
+        $this->setErrorStub($stub, $fieldName);
 
         return $stub;
+    }
+
+    /**
+     * get the text field using stub template 
+     * 
+     * @todo add attribute feature and etc
+     *
+     * @param  string  $buttonText
+     * @return $stub
+     */
+    public function setErrorStub(&$stub, $fieldName) {
+
+        $dummyErrorMessageStub = $this->files->get($this->getStub('error'));
+  
+        
+        //dd($this->request->session()->errors());
+        
+        return $this;
     }
 
     /**
