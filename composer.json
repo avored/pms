@@ -1,7 +1,7 @@
 {
     "name": "mage2/project-management-system",
     "description": "Laravel5 Based Project Management System.",
-    "keywords": ["framework", "laravel", "Project Management System"],
+    "keywords": ["framework", "laravel", "Project Management System","crm","timesheet"],
     "license": "GPL-3.0",
     "type": "project",
     "require": {
