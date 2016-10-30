@@ -4,38 +4,38 @@
 
     <div class="row">
         <div class="col-md-12 main-title-wrap">
-            <span class="title">Project List</span>
+            <span class="title">Role List</span>
                 <span class="pull-right">
-                    <a class="btn btn-primary" title="Create Project" href="{{ route('project.create') }}">Create
-                        Project</a>
+                    <a class="btn btn-primary" title="Create Role" href="{{ route('role.create') }}">Create
+                        Role</a>
                 </span>
         </div>
 
 
         <div class="col-md-12">
 
-            @if(count($projects) <= 0)
-                <p>Sorry No Projects Found</p>
+            @if(count($roles) <= 0)
+                <p>Sorry No Roles Found</p>
             @else
 
                 <table class="table table-striped table-responsive ">
                     <tr>
-                        <th>Project Name</th>
-                        <th>Project Description</th>
+                        <th>Role Name</th>
+                        <th>Role Description</th>
                         <th>Edit</th>
                         <th>Destroy</th>
                     </tr>
-                    @foreach($projects as $project)
+                    @foreach($roles as $role)
                     <tr>
 
-                        <td>{{ $project->name }}</td>
+                        <td>{{ $role->name }}</td>
 
-                        <td>{{ $project->description }}</td>
+                        <td>{{ $role->description }}</td>
 
-                        <td><a title="Project Edit" href="{{ route('project.edit', $project) }}">Edit</a></td>
+                        <td><a title="Role Edit" href="{{ route('role.edit', $role) }}">Edit</a></td>
 
-                        <td>{!! Form::open(['method' => 'delete', 'action' => route('project.destroy', $project)]) !!}
-                            <a title="Project Destroy"
+                        <td>{!! Form::open(['method' => 'delete', 'action' => route('role.destroy', $role)]) !!}
+                            <a title="Role Destroy"
                                onclick="event.preventDefault();jQuery(this).parents('form:first').submit();"
                                href="#">Destroy</a>
                             {!! Form::close() !!}

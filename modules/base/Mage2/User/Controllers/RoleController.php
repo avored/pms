@@ -1,23 +1,23 @@
 <?php
 
-namespace Mage2\Project\Controllers;
+namespace Mage2\User\Controllers;
 
 use Illuminate\Http\Request;
+use Mage2\User\Requests\RoleRequest;
+use Mage2\User\Models\Role;
 use Mage2\System\Http\Controllers\Controller;
-use Mage2\Project\Models\Project;
-use Mage2\Project\Requests\ProjectRequest;
 
-class ProjectController extends Controller
+class RoleController extends Controller
 {
-    /**
+   /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $projects = Project::paginate(10);
-        return view('project.project.index')->with('projects', $projects);
+        $roles = Role::paginate(10);
+        return view('user.role.index')->with('roles', $roles);
     }
 
     /**
@@ -27,20 +27,20 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('project.project.create');
+        return view('user.role.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Mage2\Project\Requests\ProjectRequest  $request
+     * @param  \Mage2\Role\Requests\RoleRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProjectRequest  $request)
+    public function store(RoleRequest  $request)
     {
-        Project::create($request->all());
+        Role::create($request->all());
 
-        return redirect()->route('project.index')->with('notificationText', 'Project Created Successfully');
+        return redirect()->route('role.index')->with('notificationText', 'Role Created Successfully');
     }
 
     /**
@@ -62,23 +62,23 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        $project = Project::findorfail($id);
-        return view('project.project.edit')->with('project', $project);
+        $role = Role::findorfail($id);
+        return view('user.role.edit')->with('role', $role);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Mage2\Project\Requests\ProjectRequest  $request
+     * @param  \Mage2\Role\Requests\RoleRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProjectRequest $request, $id)
+    public function update(RoleRequest $request, $id)
     {
-        $project = Project::findorfail($id);
-        $project->update($request->all());
+        $role = Role::findorfail($id);
+        $role->update($request->all());
 
-        return redirect()->route('project.index');
+        return redirect()->route('role.index');
     }
 
     /**
@@ -89,8 +89,8 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        Project::destroy($id);
+        Role::destroy($id);
 
-        return redirect()->route('project.index');
+        return redirect()->route('role.index');
     }
 }

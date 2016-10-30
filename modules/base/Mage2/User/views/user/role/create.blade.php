@@ -4,11 +4,11 @@
 
         <div class="row">
             <div class="col-md-12 main-title-wrap">
-                <span class="title">Project Create</span>
+                <span class="title">Role Create</span>
             </div>
             <div class="col-md-12">
-                {!! Form::open(['method' => 'POST', 'action' => route('project.store')]) !!}
-                @include('project.project._fields')
+                {!! Form::open(['method' => 'POST', 'action' => route('role.store')]) !!}
+                @include('user.role._fields')
 
                 {!! Form::submit('Save') !!}
 
