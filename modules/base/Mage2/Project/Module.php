@@ -5,17 +5,23 @@ namespace Mage2\Project;
 use Mage2\Framework\Support\BaseModule;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+use Mage2\Project\Models\Project;
+use Mage2\Project\Policies\ProjectPolicy;
+use Illuminate\Support\Facades\Gate;
 
-class Module extends BaseModule
-{
+class Module extends BaseModule {
+
+    protected $policies = [
+        Project::class => ProjectPolicy::class,
+    ];
+
     /**
      * Define your route model bindings, pattern filters, etc.
      *
      * @return void
      */
-    public function boot()
-    {
-        //
+    public function boot() {
+        $this->registerPolicies();
     }
 
     /**
@@ -23,8 +29,7 @@ class Module extends BaseModule
      *
      * @return void
      */
-    public function register()
-    {
+    public function register() {
         //$this->mapApiRoutes();
         $this->mapWebRoutes();
         $this->registerViewPath();
@@ -38,9 +43,8 @@ class Module extends BaseModule
      *
      * @return void
      */
-    protected function mapWebRoutes()
-    {
-        require __DIR__.  '/routes/web.php';
+    protected function mapWebRoutes() {
+        require __DIR__ . '/routes/web.php';
     }
 
     /**
@@ -50,8 +54,14 @@ class Module extends BaseModule
      *
      * @return void
      */
-    protected function registerViewPath()
-    {
+    protected function registerViewPath() {
         View::addLocation(__DIR__ . "/views");
     }
+
+    public function registerPolicies() {
+        foreach ($this->policies as $key => $value) {
+            Gate::policy($key, $value);
+        }
+    }
+
 }

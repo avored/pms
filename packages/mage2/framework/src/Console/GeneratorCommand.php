@@ -77,6 +77,10 @@ abstract class GeneratorCommand extends Command
                 $replaceName = $moduleName ."\\Requests\\". $name;
             break;
         
+            case "Policy":
+                $replaceName = $moduleName ."\\Policies\\". $name;
+            break;
+        
             default :
                 $replaceName = $moduleName . $name;
             break;
@@ -120,6 +124,10 @@ abstract class GeneratorCommand extends Command
         
             case "Request":
                 $path = $moduleName . DIRECTORY_SEPARATOR . "Requests" . DIRECTORY_SEPARATOR .$name;
+            break;
+        
+            case "Policy":
+                $path = $moduleName . DIRECTORY_SEPARATOR . "Policies" . DIRECTORY_SEPARATOR .$name;
             break;
         
             default :
