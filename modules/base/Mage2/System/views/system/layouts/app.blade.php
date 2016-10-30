@@ -11,7 +11,8 @@
     <title>{{ config('app.name', 'Mage2 Project Management System') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{ asset('/css/appscss.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/appless.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
