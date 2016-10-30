@@ -3,6 +3,7 @@ namespace Mage2\User\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Mage2\User\Models\Role;
 
 class AdminUser extends Authenticatable
 {
@@ -28,5 +29,14 @@ class AdminUser extends Authenticatable
 
     public function getNameAttribute() {
         return $this->attributes['first_name'] . " " . $this->attributes['last_name'];
+    }
+    
+    /**
+     * Every user has one role.
+     * 
+     * @return \Mage2\User\Models\Role
+     */
+    public function role() {
+        return $this->belongsTo(Role::class);
     }
 }
