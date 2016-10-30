@@ -1,6 +1,6 @@
 <div class="form-group DUMMYERRORCLASS">
     <label for="DUMMYFIELDNAME">DUMMYLABEL</label>
-    <textarea  
+    <textarea
             class="form-control" 
             id="DUMMYFIELDNAME" 
             name="DUMMYFIELDNAME" 

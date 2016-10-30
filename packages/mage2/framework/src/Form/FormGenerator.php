@@ -103,7 +103,25 @@ class FormGenerator {
         $stub = $this->files->get($this->getStub('form-open'));
 
         foreach ($dummyReplacement as $dummyText => $replacement) {
-            $this->replaceStubText($stub, strtoupper("DUMMY" . $dummyText), $replacement);
+
+            if(strtolower($dummyText)== "method") {
+
+                if (strtolower($replacement) == "get" || strtolower($replacement) == "post") {
+
+                    $this->replaceStubText($stub, strtoupper("DUMMY" . $dummyText), strtoupper($replacement));
+
+                    $this->replaceStubText($stub, strtoupper("DUMMYHIDDENMETHOD"), "");
+                } else {
+                    $this->replaceStubText($stub, strtoupper("DUMMY" . $dummyText), "POST");
+                    $dummyHiddenStub = $this->files->get($this->getStub('_method'));
+
+                    $this->replaceStubText($dummyHiddenStub, strtoupper("DUMMYMETHOD"), strtoupper($replacement));
+                    $stub .= $dummyHiddenStub;
+                }
+            } else {
+
+                $this->replaceStubText($stub, strtoupper("DUMMY" . $dummyText), $replacement);
+            }
         }
 
         $csrfStub = $this->files->get($this->getStub('_csrf'));

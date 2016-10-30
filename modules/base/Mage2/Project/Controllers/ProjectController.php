@@ -5,6 +5,7 @@ namespace Mage2\Project\Controllers;
 use Illuminate\Http\Request;
 use Mage2\System\Http\Controllers\Controller;
 use Mage2\Project\Models\Project;
+use Mage2\Project\Requests\ProjectRequest;
 
 class ProjectController extends Controller
 {
@@ -32,12 +33,14 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Mage2\Project\Requests\ProjectRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProjectRequest  $request)
     {
-        //
+        Project::create($request->all());
+
+        return redirect()->route('projects.index')->with('notificationText', 'Project Created Successfully');
     }
 
     /**
@@ -59,19 +62,23 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::findorfail($id);
+        return view('project.project.edit')->with('project', $project);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Mage2\Project\Requests\ProjectRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProjectRequest $request, $id)
     {
-        //
+        $project = Project::findorfail($id);
+        $project->update($request->all());
+
+        return redirect()->route('projects.index');
     }
 
     /**
@@ -82,6 +89,8 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Project::destroy($id);
+
+        return redirect()->route('projects.index');
     }
 }
