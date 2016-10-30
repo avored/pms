@@ -102,8 +102,9 @@ class PolicyMakeCommand extends GeneratorCommand
      */
     protected function getOptions()
     {
-        return [
-            ['model', 'm', InputOption::VALUE_OPTIONAL, 'The model that the policy applies to.'],
-        ];
+        return [];
+        //@todo temp because of not sure how to applied auth user model
+        // how to implement some how get the user auth class from config auth.
+        return [['model', 'm', InputOption::VALUE_OPTIONAL, 'The model that the policy applies to.'],];
     }
 }

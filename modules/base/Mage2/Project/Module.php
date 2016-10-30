@@ -5,15 +5,11 @@ namespace Mage2\Project;
 use Mage2\Framework\Support\BaseModule;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
-use Mage2\Project\Models\Project;
-use Mage2\Project\Policies\ProjectPolicy;
-use Illuminate\Support\Facades\Gate;
+
 
 class Module extends BaseModule {
 
-    protected $policies = [
-        Project::class => ProjectPolicy::class,
-    ];
+   
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -21,7 +17,7 @@ class Module extends BaseModule {
      * @return void
      */
     public function boot() {
-        $this->registerPolicies();
+        //$this->registerPolicies();
     }
 
     /**

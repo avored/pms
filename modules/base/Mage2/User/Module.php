@@ -5,9 +5,15 @@ namespace Mage2\User;
 use Mage2\Framework\Support\BaseModule;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Gate;
+use Mage2\User\Policies\AdminUserPolicy;
+use Mage2\User\Models\AdminUser;
 
 class Module extends BaseModule
 {
+      protected $policies = [
+        AdminUser::class => AdminUserPolicy::class,
+    ];
     /**
      * Define your route model bindings, pattern filters, etc.
      *
