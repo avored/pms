@@ -124,6 +124,30 @@ class FormGenerator {
     }
 
     /**
+     * get the text field using stub template
+     *
+     * @todo add attribute feature and etc
+     *
+     * @param  string  $fieldName
+     * @param  string  $label
+     * @param  array  $attributes
+     * @return $stub
+     */
+    public function textarea($fieldName, $label = "", $attributes = []) {
+
+        $stub = $this->files->get($this->getStub('textarea'));
+
+        $this->replaceStubText($stub, "DUMMYFIELDNAME", $fieldName);
+        $this->replaceStubText($stub, "DUMMYLABEL", $label);
+
+        $this->setAttributeTextOfStub($stub, $attributes);
+        $this->setErrorStubAndValue($stub, $fieldName);
+
+        return $stub;
+    }
+
+
+    /**
      * get the text field using stub template 
      * 
      * @todo add attribute feature and etc

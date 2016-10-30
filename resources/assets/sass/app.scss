@@ -7,3 +7,14 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.main-title-wrap {
+  margin-bottom: 20px;
+  .title {
+    font-size: 36px;
+    margin-top: 22px;
+    margin-bottom: 11px;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+}

@@ -4,6 +4,7 @@ namespace Mage2\Project\Controllers;
 
 use Illuminate\Http\Request;
 use Mage2\System\Http\Controllers\Controller;
+use Mage2\Project\Models\Project;
 
 class ProjectController extends Controller
 {
@@ -14,7 +15,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Project::paginate(10);
+        return view('project.project.index')->with('projects', $projects);
     }
 
     /**
@@ -24,7 +26,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('project.project.create');
     }
 
     /**
