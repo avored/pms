@@ -5,7 +5,7 @@ namespace Mage2\Project;
 use Mage2\Framework\Support\BaseModule;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
-
+use Mage2\Framework\Support\Facades\Permission;
 
 class Module extends BaseModule {
 
@@ -29,6 +29,8 @@ class Module extends BaseModule {
         //$this->mapApiRoutes();
         $this->mapWebRoutes();
         $this->registerViewPath();
+        $this->registerPermissions();
+        
         //
     }
 
@@ -58,6 +60,19 @@ class Module extends BaseModule {
         foreach ($this->policies as $key => $value) {
             Gate::policy($key, $value);
         }
+    }
+    
+    protected function registerPermissions() {
+        $permissions = [
+                'Project List' => 'project.index',
+                'Project Create' => ["project.create", "project.store"],
+                'Project Edit' => ["project.edit", "project.update"],
+                'Project Destroy' => "project.destroy",
+            ];
+        
+            foreach ($permissions as $permission) {
+                Permission::add($permission);
+            }
     }
 
 }

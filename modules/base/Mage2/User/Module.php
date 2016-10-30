@@ -9,18 +9,18 @@ use Illuminate\Support\Facades\Gate;
 use Mage2\User\Policies\AdminUserPolicy;
 use Mage2\User\Models\AdminUser;
 
-class Module extends BaseModule
-{
-      protected $policies = [
+class Module extends BaseModule {
+
+    protected $policies = [
         AdminUser::class => AdminUserPolicy::class,
     ];
+
     /**
      * Define your route model bindings, pattern filters, etc.
      *
      * @return void
      */
-    public function boot()
-    {
+    public function boot() {
         //
     }
 
@@ -29,11 +29,11 @@ class Module extends BaseModule
      *
      * @return void
      */
-    public function register()
-    {
+    public function register() {
         //$this->mapApiRoutes();
         $this->mapWebRoutes();
         $this->registerViewPath();
+        $this->registerPermissions();
         //
     }
 
@@ -44,11 +44,9 @@ class Module extends BaseModule
      *
      * @return void
      */
-    protected function mapWebRoutes()
-    {
-        require (__DIR__.  '/routes/web.php');
+    protected function mapWebRoutes() {
+        require (__DIR__ . '/routes/web.php');
     }
-
 
     /**
      * Define the "web" routes for the application.
@@ -57,9 +55,13 @@ class Module extends BaseModule
      *
      * @return void
      */
-    protected function registerViewPath()
-    {
+    protected function registerViewPath() {
         View::addLocation(__DIR__ . "/views");
+    }
+    
+    
+    protected function registerPermissions() {
+        $permissions = [];
     }
 
 }
