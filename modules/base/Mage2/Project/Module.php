@@ -9,8 +9,6 @@ use Mage2\Framework\Support\Facades\Permission;
 
 class Module extends BaseModule {
 
-   
-
     /**
      * Define your route model bindings, pattern filters, etc.
      *
@@ -30,7 +28,7 @@ class Module extends BaseModule {
         $this->mapWebRoutes();
         $this->registerViewPath();
         $this->registerPermissions();
-        
+
         //
     }
 
@@ -61,18 +59,18 @@ class Module extends BaseModule {
             Gate::policy($key, $value);
         }
     }
-    
+
     protected function registerPermissions() {
         $permissions = [
-                'Project List' => 'project.index',
-                'Project Create' => ["project.create", "project.store"],
-                'Project Edit' => ["project.edit", "project.update"],
-                'Project Destroy' => "project.destroy",
-            ];
-        
-            foreach ($permissions as $permission) {
-                Permission::add($permission);
-            }
+            ['title' => 'Project List',     'routes' => 'project.index'],
+            ['title' => 'Project Create',   'routes' => ["project.create", "project.store"]],
+            ['title' => 'Project Edit',     'routes' => ["project.edit", "project.update"]],
+            ['title' => 'Project Destroy',  'routes' => "project.destroy"],
+        ];
+
+        foreach ($permissions as $permission) {
+            Permission::add($permission);
+        }
     }
 
 }

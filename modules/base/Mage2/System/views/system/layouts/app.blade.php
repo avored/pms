@@ -59,6 +59,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="{{ asset('/js/all.js') }}"></script>
+    <script src="{{ asset('/js/scripts.js') }}"></script>
 </body>
 </html>

@@ -230,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Mage2\Framework\Form\Contracts\FormFacade::class,
+        'Permission' => Mage2\Framework\Support\Facades\Permission::class,
     ],
 
 ];

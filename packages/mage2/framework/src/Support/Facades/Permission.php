@@ -1,6 +1,7 @@
 <?php
 
 namespace Mage2\Framework\Support\Facades;
+use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \Illuminate\Contracts\Auth\Access\Gate
