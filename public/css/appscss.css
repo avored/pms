@@ -5778,4 +5778,7 @@ button.close {
 .disabledlink {
   text-decoration: line-through; }
 
+.table-grid th {
+  background-color: #d0d0d0; }
+
 /*# sourceMappingURL=appscss.css.map */

@@ -20,9 +20,11 @@
                 <p>Sorry No Projects Found</p>
             @else
 
-                <table class="table table-striped table-responsive ">
+                <table class="table-grid table table-striped table-responsive ">
                     <tr>
-                        <th>Project Name</th>
+                        <th>
+                            Project Name
+                        </th>
                         <th>Project Description</th>
                         <th>Edit</th>
                         <th>Destroy</th>

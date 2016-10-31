@@ -10,15 +10,22 @@
 
 
 .main-title-wrap {
-  margin-bottom: 20px;
-  .title {
-    font-size: 36px;
-    margin-top: 22px;
-    margin-bottom: 11px;
-    font-weight: 500;
-    line-height: 1.1;
-  }
+    margin-bottom: 20px;
+    .title {
+        font-size: 36px;
+        margin-top: 22px;
+        margin-bottom: 11px;
+        font-weight: 500;
+        line-height: 1.1;
+    }
 }
 .disabledlink {
-  text-decoration: line-through;
+    text-decoration: line-through;
+}
+.table-grid {
+
+    th {
+        background-color: #d0d0d0;
+    }
+
 }
