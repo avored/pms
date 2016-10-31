@@ -4,11 +4,11 @@
         <li><a href="{{ route('auth.login') }}">Login</a></li>
         <li><a href="{{ url('/register') }}">Register</a></li>
     @else
-        @can("create",[\Mage2\User\Models\AdminUser::class,"role.index"])
+        @can("hasPermission",[\Mage2\User\Models\AdminUser::class,"role.index"])
             <li><a href="{{ route('role.index') }}">Roles</a></li>
         @endcan
 
-        @can("create",[\Mage2\User\Models\AdminUser::class,"project.index"])
+        @can("hasPermission",[\Mage2\User\Models\AdminUser::class,"project.index"])
             <li><a href="{{ route('project.index') }}">Projects</a></li>
         @endcan
 

@@ -6,7 +6,7 @@
         <div class="col-md-12 main-title-wrap">
             <span class="title">Project List</span>
                 <span class="pull-right">
-                    @can("create",[\Mage2\User\Models\AdminUser::class,"project.create"])
+                    @can("hasPermission",[\Mage2\User\Models\AdminUser::class,"project.create"])
                     <a class="btn btn-primary" title="Create Project" href="{{ route('project.create') }}">Create
                         Project</a>
                     @endcan
@@ -34,13 +34,24 @@
 
                         <td>{{ $project->description }}</td>
 
-                        <td><a title="Project Edit" href="{{ route('project.edit', $project) }}">Edit</a></td>
+                        <td>
+                            @can("hasPermission",[\Mage2\User\Models\AdminUser::class,"project.edit"])
+                            <a title="Project Edit" href="{{ route('project.edit', $project) }}">Edit</a>
+                            @else
+                                <span class="disabledlink">Edit</span>
+                            @endcan
+                        </td>
 
-                        <td>{!! Form::open(['method' => 'delete', 'action' => route('project.destroy', $project)]) !!}
+                        <td>
+                            @can("hasPermission",[\Mage2\User\Models\AdminUser::class,"project.destroy"])
+                            {!! Form::open(['method' => 'delete', 'action' => route('project.destroy', $project)]) !!}
                             <a title="Project Destroy"
                                onclick="event.preventDefault();jQuery(this).parents('form:first').submit();"
                                href="#">Destroy</a>
                             {!! Form::close() !!}
+                            @else
+                                <span class="disabledlink">Destroy</span>
+                            @endcan
                         </td>
                     </tr>
                     @endforeach
