@@ -7,6 +7,7 @@ use Mage2\User\Models\AdminUser;
 use Mage2\User\Requests\AdminUserRequest;
 use Mage2\User\Models\Role;
 use Mage2\System\Http\Controllers\Controller;
+use Illuminate\Support\Collection;
 
 class AdminUserController extends Controller
 {
@@ -28,7 +29,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        $roles = Role::all()->pluck('name','id');
+        $roles = $this->_getRoleOptions();
         return view('user.admin-user.create')->with('roles', $roles);
     }
 
@@ -65,7 +66,7 @@ class AdminUserController extends Controller
     public function edit($id)
     {
         $adminUser = AdminUser::findorfail($id);
-        $roles = Role::all()->pluck('name','id');
+        $roles = $this->_getRoleOptions();
         return view('user.admin-user.edit')->with('adminUser', $adminUser)->with('roles', $roles);;
     }
 
@@ -95,5 +96,10 @@ class AdminUserController extends Controller
         AdminUser::destroy($id);
 
         return redirect()->route('admin-user.index');
+    }
+    
+    private function _getRoleOptions() {
+        $roles = Collection::make([0 => 'Please Select']);
+        return $roles->merge(Role::all()->pluck('name','id'));
     }
 }

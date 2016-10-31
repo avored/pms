@@ -13,7 +13,7 @@ class AdminUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,14 @@ class AdminUserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        $validation ['first_name'] = "required|max:255";
+        $validation ['last_name'] = "required|max:255";
+        $validation ['password'] = "required|min:6|confirmed";
+        if(strtoupper($this->getMethod()) == "POST") {
+            $validation ['email'] = "required|unique:admin_users";
+        }
+        
+        return $validation;
+        
     }
 }
