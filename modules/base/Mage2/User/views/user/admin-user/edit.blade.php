@@ -9,7 +9,7 @@
         <div class="col-md-12">
             {!! Form::bind($adminUser, ['method' => 'PUT', 'action' => route('admin-user.update', $adminUser)]) !!}
 
-            @include('user.admin-user._fields')
+            @include('user.admin-user._fields',['roles' => $roles])
 
             {!! Form::submit('Save') !!}
 

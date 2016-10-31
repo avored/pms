@@ -5,6 +5,7 @@ namespace Mage2\User\Controllers;
 use Illuminate\Http\Request;
 use Mage2\User\Models\AdminUser;
 use Mage2\User\Requests\AdminUserRequest;
+use Mage2\User\Models\Role;
 use Mage2\System\Http\Controllers\Controller;
 
 class AdminUserController extends Controller
@@ -27,7 +28,8 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        return view('user.admin-user.create');
+        $roles = Role::all()->pluck('name','id');
+        return view('user.admin-user.create')->with('roles', $roles);
     }
 
     /**
@@ -63,7 +65,8 @@ class AdminUserController extends Controller
     public function edit($id)
     {
         $adminUser = AdminUser::findorfail($id);
-        return view('user.admin-user.edit')->with('adminUser', $adminUser);
+        $roles = Role::all()->pluck('name','id');
+        return view('user.admin-user.edit')->with('adminUser', $adminUser)->with('roles', $roles);;
     }
 
     /**

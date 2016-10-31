@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-12">
                 {!! Form::open(['method' => 'POST', 'action' => route('admin-user.store')]) !!}
-                @include('user.admin-user._fields')
+                @include('user.admin-user._fields',['roles' => $roles])
 
                 {!! Form::submit('Save') !!}
 
