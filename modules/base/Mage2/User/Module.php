@@ -3,11 +3,11 @@
 namespace Mage2\User;
 
 use Mage2\Framework\Support\BaseModule;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Gate;
 use Mage2\User\Policies\AdminUserPolicy;
 use Mage2\User\Models\AdminUser;
+use Mage2\Framework\Support\Facades\Permission;
 
 class Module extends BaseModule {
 
@@ -67,7 +67,21 @@ class Module extends BaseModule {
     
     
     protected function registerPermissions() {
-        $permissions = [];
+        $permissions = [
+            ['title' => 'Role List',     'routes' => 'role.index'],
+            ['title' => 'Role Create',   'routes' => "role.create,role.store"],
+            ['title' => 'Role Edit',     'routes' => "role.edit, role.update"],
+            ['title' => 'Role Destroy',  'routes' => "role.destroy"],
+            
+            ['title' => 'Admin User List',     'routes' => 'admin-user.index'],
+            ['title' => 'Admin User Create',   'routes' => "admin-user.create,admin-user.store"],
+            ['title' => 'Admin User Edit',     'routes' => "admin-user.edit, admin-user.update"],
+            ['title' => 'Admin User Destroy',  'routes' => "admin-user.destroy"],
+        ];
+
+        foreach ($permissions as $permission) {
+            Permission::add($permission);
+        }
     }
 
 }

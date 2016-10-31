@@ -163,6 +163,29 @@ class FormGenerator {
 
         return $stub;
     }
+    /**
+     * get the text field using stub template
+     *
+     * @todo add attribute feature and etc
+     *
+     * @param  string  $fieldName
+     * @param  string  $label
+     * @param  array  $attributes
+     * @return $stub
+     */
+    public function select($fieldName, $label = "", $options = [],$attributes = []) {
+
+        $stub = $this->files->get($this->getStub('select'));
+        
+        $this->replaceStubText($stub, "DUMMYFIELDNAME", $fieldName);
+        $this->replaceStubText($stub, "DUMMYLABEL", $label);
+
+        $this->setAttributeTextOfStub($stub, $attributes);
+        $this->setOptionTextOfStub($stub, $options);
+        $this->setErrorStubAndValue($stub, $fieldName);
+
+        return $stub;
+    }
 
 
     /**
@@ -183,7 +206,6 @@ class FormGenerator {
         $this->replaceStubText($stub, "DUMMYLABEL", $label);
 
         $this->setAttributeTextOfStub($stub, $attributes);
-
         $this->setErrorStubAndValue($stub, $fieldName);
 
         return $stub;
@@ -229,6 +251,21 @@ class FormGenerator {
      * @param  string  $buttonText
      * @return $stub
      */
+    public function setOptionTextOfStub(&$stub, $options = []) {
+        $optionsText = $this->getOptionText($options);
+        $this->replaceStubText($stub, "DUMMYOPTIONS", $optionsText);
+
+        return $this;
+    }
+   
+    /**
+     * get the text field using stub template 
+     * 
+     * @todo add attribute feature and etc
+     *
+     * @param  string  $buttonText
+     * @return $stub
+     */
     public function setAttributeTextOfStub(&$stub, $attributes = []) {
         $attributeText = $this->getAttributeText($attributes);
         $this->replaceStubText($stub, "DUMMYATTRIBUTES", $attributeText);
@@ -253,6 +290,22 @@ class FormGenerator {
         return $stub;
     }
 
+    /**
+     * get the attribuet text from given array
+     * 
+     * @todo add attribute feature and etc
+     *
+     * @param  array  $options
+     * @return $stub
+     */
+    public function getOptionText($options = []) {
+        $optionText = "";
+        foreach ($options as $attKey => $attVal) {
+            $optionText .= "<option value='$attKey'> $attVal </option>";
+        }
+
+        return $optionText;
+    }
     /**
      * get the attribuet text from given array
      * 

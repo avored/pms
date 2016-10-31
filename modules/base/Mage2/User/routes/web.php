@@ -27,4 +27,5 @@ Route::group(['middleware' => ['web','auth'], 'namespace' => 'Mage2\User\Control
     Route::post('/my-account/',     ['as' => 'my-account.update','uses' => 'MyAccountController@update']);
     
      Route::resource('/role', 'RoleController');
+     Route::resource('/admin-user', 'AdminUserController');
 });

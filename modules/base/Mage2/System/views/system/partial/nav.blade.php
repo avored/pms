@@ -8,6 +8,11 @@
             <li><a href="{{ route('role.index') }}">Roles</a></li>
         @endcan
 
+        @can("hasPermission",[\Mage2\User\Models\AdminUser::class,"admin-user.index"])
+            <li><a href="{{ route('admin-user.index') }}">Admin Users</a></li>
+        @endcan
+        
+        
         @can("hasPermission",[\Mage2\User\Models\AdminUser::class,"project.index"])
             <li><a href="{{ route('project.index') }}">Projects</a></li>
         @endcan
