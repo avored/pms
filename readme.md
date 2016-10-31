@@ -42,8 +42,8 @@ That's it!
 ##Contributing
 
 
-Mage2 laravel5 Ecommerce is in active development and If you want to contribute in this project then simply do the [Pull Request](https://github.com/mage2/laravel-ecommerce/pulls)!
+Mage2 laravel5 Ecommerce is in active development and If you want to contribute in this project then simply do the [Pull Request](https://github.com/mage2/project-management-system/pulls)!
 
-If you find any bug or problem please submit here  [raise the issue here](https://github.com/mage2/laravel-ecommerce/issues/new).
+If you find any bug or problem please submit here  [raise the issue here](https://github.com/mage2/project-management-system/issues/new).
 
 
