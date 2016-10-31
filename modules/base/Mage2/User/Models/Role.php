@@ -4,7 +4,7 @@ namespace Mage2\User\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Mage2\User\Models\User;
-
+use Mage2\User\Models\Permission;
 
 class Role extends Model
 {
@@ -18,4 +18,20 @@ class Role extends Model
     public function user() {
         return $this->hasMany(User::class);
     }
+
+
+    /**
+     * Role has many Permissions
+     *
+     * @return \Mage2\User\Models\Role
+     */
+
+    public function permissions() {
+        return $this->belongsToMany(Permission::class);
+    }
+
+    public function hasPermission($permissionName) {
+        return $this->permissions->pluck('name')->contains($permissionName);
+    }
 }
+

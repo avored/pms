@@ -21,7 +21,7 @@ class Module extends BaseModule {
      * @return void
      */
     public function boot() {
-        //
+        $this->registerPolicies();
     }
 
     /**
@@ -48,6 +48,12 @@ class Module extends BaseModule {
         require (__DIR__ . '/routes/web.php');
     }
 
+    public function registerPolicies() {
+        foreach ($this->policies as $key => $value) {
+            Gate::policy($key, $value);
+        }
+    }
+
     /**
      * Define the "web" routes for the application.
      *
@@ -65,3 +71,5 @@ class Module extends BaseModule {
     }
 
 }
+
+

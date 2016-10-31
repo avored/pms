@@ -3,9 +3,11 @@
 namespace Mage2\User\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Mage2\User\Requests\RoleRequest;
 use Mage2\User\Models\Role;
 use Mage2\System\Http\Controllers\Controller;
+use Mage2\User\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -69,16 +71,43 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Mage2\Role\Requests\RoleRequest  $request
+     * @param  \Mage2\User\Requests\RoleRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(RoleRequest $request, $id)
     {
-        
-        return $request->all();
+
+
         $role = Role::findorfail($id);
         $role->update($request->all());
+
+        if(count($request->get('permissions')) > 0) {
+            $permissionIds = Collection::make([]);
+            foreach ($request->get('permissions') as $key => $value) {
+                //save it into db
+                if ($value != 1) {
+                    continue;
+                }
+
+
+                $permissions = explode(',', $key);
+
+                foreach ($permissions as $permissionName) {
+                    if(null === ($permissionModel = Permission::getPermissionByName($permissionName))) {
+                        $permissionModel = Permission::create(['name' => $permissionName]);
+                    }
+
+                    if(!$permissionIds->contains($permissionModel->id)) {
+                        $permissionIds->push($permissionModel->id);
+                    }
+
+                }
+
+            }
+        }
+
+        $role->permissions()->sync($permissionIds->toArray());
 
         return redirect()->route('role.index');
     }

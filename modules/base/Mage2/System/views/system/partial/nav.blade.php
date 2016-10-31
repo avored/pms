@@ -4,8 +4,14 @@
         <li><a href="{{ route('auth.login') }}">Login</a></li>
         <li><a href="{{ url('/register') }}">Register</a></li>
     @else
-        <li><a href="{{ route('role.index') }}">Roles</a></li>
-        <li><a href="{{ route('project.index') }}">Projects</a></li>
+        @can("create",[\Mage2\User\Models\AdminUser::class,"role.index"])
+            <li><a href="{{ route('role.index') }}">Roles</a></li>
+        @endcan
+
+        @can("create",[\Mage2\User\Models\AdminUser::class,"project.index"])
+            <li><a href="{{ route('project.index') }}">Projects</a></li>
+        @endcan
+
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                 {{ Auth::user()->name }} <span class="caret"></span>

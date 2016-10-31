@@ -15,7 +15,7 @@ class Module extends BaseModule {
      * @return void
      */
     public function boot() {
-        //$this->registerPolicies();
+        ///$this->registerPolicies();
     }
 
     /**
@@ -54,17 +54,13 @@ class Module extends BaseModule {
         View::addLocation(__DIR__ . "/views");
     }
 
-    public function registerPolicies() {
-        foreach ($this->policies as $key => $value) {
-            Gate::policy($key, $value);
-        }
-    }
+
 
     protected function registerPermissions() {
         $permissions = [
             ['title' => 'Project List',     'routes' => 'project.index'],
-            ['title' => 'Project Create',   'routes' => ["project.create", "project.store"]],
-            ['title' => 'Project Edit',     'routes' => ["project.edit", "project.update"]],
+            ['title' => 'Project Create',   'routes' => "project.create,project.store"],
+            ['title' => 'Project Edit',     'routes' => "project.edit, project.update"],
             ['title' => 'Project Destroy',  'routes' => "project.destroy"],
         ];
 

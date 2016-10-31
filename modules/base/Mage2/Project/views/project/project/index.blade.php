@@ -6,8 +6,10 @@
         <div class="col-md-12 main-title-wrap">
             <span class="title">Project List</span>
                 <span class="pull-right">
+                    @can("create",[\Mage2\User\Models\AdminUser::class,"project.create"])
                     <a class="btn btn-primary" title="Create Project" href="{{ route('project.create') }}">Create
                         Project</a>
+                    @endcan
                 </span>
         </div>
 

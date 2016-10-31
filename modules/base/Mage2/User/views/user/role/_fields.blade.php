@@ -8,7 +8,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">{{ $permission['title'] }}</div>
         <div class="panel-body">
-            <p><input type="checkbox" class="bootstrap-switch" name="permissions" value='' /></p>
+            <p><input type="checkbox" class="bootstrap-switch" name="permissions[{{ $permission['routes'] }}]" value='1' /></p>
         </div>
     </div>
 </div>
