@@ -56,7 +56,7 @@
                     </tr>
                     @endforeach
                 </table>
-
+                {!! $projects->links() !!}
             @endif
         </div>
     </div>
