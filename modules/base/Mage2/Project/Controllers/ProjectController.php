@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Mage2\System\Http\Controllers\Controller;
 use Mage2\Project\Models\Project;
 use Mage2\Project\Requests\ProjectRequest;
+use Mage2\Framework\DataGrid\DataGridFacade;
 
 class ProjectController extends Controller
 {
@@ -17,7 +18,12 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::paginate(10);
-        return view('project.project.index')->with('projects', $projects);
+        $project = new Project();
+        $dataGrid = DataGridFacade::make($project);
+        return view('project.project.index')
+                    ->with('projects', $projects)
+                    ->with('dataGrid', $dataGrid)
+                ;
     }
 
     /**
