@@ -8,22 +8,34 @@ use Mage2\Project\Models\Project;
 use Mage2\Project\Requests\ProjectRequest;
 use Mage2\Framework\DataGrid\DataGridFacade;
 
-class ProjectController extends Controller
-{
+class ProjectController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         $projects = Project::paginate(10);
         $project = new Project();
         $dataGrid = DataGridFacade::make($project);
+
+        $dataGrid->addColumn(['identifier' => 'name',
+                            'title' => 'Project Name',
+                            'render-type' => 'text']);
+        $dataGrid->addColumn(['identifier' => 'description',
+                            'title' => 'Project Description',
+                            'render-type' => 'text']);
+        $dataGrid->addLink(['identifier' => 'edit',
+                            'title' => 'Edit',
+                            'render-type' => 'text']);
+        $dataGrid->addLink(function($row) {
+            return "<a href=''>Edit</a>";
+        });
         return view('project.project.index')
-                    ->with('projects', $projects)
-                    ->with('dataGrid', $dataGrid)
-                ;
+                        ->with('projects', $projects)
+                        ->with('dataGrid', $dataGrid)
+        ;
     }
 
     /**
@@ -31,8 +43,7 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         return view('project.project.create');
     }
 
@@ -42,8 +53,7 @@ class ProjectController extends Controller
      * @param  \Mage2\Project\Requests\ProjectRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProjectRequest  $request)
-    {
+    public function store(ProjectRequest $request) {
         Project::create($request->all());
 
         return redirect()->route('project.index')->with('notificationText', 'Project Created Successfully');
@@ -55,8 +65,7 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -66,8 +75,7 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $project = Project::findorfail($id);
         return view('project.project.edit')->with('project', $project);
     }
@@ -79,8 +87,7 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProjectRequest $request, $id)
-    {
+    public function update(ProjectRequest $request, $id) {
         $project = Project::findorfail($id);
         $project->update($request->all());
 
@@ -93,10 +100,10 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         Project::destroy($id);
 
         return redirect()->route('project.index');
     }
+
 }
