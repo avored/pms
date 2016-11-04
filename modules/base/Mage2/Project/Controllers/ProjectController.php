@@ -22,8 +22,10 @@ class ProjectController extends Controller {
         $project = new Project();
         $dataGrid = DataGrid::make($project);
 
-        $dataGrid->addColumn(DataGrid::textColumn('name', 'Category Name'));
+        $dataGrid->addColumn(DataGrid::textColumn('name', 'Project Name',['sortable' => 'asc']));
+
         $dataGrid->addColumn(DataGrid::textColumn('description', 'Project Description'));
+
         if (Gate::allows('hasPermission', [AdminUser::class, "project.edit"])) {
             $dataGrid->addColumn(DataGrid::linkColumn('edit', 'Edit', function ($row) {
                 return "<a href='" . route('project.edit', $row->id) . "'>Edit</a>";

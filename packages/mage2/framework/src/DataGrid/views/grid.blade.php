@@ -7,9 +7,12 @@
 <tr>
 @foreach($dataGrid->columns as $column)
     <?php
+
     //dd($column->getLabel());
+        dd(($column));
     ?>
     <th>
+
         {{ $column->getLabel() }}
     </th>
 @endforeach

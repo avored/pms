@@ -65,8 +65,8 @@ class DataGrid
             //return $return($label, $row);
     }
 
-    public static  function textColumn($identifier, $label) {
-        return new TextColumn($identifier,$label);
+    public static  function textColumn($identifier, $label, $extraAttributes = []) {
+        return new TextColumn($identifier,$label,$extraAttributes);
 
     }
 

@@ -22,9 +22,11 @@ class TextColumn {
     public $dataType = "text";
 
 
-    public function __construct($identifier, $label) {
+    public function __construct($identifier, $label , $attributes) {
         $this->identifier = $identifier;
         $this->label=  $label;
+        $this->setAttributes($attributes);
+
     }
 
 
@@ -39,4 +41,12 @@ class TextColumn {
     public function getDataType() {
         return $this->dataType;
     }
+
+    public function setAttributes($attributes) {
+        foreach ($attributes as $key => $value ) {
+            $this->$key = $value;
+        }
+        return $this;
+    }
+
 }
