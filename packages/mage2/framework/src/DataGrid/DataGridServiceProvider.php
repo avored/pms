@@ -54,7 +54,7 @@ class DataGridServiceProvider extends ServiceProvider {
      * @return void
      */
     public function registerViewPath() {
-        $this->loadViewsFrom(__DIR__ . '/views', 'datagrid');
+        $this->loadViewsFrom(__DIR__ . '/views', 'datagridviews');
     }
 
 }

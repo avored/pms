@@ -181,8 +181,28 @@ class FormGenerator {
         $this->replaceStubText($stub, "DUMMYLABEL", $label);
 
         $this->setAttributeTextOfStub($stub, $attributes);
-        $this->setOptionTextOfStub($stub, $options);
+        $this->setOptionTextOfStub($stub, $options,$fieldName);
         $this->setErrorStubAndValue($stub, $fieldName);
+
+        return $stub;
+    }
+
+    /**
+     * get the text field using stub template
+     *
+     * @todo add attribute feature and etc
+     *
+     * @param  string  $fieldName
+     * @param  string  $label
+     * @param  array  $attributes
+     * @return $stub
+     */
+    public function hidden($fieldName, $value = "") {
+
+        $stub = $this->files->get($this->getStub('hidden'));
+
+        $this->replaceStubText($stub, "DUMMYFIELDNAME", $fieldName);
+        $this->replaceStubText($stub, "DUMMYVALUE", $value);
 
         return $stub;
     }
@@ -221,9 +241,32 @@ class FormGenerator {
      * @param  array  $attributes
      * @return $stub
      */
-    public function password($fieldName, $label = "", $attributes = []) {
+    public function radio($fieldName, $label = "", $value=1,$attributes = []) {
 
-        $stub = $this->files->get($this->getStub('text'));
+        $stub = $this->files->get($this->getStub('radio'));
+
+        $this->replaceStubText($stub, "DUMMYFIELDNAME", $fieldName);
+        $this->replaceStubText($stub, "DUMMYLABEL", $label);
+        $this->replaceStubText($stub, "DUMMYVALUE", $value);
+
+        $this->setAttributeTextOfStub($stub, $attributes);
+        $this->setErrorStubAndValue($stub, $fieldName, $updateValue = false);
+
+        return $stub;
+    }
+    /**
+     * get the text field using stub template 
+     * 
+     * @todo add attribute feature and etc
+     *
+     * @param  string  $fieldName
+     * @param  string  $label
+     * @param  array  $attributes
+     * @return $stub
+     */
+    public function file($fieldName, $label = "", $attributes = []) {
+
+        $stub = $this->files->get($this->getStub('file'));
 
         $this->replaceStubText($stub, "DUMMYFIELDNAME", $fieldName);
         $this->replaceStubText($stub, "DUMMYLABEL", $label);
@@ -239,15 +282,47 @@ class FormGenerator {
      * 
      * @todo add attribute feature and etc
      *
+     * @param  string  $fieldName
+     * @param  string  $label
+     * @param  array  $attributes
+     * @return $stub
+     */
+    public function password($fieldName, $label = "", $attributes = []) {
+
+        $stub = $this->files->get($this->getStub('password'));
+
+        $this->replaceStubText($stub, "DUMMYFIELDNAME", $fieldName);
+        $this->replaceStubText($stub, "DUMMYLABEL", $label);
+
+        $this->setAttributeTextOfStub($stub, $attributes);
+        $this->setErrorStubAndValue($stub, $fieldName, $updateValue = false);
+
+        return $stub;
+    }
+
+    /**
+     * get the text field using stub template 
+     * 
+     * @todo add attribute feature and etc
+     *
      * @param  string  $buttonText
      * @return $stub
      */
-    public function setErrorStubAndValue(&$stub, $fieldName) {
+    public function setErrorStubAndValue(&$stub, $fieldName, $updateValue  = true) {
 
         $errorClass = "";
         $dummyErrorMessageStub = "";
         $errors = $this->request->session()->get('errors');
-        $value = (isset($this->model->$fieldName)) ? $this->model->$fieldName : "";
+
+
+        if(isset($this->model->$fieldName)) {
+            $value = $this->model->$fieldName;
+        } elseif(method_exists($this->model,'get')) {
+            $value  = $this->model->get($fieldName);
+        } else {
+            $value = "";
+        }
+
 
         if(NULL !== $errors && $errors->has($fieldName)) {
         $dummyErrorMessageStub = $this->files->get($this->getStub('error'));
@@ -261,7 +336,11 @@ class FormGenerator {
 
         $this->replaceStubText($stub, "DUMMYERRORTEXT", $dummyErrorMessageStub);
         $this->replaceStubText($stub, "DUMMYERRORCLASS", $errorClass);
-        $this->replaceStubText($stub, "DUMMYVALUE", $value);
+        if($updateValue === false) {
+            $value = "";
+            //dd($value);
+        }
+            $this->replaceStubText($stub, "DUMMYVALUE", $value);
 
         return $this;
     }
@@ -274,8 +353,8 @@ class FormGenerator {
      * @param  string  $buttonText
      * @return $stub
      */
-    public function setOptionTextOfStub(&$stub, $options = []) {
-        $optionsText = $this->getOptionText($options);
+    public function setOptionTextOfStub(&$stub, $options = [], $fieldName) {
+        $optionsText = $this->getOptionText($options, $fieldName);
         $this->replaceStubText($stub, "DUMMYOPTIONS", $optionsText);
 
         return $this;
@@ -312,6 +391,22 @@ class FormGenerator {
 
         return $stub;
     }
+    /**
+     * get the text field using stub template 
+     * 
+     * @todo add attribute feature and etc
+     *
+     * @param  string  $buttonText
+     * @return $stub
+     */
+    public function button($buttonText = "Save", $attributes = []) {
+        $stub = $this->files->get($this->getStub('button'));
+
+        $this->replaceStubText($stub, "DUMMYBUTTONTEXT", $buttonText);
+        $this->setAttributeTextOfStub($stub, $attributes);
+
+        return $stub;
+    }
 
     /**
      * get the attribuet text from given array
@@ -321,10 +416,16 @@ class FormGenerator {
      * @param  array  $options
      * @return $stub
      */
-    public function getOptionText($options = []) {
+    public function getOptionText($options = [] , $fieldName = "") {
         $optionText = "";
+
         foreach ($options as $attKey => $attVal) {
-            $optionText .= "<option value='$attKey'> $attVal </option>";
+            if(isset($this->model->$fieldName) && $this->model->$fieldName == $attKey) {
+                $optionText .= "<option selected value='$attKey'> $attVal </option>";
+            } else {
+                $optionText .= "<option value='$attKey'> $attVal </option>";
+            }
+
         }
 
         return $optionText;
@@ -337,10 +438,10 @@ class FormGenerator {
      * @param  string  $buttonText
      * @return $stub
      */
-    public function getAttributeText($attributes = []) {
+    public function getAttributeText($attributes = ['class' => 'form-group']) {
         $attributeText = "";
         foreach ($attributes as $attKey => $attVal) {
-            $attributeText .= $attKey . "=" . $attVal;
+            $attributeText .= $attKey . "='" . $attVal . "' ";
         }
 
         return $attributeText;

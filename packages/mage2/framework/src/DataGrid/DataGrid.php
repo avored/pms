@@ -3,6 +3,8 @@ namespace Mage2\Framework\DataGrid;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Mage2\Framework\DataGrid\Columns\TextColumn;
+use Mage2\Framework\DataGrid\Columns\LinkColumn;
 
 class DataGrid
 {
@@ -59,9 +61,20 @@ class DataGrid
     public function addLink($row = false) {
         dd(is_callable($row));
         
-         if($row && is_callable($row))
-            return $return($label, $row);
+         //if($row && is_callable($row))
+            //return $return($label, $row);
     }
+
+    public static  function textColumn($identifier, $label) {
+        return new TextColumn($identifier,$label);
+
+    }
+
+
+    public static  function linkColumn($identifier, $label, $callback) {
+        return new LinkColumn($identifier,$label,$callback);
+    }
+
 
     public function paginate($recordPerPage = 10) {
         $this->data = $this->model->paginate($recordPerPage);
@@ -70,6 +83,6 @@ class DataGrid
     }
     
     public function render() {
-        return view('datagrid::grid')->with('dataGrid', $this);
+        return view('datagridviews::grid')->with('dataGrid', $this);
     }
 }

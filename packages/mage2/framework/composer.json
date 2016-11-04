@@ -1,0 +1,22 @@
+{
+    "name": "mage2/project-management-framework",
+    "description": "Mage2 Laravel 5 Project Management System App Framework",
+    "keywords": ["framework", "laravel","project-management"],
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Purvesh",
+            "email": "ind.purvesh@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+     "type": "project",
+    "require": {
+        "php": ">=5.6.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mage2\\Framework\\": "src/"
+        }
+    }
+}

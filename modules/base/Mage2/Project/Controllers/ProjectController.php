@@ -5,8 +5,10 @@ namespace Mage2\Project\Controllers;
 use Illuminate\Http\Request;
 use Mage2\System\Http\Controllers\Controller;
 use Mage2\Project\Models\Project;
+use Mage2\User\Models\AdminUser;
 use Mage2\Project\Requests\ProjectRequest;
-use Mage2\Framework\DataGrid\DataGridFacade;
+use Mage2\Framework\DataGrid\DataGrid;
+use Illuminate\Support\Facades\Gate;
 
 class ProjectController extends Controller {
 
@@ -18,22 +20,27 @@ class ProjectController extends Controller {
     public function index() {
         $projects = Project::paginate(10);
         $project = new Project();
-        $dataGrid = DataGridFacade::make($project);
+        $dataGrid = DataGrid::make($project);
 
-        $dataGrid->addColumn(['identifier' => 'name',
-                            'title' => 'Project Name',
-                            'render-type' => 'text']);
-        $dataGrid->addColumn(['identifier' => 'description',
-                            'title' => 'Project Description',
-                            'render-type' => 'text']);
-        $dataGrid->addLink(['identifier' => 'edit',
-                            'title' => 'Edit',
-                            'render-type' => 'text']);
-        $dataGrid->addLink(function($row) {
-            return "<a href=''>Edit</a>";
-        });
+        $dataGrid->addColumn(DataGrid::textColumn('name', 'Category Name'));
+        $dataGrid->addColumn(DataGrid::textColumn('description', 'Project Description'));
+        if (Gate::allows('hasPermission', [AdminUser::class, "project.edit"])) {
+            $dataGrid->addColumn(DataGrid::linkColumn('edit', 'Edit', function ($row) {
+                return "<a href='" . route('project.edit', $row->id) . "'>Edit</a>";
+            }));
+        }
+
+
+        if (Gate::allows('hasPermission', [AdminUser::class, "project.destroy"])) {
+            $dataGrid->addColumn(DataGrid::linkColumn('destroy', 'Destroy', function ($row) {
+                return "<form method='post' action='" . route('project.destroy', $row->id) . "'>" .
+                        "<input type='hidden' name='_method' value='delete'/>" .
+                        csrf_field() .
+                        '<a href="#" onclick="jQuery(this).parents(\'form:first\').submit()">Destroy</a>' .
+                        "</form>";
+            }));
+        } 
         return view('project.project.index')
-                        ->with('projects', $projects)
                         ->with('dataGrid', $dataGrid)
         ;
     }
