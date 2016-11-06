@@ -5,6 +5,8 @@ use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Mage2\Framework\DataGrid\Columns\TextColumn;
 use Mage2\Framework\DataGrid\Columns\LinkColumn;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class DataGrid
 {
@@ -15,6 +17,12 @@ class DataGrid
      * @var \Illuminate\Support\Collection
      */
     public $data;
+    /**
+     * Database table model
+     * 
+     * @var \Illuminate\Http\Request
+     */
+    public $request;
     /**
      * Database table model
      * 
@@ -34,7 +42,6 @@ class DataGrid
      */
     protected $paginate = 10;
 
-
     /**
      * 
      * @param type $model
@@ -43,10 +50,19 @@ class DataGrid
      */
     public static function make($model)
     {
-        $instance = new static ;
+        
+        $instance = new static() ;
         $instance->model = $model;
-        $instance->data = $instance->model->paginate($instance->paginate);
-       
+        $instance->request = App::make('request');
+        
+        if($ascBy = $instance->request->get('asc')) {
+            $instance->data = $instance->model->orderBy($ascBy, 'asc')->paginate($instance->paginate);
+        } elseif($descBy = $instance->request->get('desc')) {
+            $instance->data = $instance->model->orderBy($descBy, 'desc')->paginate($instance->paginate);
+        } else {
+            $instance->data =  $instance->model->paginate($instance->paginate);
+        }
+        
         return $instance;
     }
     

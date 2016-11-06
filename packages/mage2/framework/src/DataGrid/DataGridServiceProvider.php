@@ -32,9 +32,9 @@ class DataGridServiceProvider extends ServiceProvider {
      * @return void
      */
     protected function registerDataGrid() {
-        $this->app->singleton('datagrid', function ($app) {
-            return new DataGrid();
-        });
+        $dataGrid = new DataGrid();
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('datagrid', $dataGrid);
     }
 
     /**
