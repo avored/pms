@@ -5,6 +5,7 @@ namespace Mage2\Project;
 use Mage2\Framework\Support\BaseModule;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+
 use Mage2\Framework\Support\Facades\Permission;
 
 class Module extends BaseModule {
@@ -15,7 +16,7 @@ class Module extends BaseModule {
      * @return void
      */
     public function boot() {
-        ///$this->registerPolicies();
+        $this->registerViewComposer();
     }
 
     /**
@@ -56,6 +57,12 @@ class Module extends BaseModule {
 
 
 
+    protected function registerViewComposer() {
+
+        View::composer(
+            'project.project._fields', 'Mage2\Project\ViewComposers\ProjectComposer'
+        );
+    }
     protected function registerPermissions() {
         $permissions = [
             ['title' => 'Project List',     'routes' => 'project.index'],
