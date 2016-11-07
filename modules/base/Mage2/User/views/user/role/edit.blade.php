@@ -7,7 +7,7 @@
             <span class="title">Role Edit</span>
         </div>
         <div class="col-md-12">
-            {!! Form::bind($role, ['method' => 'PUT', 'action' => route('role.update', $role)]) !!}
+            {!! Form::bind($role, ['method' => 'PUT', 'action' => route('setup.role.update', $role)]) !!}
 
             @include('user.role._fields')
 

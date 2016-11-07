@@ -7,7 +7,7 @@
                 <span class="title">Role Create</span>
             </div>
             <div class="col-md-12">
-                {!! Form::open(['method' => 'POST', 'action' => route('role.store')]) !!}
+                {!! Form::open(['method' => 'POST', 'action' => route('setup.role.store')]) !!}
                 @include('user.role._fields')
 
                 {!! Form::submit('Save') !!}

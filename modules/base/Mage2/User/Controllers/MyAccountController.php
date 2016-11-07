@@ -3,7 +3,7 @@
 namespace Mage2\User\Controllers;
 
 use Illuminate\Http\Request;
-use Mage2\System\Http\Controllers\Controller;
+use Mage2\System\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Mage2\User\Requests\UserRequest;
 

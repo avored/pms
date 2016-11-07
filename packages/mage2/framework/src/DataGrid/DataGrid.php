@@ -74,13 +74,6 @@ class DataGrid
         return $this;
     }
     
-    public function addLink($row = false) {
-        dd(is_callable($row));
-        
-         //if($row && is_callable($row))
-            //return $return($label, $row);
-    }
-
     public static  function textColumn($identifier, $label, $extraAttributes = []) {
         return new TextColumn($identifier,$label,$extraAttributes);
 

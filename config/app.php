@@ -182,6 +182,7 @@ return [
         Mage2\System\Module::class,
         Mage2\Project\Module::class,
         Mage2\User\Module::class,
+        Mage2\Setup\Module::class,
 
     ],
 

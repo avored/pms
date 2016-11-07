@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Mage2\User\Requests\RoleRequest;
 use Mage2\User\Models\Role;
-use Mage2\System\Http\Controllers\Controller;
+use Mage2\System\Controllers\Controller;
 use Mage2\User\Models\Permission;
 
 class RoleController extends Controller

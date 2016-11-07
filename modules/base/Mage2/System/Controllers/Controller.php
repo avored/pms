@@ -1,6 +1,6 @@
 <?php
 
-namespace Mage2\System\Http\Controllers;
+namespace Mage2\System\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

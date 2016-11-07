@@ -54,7 +54,6 @@ class LinkColumn {
     }
 
     public function getDataType() {
-
         return $this->dataType;
     }
 

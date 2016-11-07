@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Mage2\User\Models\AdminUser;
 use Mage2\User\Requests\AdminUserRequest;
 use Mage2\User\Models\Role;
-use Mage2\System\Http\Controllers\Controller;
+use Mage2\System\Controllers\Controller;
 use Illuminate\Support\Collection;
 
 class AdminUserController extends Controller

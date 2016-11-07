@@ -15,7 +15,7 @@ class Module extends BaseModule
      *
      * @var string
      */
-    protected $namespace = 'Mage2\System\Http\Controllers';
+    protected $namespace = 'Mage2\System\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
