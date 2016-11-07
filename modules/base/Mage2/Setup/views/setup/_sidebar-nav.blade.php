@@ -8,4 +8,7 @@
     <div class="list-group-item">
         <a href="{{ route('setup.role.index') }}">User Roles</a>
     </div>
+    <div class="list-group-item">
+        <a href="{{ route('setup.contact.index') }}">Contacts</a>
+    </div>
 </div>
