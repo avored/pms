@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use Mage2\User\Models\AdminUser;
 use Mage2\User\Requests\AdminUserRequest;
 use Mage2\User\Models\Role;
+use Mage2\Framework\DataGrid\DataGridFacade as DataGrid;
 use Mage2\System\Controllers\Controller;
 use Illuminate\Support\Collection;
-
+use Illuminate\Support\Facades\Gate;
 class AdminUserController extends Controller
 {
      /**
@@ -18,8 +19,31 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $adminUsers = AdminUser::paginate(10);
-        return view('user.admin-user.index')->with('adminUsers', $adminUsers);
+        
+        $adminUser = new AdminUser();
+        $dataGrid = DataGrid::make($adminUser);
+
+        $dataGrid->addColumn(DataGrid::textColumn('first_name', 'First Name',['sortable' => 'asc']));
+        $dataGrid->addColumn(DataGrid::textColumn('last_name', 'Last Name'));
+        $dataGrid->addColumn(DataGrid::textColumn('email', 'Email'));
+
+        if (Gate::allows('hasPermission', [AdminUser::class, "setup.admin-user.edit"])) {
+            $dataGrid->addColumn(DataGrid::linkColumn('edit', 'Edit', function ($row) {
+                return "<a href='" . route('setup.admin-user.edit', $row->id) . "'>Edit</a>";
+            }));
+        }
+
+
+        if (Gate::allows('hasPermission', [AdminUser::class, "setup.admin-user.destroy"])) {
+            $dataGrid->addColumn(DataGrid::linkColumn('destroy', 'Destroy', function ($row) {
+                return "<form method='post' action='" . route('setup.admin-user.destroy', $row->id) . "'>" .
+                        "<input type='hidden' name='_method' value='delete'/>" .
+                        csrf_field() .
+                        '<a href="#" onclick="jQuery(this).parents(\'form:first\').submit()">Destroy</a>' .
+                        "</form>";
+            }));
+        } 
+        return view('user.admin-user.index')->with('dataGrid', $dataGrid);
     }
 
     /**

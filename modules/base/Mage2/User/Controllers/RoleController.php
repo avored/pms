@@ -8,7 +8,9 @@ use Mage2\User\Requests\RoleRequest;
 use Mage2\User\Models\Role;
 use Mage2\System\Controllers\Controller;
 use Mage2\User\Models\Permission;
-
+use Illuminate\Support\Facades\Gate;
+use Mage2\User\Models\AdminUser;
+use Mage2\Framework\DataGrid\DataGridFacade as DataGrid;
 class RoleController extends Controller
 {
    /**
@@ -18,8 +20,29 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::paginate(10);
-        return view('user.role.index')->with('roles', $roles);
+        $role = new Role();
+        $dataGrid = DataGrid::make($role);
+
+        $dataGrid->addColumn(DataGrid::textColumn('name', 'Role Name',['sortable' => 'asc']));
+        $dataGrid->addColumn(DataGrid::textColumn('description', 'Description'));
+
+        if (Gate::allows('hasPermission', [AdminUser::class, "setup.role.edit"])) {
+            $dataGrid->addColumn(DataGrid::linkColumn('edit', 'Edit', function ($row) {
+                return "<a href='" . route('setup.role.edit', $row->id) . "'>Edit</a>";
+            }));
+        }
+
+
+        if (Gate::allows('hasPermission', [AdminUser::class, "setup.role.destroy"])) {
+            $dataGrid->addColumn(DataGrid::linkColumn('destroy', 'Destroy', function ($row) {
+                return "<form method='post' action='" . route('setup.role.destroy', $row->id) . "'>" .
+                        "<input type='hidden' name='_method' value='delete'/>" .
+                        csrf_field() .
+                        '<a href="#" onclick="jQuery(this).parents(\'form:first\').submit()">Destroy</a>' .
+                        "</form>";
+            }));
+        } 
+        return view('user.role.index')->with('dataGrid', $dataGrid);
     }
 
     /**

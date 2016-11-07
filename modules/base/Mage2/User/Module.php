@@ -68,15 +68,15 @@ class Module extends BaseModule {
     
     protected function registerPermissions() {
         $permissions = [
-            ['title' => 'Role List',     'routes' => 'role.index'],
-            ['title' => 'Role Create',   'routes' => "role.create,role.store"],
-            ['title' => 'Role Edit',     'routes' => "role.edit, role.update"],
-            ['title' => 'Role Destroy',  'routes' => "role.destroy"],
+            ['title' => 'Role List',     'routes' => 'setup.role.index'],
+            ['title' => 'Role Create',   'routes' => "setup.role.create,setup.role.store"],
+            ['title' => 'Role Edit',     'routes' => "setup.role.edit,setup.role.update"],
+            ['title' => 'Role Destroy',  'routes' => "setup.role.destroy"],
             
-            ['title' => 'Admin User List',     'routes' => 'admin-user.index'],
-            ['title' => 'Admin User Create',   'routes' => "admin-user.create,admin-user.store"],
-            ['title' => 'Admin User Edit',     'routes' => "admin-user.edit, admin-user.update"],
-            ['title' => 'Admin User Destroy',  'routes' => "admin-user.destroy"],
+            ['title' => 'Admin User List',     'routes' => 'setup.admin-user.index'],
+            ['title' => 'Admin User Create',   'routes' => "setup.admin-user.create,setup.admin-user.store"],
+            ['title' => 'Admin User Edit',     'routes' => "setup.admin-user.edit,setup.admin-user.update"],
+            ['title' => 'Admin User Destroy',  'routes' => "setup.admin-user.destroy"],
         ];
 
         foreach ($permissions as $permission) {

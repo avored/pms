@@ -23,7 +23,7 @@ class DataGridServiceProvider extends ServiceProvider {
 
         $this->registerDataGrid();
         $this->registerViewPath();
-        $this->app->alias('datagrid', 'Mage2\Framework\DataGrid\DataGrid');
+        //$this->app->alias('datagrid', 'Mage2\Framework\DataGrid\DataGrid');
     }
 
     /**
@@ -33,8 +33,9 @@ class DataGridServiceProvider extends ServiceProvider {
      */
     protected function registerDataGrid() {
         $dataGrid = new DataGrid();
-        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-        $loader->alias('datagrid', $dataGrid);
+        $this->app->singleton('datagrid', function ($app) {
+            return new DataGrid();
+        });
     }
 
     /**

@@ -18,36 +18,10 @@
 
         <div class="col-md-12">
 
-            @if(count($roles) <= 0)
+            @if(count($dataGrid->data) <= 0)
             <p>Sorry No Roles Found</p>
             @else
-
-            <table class="table table-striped table-responsive ">
-                <tr>
-                    <th>Role Name</th>
-                    <th>Role Description</th>
-                    <th>Edit</th>
-                    <th>Destroy</th>
-                </tr>
-                @foreach($roles as $role)
-                <tr>
-
-                    <td>{{ $role->name }}</td>
-
-                    <td>{{ $role->description }}</td>
-
-                    <td><a title="Role Edit" href="{{ route('setup.role.edit', $role) }}">Edit</a></td>
-
-                    <td>{!! Form::open(['method' => 'delete', 'action' => route('setup.role.destroy', $role)]) !!}
-                        <a title="Role Destroy"
-                           onclick="event.preventDefault();
-                                   jQuery(this).parents('form:first').submit();"
-                           href="#">Destroy</a>
-                        {!! Form::close() !!}
-                    </td>
-                </tr>
-                @endforeach
-            </table>
+                {!! $dataGrid->render() !!}
 
             @endif
         </div>
