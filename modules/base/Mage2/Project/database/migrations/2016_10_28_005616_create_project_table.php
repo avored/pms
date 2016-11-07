@@ -17,6 +17,7 @@ class CreateProjectTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
+            $table->integer('assign_to_contact_id')->unsigned();
             $table->timestamps();
         });
     }
