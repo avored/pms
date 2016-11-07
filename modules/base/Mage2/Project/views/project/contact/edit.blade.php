@@ -8,12 +8,12 @@
         </div>
         <div class="col-md-9">
         <div class="col-md-12 main-title-wrap">
-            <span class="title">Project Edit</span>
+            <span class="title">Contact Edit</span>
         </div>
         <div class="col-md-12">
-            {!! Form::bind($project, ['method' => 'PUT', 'action' => route('project.update', $project)]) !!}
+            {!! Form::bind($contact, ['method' => 'PUT', 'action' => route('setup.contact.update', $contact)]) !!}
 
-            @include('project.project._fields')
+            @include('project.contact._fields')
 
             {!! Form::submit('Save') !!}
 
