@@ -1,6 +1,6 @@
-<div class="form-group DUMMYERRORCLASS">
+<div class="form-group input-append date datapicker DUMMYERRORCLASS">
     <label for="DUMMYFIELDNAME">DUMMYLABEL</label>
-    <input  type="text" 
+    <input data-format="dd/MM/yyyy"  type="text" 
             
             id="DUMMYFIELDNAME" 
             name="DUMMYFIELDNAME" 

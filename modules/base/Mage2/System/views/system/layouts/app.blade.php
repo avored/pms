@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('/css/appscss.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/appless.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -61,6 +62,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('/js/all.js') }}"></script>
+    <script src="{{ asset('/js/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ asset('/js/scripts.js') }}"></script>
 </body>
 </html>

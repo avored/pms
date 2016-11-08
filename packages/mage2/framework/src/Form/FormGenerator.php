@@ -218,9 +218,32 @@ class FormGenerator {
      * @param  array  $attributes
      * @return $stub
      */
-    public function text($fieldName, $label = "", $attributes = []) {
+    public function text($fieldName, $label = "", $attributes = ['class' => 'form-control']) {
 
         $stub = $this->files->get($this->getStub('text'));
+
+        $this->replaceStubText($stub, "DUMMYFIELDNAME", $fieldName);
+        $this->replaceStubText($stub, "DUMMYLABEL", $label);
+
+        $this->setAttributeTextOfStub($stub, $attributes);
+        $this->setErrorStubAndValue($stub, $fieldName);
+
+        return $stub;
+    }
+
+    /**
+     * get the text field using stub template 
+     * 
+     * @todo add attribute feature and etc
+     *
+     * @param  string  $fieldName
+     * @param  string  $label
+     * @param  array  $attributes
+     * @return $stub
+     */
+    public function date($fieldName, $label = "", $attributes = ['class' => 'form-control']) {
+
+        $stub = $this->files->get($this->getStub('date'));
 
         $this->replaceStubText($stub, "DUMMYFIELDNAME", $fieldName);
         $this->replaceStubText($stub, "DUMMYLABEL", $label);
