@@ -99,7 +99,7 @@ class ProjectController extends Controller {
      */
     public function update(ProjectRequest $request, $id) {
         
-        //return $request->all();
+        
         $project = Project::findorfail($id);
         $project->update($request->all());
 

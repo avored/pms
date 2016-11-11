@@ -1,10 +1,10 @@
 <?php
 
-namespace Mage2\Project\Requests;
+namespace Mage2\Setup\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProjectRequest extends FormRequest
+class StatusReqest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,10 @@ class ProjectRequest extends FormRequest
      */
     public function rules()
     {
-        $validation['name']         = 'required|max:255';
-        $validation['due_date']     = 'required|date';
-        //$validation['description']  = 'required';
-
+        $validation['name'] = 'required|max:255';
+        $validation['belongs_to'] = 'required';
+        
         return $validation;
+        
     }
 }

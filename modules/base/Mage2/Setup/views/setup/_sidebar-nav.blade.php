@@ -11,4 +11,8 @@
     <div class="list-group-item">
         <a href="{{ route('setup.contact.index') }}">Contacts</a>
     </div>
+
+    <div class="list-group-item">
+        <a href="{{ route('setup.status.index') }}">Statuses</a>
+    </div>
 </div>

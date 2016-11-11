@@ -1,7 +1,7 @@
 <?php
 
-Route::group(['middleware' => ['web','auth'], 'namespace' => 'Mage2\Setup\Controllers'], function ($router) {
+Route::group(['middleware' => ['web', 'auth'], 'namespace' => 'Mage2\Setup\Controllers'], function ($router) {
 
-    //Route::get('/setup', ['as' => 'setup.index','uses' => 'SetupController@index']);
+    Route::resource('/setup/status', 'StatusController', ['as' => 'setup']);
 });
 

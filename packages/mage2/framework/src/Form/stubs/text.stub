@@ -1,7 +1,6 @@
 <div class="form-group DUMMYERRORCLASS">
     <label for="DUMMYFIELDNAME">DUMMYLABEL</label>
     <input  type="text" 
-            
             id="DUMMYFIELDNAME" 
             name="DUMMYFIELDNAME" 
             DUMMYATTRIBUTES 

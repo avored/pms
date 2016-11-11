@@ -28,6 +28,7 @@ class Module extends BaseModule {
         $this->mapWebRoutes();
         $this->registerViewPath();
         $this->registerPermissions();
+        $this->registerViewComposer();
 
         //
     }
@@ -54,7 +55,12 @@ class Module extends BaseModule {
         View::addLocation(__DIR__ . "/views");
     }
 
+  protected function registerViewComposer() {
 
+        View::composer(
+            'setup.status._fields', 'Mage2\Setup\ViewComposers\StatusComposer'
+        );
+    }
 
     protected function registerPermissions() {
         $permissions = [
