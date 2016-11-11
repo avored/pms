@@ -13,8 +13,23 @@
         <div class="col-md-9">
             
                 <h1>{{ $project->name }}</h1>
+                
                 <p>Description:</p>
                 <p>{{ $project->description }}</p>
+                
+                <p>Assign To Contact:</p>
+                <p>{{ $project->getAssignToContactName()}}</p>
+                
+                <div class="col-md-6">
+                    <p>Due Date:</p>
+                    <p>{{ $project->due_date->format('d-M-Y') }}</p>
+                </div>
+                
+                <div class="col-md-6">
+                    <p>Status:</p>
+                    <p>{{ $project->getStatusName() }}</p>
+                </div>
+                
         </div>
     </div>
 
