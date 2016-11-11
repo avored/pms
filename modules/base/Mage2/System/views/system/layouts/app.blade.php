@@ -11,9 +11,11 @@
     <title>{{ config('app.name', 'Mage2 Project Management System') }}</title>
 
     <!-- Styles -->
+    <link href="{{ asset('/css/default.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/default.date.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/default.time.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/appscss.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/appless.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -62,7 +64,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('/js/all.js') }}"></script>
-    <script src="{{ asset('/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('/js/picker.js') }}"></script>
+    <script src="{{ asset('/js/legacy.js') }}"></script>
+    <script src="{{ asset('/js/picker.date.js') }}"></script>
+    <script src="{{ asset('/js/picker.time.js') }}"></script>
     <script src="{{ asset('/js/scripts.js') }}"></script>
 </body>
 </html>

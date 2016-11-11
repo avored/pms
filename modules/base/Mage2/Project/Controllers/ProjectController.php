@@ -63,6 +63,7 @@ class ProjectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(ProjectRequest $request) {
+        
         Project::create($request->all());
 
         return redirect()->route('project.index')->with('notificationText', 'Project Created Successfully');
@@ -97,6 +98,8 @@ class ProjectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(ProjectRequest $request, $id) {
+        
+        return $request->all();
         $project = Project::findorfail($id);
         $project->update($request->all());
 

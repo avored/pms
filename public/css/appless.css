@@ -170,5 +170,7 @@
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
 }
-
+.datepicker.form-control[disabled], .datepicker.form-control[readonly], fieldset[disabled] .datepicker.form-control {
+    background-color: #fff;
+}
 /*# sourceMappingURL=appless.css.map */
