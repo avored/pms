@@ -5,6 +5,7 @@
 
 {!! Form::date('due', 'Due Date',['class' => 'form-control datepickerduedate']) !!}
 
+{!! Form::select('status_id', 'Project Status', $projectStatusOptions) !!}
 <script>
     window.onload = function() {
         jQuery('.datepickerduedate').pickadate({
