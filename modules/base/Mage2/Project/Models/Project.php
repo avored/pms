@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $fillable = ['name','description','assign_to_contact_id'];
+    protected $fillable = ['name','description','assign_to_contact_id','due_date'];
+    
+    
+    protected $dated = ['due_date','updated_at','created_at'];
 }

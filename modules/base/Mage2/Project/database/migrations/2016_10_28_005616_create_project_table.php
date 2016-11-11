@@ -18,6 +18,7 @@ class CreateProjectTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->integer('assign_to_contact_id')->unsigned();
+            $table->timestamp('due_date')->default(null);
             $table->timestamps();
         });
     }
