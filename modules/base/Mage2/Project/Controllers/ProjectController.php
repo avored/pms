@@ -42,6 +42,11 @@ class ProjectController extends Controller {
                         "</form>";
             }));
         } 
+       if (Gate::allows('hasPermission', [AdminUser::class, "project.show"])) {
+            $dataGrid->addColumn(DataGrid::linkColumn('show', 'Show', function ($row) {
+                return "<a href='" . route('project.show', $row->id) . "'>Show</a>";
+            }));
+        }
         return view('project.project.index')
                         ->with('dataGrid', $dataGrid)
         ;
@@ -76,7 +81,8 @@ class ProjectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        //
+        $project = Project::findorfail($id);
+        return view('project.project.show')->with('project', $project);
     }
 
     /**
