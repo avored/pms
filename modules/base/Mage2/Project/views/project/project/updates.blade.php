@@ -3,7 +3,7 @@
 
         <div class="share">
             <div class="panel panel-default">
-                <div class="panel-heading">Update Status</div>
+                <div class="panel-heading">Project Updates</div>
                 <div class="panel-body">
                     <div class="form-group">
                     <textarea name="content"
@@ -26,9 +26,16 @@
 <div class="col-md-12">
     
     @foreach($project->updates as $projectUpdate)
+    
     <div class="panel">
         <div class="panel-body">
             {{ $projectUpdate->content }}
+        </div>
+        <div class="panel-footer">
+            <span class="pull-right">
+                <small>Created By: {{ $projectUpdate->adminuser->name}}</small>
+            </span>
+            <div class="clearfix"></div>
         </div>
     </div>
     @endforeach
