@@ -4,6 +4,7 @@ namespace Mage2\Project\Models;
 
 use Mage2\Setup\Models\Status;
 use Mage2\Project\Models\Contact;
+use Mage2\Project\Models\Task;
 use Illuminate\Database\Eloquent\Model;
 use Mage2\Project\Models\ProjectUpdate;
 
@@ -31,11 +32,21 @@ class Project extends Model {
     /**
      * Project can have many Project Updates
      * 
-     * @return \Mage2\Project\Models\Contact
-     */
+     * @return \Mage2\Project\Models\ProjectUpdate     */
     public function updates() {
         return $this->hasMany(ProjectUpdate::class,'project_id');
     }
+    
+       
+    /**
+     * Project can have many tasks
+     * 
+     * @return \Mage2\Project\Models\Task
+     */
+    public function tasks() {
+        return $this->hasMany(Task::class,'project_id');
+    }
+    
 
     /**
      * Project has one status

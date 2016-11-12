@@ -6,19 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 use Mage2\Project\Models\Project;
 use Mage2\User\Models\AdminUser;
 
-class ProjectUpdate extends Model {
-
-    protected $fillable = ['content', 'admin_user_id', 'project_id'];
-
+class Task extends Model
+{
+    protected $fillable = ['project_id','admin_user_id','title','content'];
+    
+   
+            
     /**
      * Project update belongs to Project
      * 
      * @return \Mage2\Project\Models\Project
      */
+
     public function project() {
         return $this->belongsTo(Project::class);
     }
-
+    
     /**
      * Project update belongs to Admin User
      * 
@@ -27,5 +30,4 @@ class ProjectUpdate extends Model {
     public function adminuser() {
         return $this->belongsTo(AdminUser::class, 'admin_user_id');
     }
-
 }
