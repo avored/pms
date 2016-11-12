@@ -1,15 +1,12 @@
 <div class="col-md-12">
-    <form action="#" method="post" role="form" enctype="multipart/form-data" class="facebook-share-box">
-
-        <br>
-
+     {!! Form::open(['method' => 'POST', 'action' => route('project.update.store',$project->id)]) !!}
 
         <div class="share">
             <div class="panel panel-default">
                 <div class="panel-heading">Update Status</div>
                 <div class="panel-body">
                     <div class="form-group">
-                    <textarea name="message"
+                    <textarea name="content"
                               cols="40" rows="10" id="status_message"
                               class="form-control message" style="height: 62px; overflow: hidden;"
                               placeholder="Any Updates with this Project?"></textarea>
@@ -23,5 +20,17 @@
             </div>
         </div>
 
-    </form>
+    {!! Form::close() !!}
+</div>
+
+<div class="col-md-12">
+    
+    @foreach($project->updates as $projectUpdate)
+    <div class="panel">
+        <div class="panel-body">
+            {{ $projectUpdate->content }}
+        </div>
+    </div>
+    @endforeach
+    
 </div>

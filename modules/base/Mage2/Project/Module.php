@@ -3,9 +3,7 @@
 namespace Mage2\Project;
 
 use Mage2\Framework\Support\BaseModule;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
-
 use Mage2\Framework\Support\Facades\Permission;
 
 class Module extends BaseModule {

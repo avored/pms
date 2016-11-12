@@ -5,6 +5,7 @@ namespace Mage2\Project\Models;
 use Mage2\Setup\Models\Status;
 use Mage2\Project\Models\Contact;
 use Illuminate\Database\Eloquent\Model;
+use Mage2\Project\Models\ProjectUpdate;
 
 class Project extends Model {
 
@@ -24,6 +25,16 @@ class Project extends Model {
      */
     public function assignToContact() {
         return $this->belongsTo(Contact::class, 'assign_to_contact_id');
+    }
+
+
+    /**
+     * Project can have many Project Updates
+     * 
+     * @return \Mage2\Project\Models\Contact
+     */
+    public function updates() {
+        return $this->hasMany(ProjectUpdate::class,'project_id');
     }
 
     /**
