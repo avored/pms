@@ -16,6 +16,7 @@
     <link href="{{ asset('/css/default.time.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/appscss.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/appless.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -68,6 +69,7 @@
     <script src="{{ asset('/js/legacy.js') }}"></script>
     <script src="{{ asset('/js/picker.date.js') }}"></script>
     <script src="{{ asset('/js/picker.time.js') }}"></script>
+    <script src="{{ asset('/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('/js/scripts.js') }}"></script>
 </body>
 </html>

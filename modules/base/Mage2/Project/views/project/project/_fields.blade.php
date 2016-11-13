@@ -6,11 +6,15 @@
 {!! Form::date('due', 'Due Date',['class' => 'form-control datepickerduedate']) !!}
 
 {!! Form::select('status_id', 'Project Status', $projectStatusOptions) !!}
+
+
+{!! Form::select('contact_project[]', 'Project Contacts', $contactOptions,['class' => 'form-control select2','multiple' => true]) !!}
 <script>
     window.onload = function() {
         jQuery('.datepickerduedate').pickadate({
             formatSubmit: 'yyyy-mm-dd',
             hiddenSuffix: '_date'
         });
+        
     };
 </script>

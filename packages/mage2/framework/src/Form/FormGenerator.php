@@ -173,7 +173,7 @@ class FormGenerator {
      * @param  array  $attributes
      * @return $stub
      */
-    public function select($fieldName, $label = "", $options = [],$attributes = []) {
+    public function select($fieldName, $label = "", $options = [],$attributes = ['class' => 'form-control']) {
 
         $stub = $this->files->get($this->getStub('select'));
         

@@ -56,6 +56,14 @@ class Project extends Model {
     public function status() {
         return $this->belongsTo(Status::class);
     }
+    /**
+     * Project has many contacts
+     * 
+     * @return \Mage2\Setup\Models\Contact
+     */
+    public function contacts() {
+        return $this->belongsTo(Contact::class);
+    }
 
     /**
      * get the assign to contact full name
