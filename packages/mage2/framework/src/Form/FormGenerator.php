@@ -23,6 +23,7 @@ class FormGenerator {
      * @var \Illuminate\Contracts\Routing\UrlGenerator
      */
     protected $url;
+
     /**
      * The URL generator instance.
      *
@@ -67,7 +68,7 @@ class FormGenerator {
      * @param  \Illuminate\Contracts\View\Factory           $view
      * @param  string                                       $csrfToken
      */
-    public function __construct(Filesystem $fileSystem, UrlGenerator $url, Request $request ,Factory $view, $csrfToken) {
+    public function __construct(Filesystem $fileSystem, UrlGenerator $url, Request $request, Factory $view, $csrfToken) {
         $this->files = $fileSystem;
         $this->url = $url;
         $this->request = $request;
@@ -104,7 +105,7 @@ class FormGenerator {
 
         foreach ($dummyReplacement as $dummyText => $replacement) {
 
-            if(strtolower($dummyText)== "method") {
+            if (strtolower($dummyText) == "method") {
 
                 if (strtolower($replacement) == "get" || strtolower($replacement) == "post") {
 
@@ -128,7 +129,7 @@ class FormGenerator {
         $this->replaceStubText($csrfStub, "DUMMYCSRF", $this->csrfToken);
         $stub = $stub . $csrfStub;
 
-        
+
         return $stub;
     }
 
@@ -163,6 +164,7 @@ class FormGenerator {
 
         return $stub;
     }
+
     /**
      * get the text field using stub template
      *
@@ -173,16 +175,24 @@ class FormGenerator {
      * @param  array  $attributes
      * @return $stub
      */
-    public function select($fieldName, $label = "", $options = [],$attributes = ['class' => 'form-control']) {
+    public function select($fieldName, $label = "", $options = [], $attributes = ['class' => 'form-control']) {
 
         $stub = $this->files->get($this->getStub('select'));
-        
+
         $this->replaceStubText($stub, "DUMMYFIELDNAME", $fieldName);
         $this->replaceStubText($stub, "DUMMYLABEL", $label);
 
+        $value = null;
+        $updateValue = true;
+        if (isset($attributes['value'])) {
+            $value = $attributes['value'];
+            unset($attributes['value']);
+            $updateValue = false;
+        }
+
         $this->setAttributeTextOfStub($stub, $attributes);
-        $this->setOptionTextOfStub($stub, $options,$fieldName);
-        $this->setErrorStubAndValue($stub, $fieldName);
+        $this->setOptionTextOfStub($stub, $options, $fieldName, $value);
+        $this->setErrorStubAndValue($stub, $fieldName, $updateValue);
 
         return $stub;
     }
@@ -206,7 +216,6 @@ class FormGenerator {
 
         return $stub;
     }
-
 
     /**
      * get the text field using stub template 
@@ -264,7 +273,7 @@ class FormGenerator {
      * @param  array  $attributes
      * @return $stub
      */
-    public function radio($fieldName, $label = "", $value=1,$attributes = []) {
+    public function radio($fieldName, $label = "", $value = 1, $attributes = []) {
 
         $stub = $this->files->get($this->getStub('radio'));
 
@@ -277,6 +286,7 @@ class FormGenerator {
 
         return $stub;
     }
+
     /**
      * get the text field using stub template 
      * 
@@ -331,39 +341,39 @@ class FormGenerator {
      * @param  string  $buttonText
      * @return $stub
      */
-    public function setErrorStubAndValue(&$stub, $fieldName, $updateValue  = true) {
+    public function setErrorStubAndValue(&$stub, $fieldName, $updateValue = true) {
 
         $errorClass = "";
         $dummyErrorMessageStub = "";
         $errors = $this->request->session()->get('errors');
 
 
-        if(isset($this->model->$fieldName)) {
+        if (isset($this->model->$fieldName)) {
             $value = $this->model->$fieldName;
-        } elseif(method_exists($this->model,'get')) {
-            $value  = $this->model->get($fieldName);
+        } elseif (method_exists($this->model, 'get')) {
+            $value = $this->model->get($fieldName);
         } else {
             $value = "";
         }
 
 
-        if(NULL !== $errors && $errors->has($fieldName)) {
-        $dummyErrorMessageStub = $this->files->get($this->getStub('error'));
-            $this->replaceStubText($dummyErrorMessageStub, "DUMMYERRORMESSAGE" , $errors->first($fieldName));
+        if (NULL !== $errors && $errors->has($fieldName)) {
+            $dummyErrorMessageStub = $this->files->get($this->getStub('error'));
+            $this->replaceStubText($dummyErrorMessageStub, "DUMMYERRORMESSAGE", $errors->first($fieldName));
             $errorClass = "has-error";
 
-            if($this->request->session()->hasOldInput($fieldName)) {
+            if ($this->request->session()->hasOldInput($fieldName)) {
                 $value = $this->request->session()->getOldInput($fieldName);
             }
         }
 
         $this->replaceStubText($stub, "DUMMYERRORTEXT", $dummyErrorMessageStub);
         $this->replaceStubText($stub, "DUMMYERRORCLASS", $errorClass);
-        if($updateValue === false) {
+        if ($updateValue === false) {
             $value = "";
             //dd($value);
         }
-            $this->replaceStubText($stub, "DUMMYVALUE", $value);
+        $this->replaceStubText($stub, "DUMMYVALUE", $value);
 
         return $this;
     }
@@ -376,13 +386,13 @@ class FormGenerator {
      * @param  string  $buttonText
      * @return $stub
      */
-    public function setOptionTextOfStub(&$stub, $options = [], $fieldName) {
-        $optionsText = $this->getOptionText($options, $fieldName);
+    public function setOptionTextOfStub(&$stub, $options = [], $fieldName, $value = null) {
+        $optionsText = $this->getOptionText($options, $fieldName, $value);
         $this->replaceStubText($stub, "DUMMYOPTIONS", $optionsText);
 
         return $this;
     }
-   
+
     /**
      * get the text field using stub template 
      * 
@@ -414,6 +424,7 @@ class FormGenerator {
 
         return $stub;
     }
+
     /**
      * get the text field using stub template 
      * 
@@ -439,19 +450,40 @@ class FormGenerator {
      * @param  array  $options
      * @return $stub
      */
-    public function getOptionText($options = [] , $fieldName = "") {
+    public function getOptionText($options = [], $fieldName = "", $fieldValue = NULL) {
         $optionText = "";
 
+        if (null === $fieldValue) {
+            $fieldValue = $this->_getFieldValue($fieldName);
+        }
+
         foreach ($options as $attKey => $attVal) {
-            if(isset($this->model->$fieldName) && $this->model->$fieldName == $attKey) {
+
+            if (is_array($fieldValue)) {
+                $isSelectedValue = in_array($attKey, $fieldValue);
+            } else {
+                $isSelectedValue = ($attKey == $fieldValue) ? true : false;
+            }
+            if ($isSelectedValue) {
                 $optionText .= "<option selected value='$attKey'> $attVal </option>";
             } else {
-                $optionText .= "<option value='$attKey'> $attVal </option>";
+                $optionText .= "<option  value='$attKey'> $attVal </option>";
             }
-
         }
 
         return $optionText;
+    }
+
+     
+    private function _getFieldValue($fieldName) {
+        $value = "";
+         if(isset($this->model->$fieldName)) {
+            $value = $this->model->$fieldName;
+        } elseif(method_exists($this->model,'get')) {
+            $value  = $this->model->get($fieldName);
+        } 
+        
+        return $value;
     }
     /**
      * get the attribuet text from given array
@@ -469,7 +501,6 @@ class FormGenerator {
 
         return $attributeText;
     }
-
 
     /**
      * Replace the dummy stub textfor the given stub.
