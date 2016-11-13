@@ -62,7 +62,7 @@ class Project extends Model {
      * @return \Mage2\Setup\Models\Contact
      */
     public function contacts() {
-        return $this->belongsTo(Contact::class);
+        return $this->belongsToMany(Contact::class);
     }
 
     /**
