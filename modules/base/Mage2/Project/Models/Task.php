@@ -8,7 +8,7 @@ use Mage2\User\Models\AdminUser;
 
 class Task extends Model
 {
-    protected $fillable = ['project_id','admin_user_id','title','content'];
+    protected $fillable = ['project_id','admin_user_id','title','content','status_id'];
     
    
             

@@ -16,6 +16,8 @@ class CreateStatusTable extends Migration {
             $table->increments('id');
             $table->enum('belongs_to', ['PROJECT', 'TASK']);
             $table->string('name');
+            $table->tinyInteger('is_default')->default(0);
+            $table->tinyInteger('is_completed')->default(0);
             $table->timestamps();
         });
     }

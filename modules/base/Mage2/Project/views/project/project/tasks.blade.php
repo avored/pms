@@ -29,17 +29,22 @@
             <span class="pull-right">
 
                 <!-- Single button -->
-                <div class="btn-group">
+                <div class="more-action btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Action <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="{{ route('project.task.edit', ['project_id' => $project->id, 'id'  => $task->id]) }}">Edit</a></li>
+                        <li><a href="#">Mark as Completed</a></li>
+                        
+                        <li><a href="#" onclick="jQuery(this).parents('.more-action:first').find('form:first').submit()">Destroy</a></li>
                     </ul>
+                    {!! Form::open(['method' => 'delete', 
+                            'id' => 'task'. $task->id,
+                            'action' => route('project.task.destroy', ['project_id' => $project->id, 'id'  => $task->id])]) !!}    
+                    
+                    
+                    {!! Form::close() !!}
                 </div>
 
             </span>
