@@ -10,7 +10,7 @@
 
     <title>{{ config('app.name', 'Mage2 Ecommerce') }}</title>
 
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/appscss.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
