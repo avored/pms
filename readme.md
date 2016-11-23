@@ -32,9 +32,8 @@ Set up your environment config file:
 
 # Step 2: go to url
 
-    php artisan mage2:migrate
+    yoursite.com/install
     
-@todo create mage2:createadmin command to create administrator user.
     
 That's it!
 
