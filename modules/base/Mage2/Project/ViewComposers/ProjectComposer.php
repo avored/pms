@@ -2,7 +2,7 @@
 
 namespace Mage2\Project\ViewComposers;
 use Mage2\Project\Models\Contact;
-use Mage2\Setup\Models\Status;
+use Mage2\Setup\Models\ProjectStatus;
 use Illuminate\View\View;
 
 class ProjectComposer
@@ -24,10 +24,10 @@ class ProjectComposer
      * Create a new Project composer.
      *
      * @param  \Mage2\Project\Models\Contact  $contact
-     * @param  \Mage2\Setup\Models\Status  $contact
+     * @param  \Mage2\Setup\Models\ProjectStatus  $contact
      * @return void
      */
-    public function __construct(Contact $contact, Status $status)
+    public function __construct(Contact $contact, ProjectStatus $status)
     {
         $this->contact  = $contact;
         $this->status   = $status;

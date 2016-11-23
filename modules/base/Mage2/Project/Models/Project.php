@@ -2,7 +2,7 @@
 
 namespace Mage2\Project\Models;
 
-use Mage2\Setup\Models\Status;
+use Mage2\Setup\Models\ProjectStatus;
 use Mage2\Project\Models\Contact;
 use Mage2\Project\Models\Task;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +10,7 @@ use Mage2\Project\Models\ProjectUpdate;
 
 class Project extends Model {
 
-    protected $fillable = ['name', 'description', 'assign_to_contact_id', 'due_date', 'status_id'];
+    protected $fillable = ['name', 'description', 'assign_to_contact_id', 'due_date', 'project_status_id'];
     
     
     /**
@@ -54,7 +54,7 @@ class Project extends Model {
      * @return \Mage2\Setup\Models\Status
      */
     public function status() {
-        return $this->belongsTo(Status::class);
+        return $this->belongsTo(ProjectStatus::class);
     }
     /**
      * Project has many contacts

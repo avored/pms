@@ -19,7 +19,7 @@ if(isset($project)) {
                             'data-value ' => $dueDate
                             ]) !!}
 
-{!! Form::select('status_id', 'Project Status', $projectStatusOptions) !!}
+{!! Form::select('project_status_id', 'Project Status', $projectStatusOptions) !!}
 
 
 {!! Form::select('contact_project[]', 'Project Contacts', 

@@ -57,9 +57,9 @@ class Module extends BaseModule {
 
   protected function registerViewComposer() {
 
-        View::composer(
-            'setup.status._fields', 'Mage2\Setup\ViewComposers\StatusComposer'
-        );
+        //View::composer(
+            //'setup.status._fields', 'Mage2\Setup\ViewComposers\StatusComposer'
+        //);
     }
 
     protected function registerPermissions() {

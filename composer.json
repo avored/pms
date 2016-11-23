@@ -20,11 +20,13 @@
             "database"
         ],
         "psr-4": {
-            "Mage2\\System\\": "modules/base/Mage2/System/",
+            "Mage2\\Framework\\": "packages/mage2/framework/src/",
+            
+            "Mage2\\Install\\": "modules/base/Mage2/Install/",
             "Mage2\\Project\\": "modules/base/Mage2/Project/",
-            "Mage2\\User\\": "modules/base/Mage2/User/",
             "Mage2\\Setup\\": "modules/base/Mage2/Setup/",
-            "Mage2\\Framework\\": "packages/mage2/framework/src/"
+            "Mage2\\System\\": "modules/base/Mage2/System/",
+            "Mage2\\User\\": "modules/base/Mage2/User/"
         }
     },
     "autoload-dev": {

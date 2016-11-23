@@ -2,7 +2,7 @@
 
 Route::group(['middleware' => 'web', 'namespace' => 'Mage2\User\Controllers'], function () {
     // Authentication Routes...
-    Route::get('/login', ['as' => 'auth.login','uses' => 'Auth\LoginController@showLoginForm']);
+    Route::get('/login', ['as' => 'login','uses' => 'Auth\LoginController@showLoginForm']);
     Route::post('/login', 'Auth\LoginController@login');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 

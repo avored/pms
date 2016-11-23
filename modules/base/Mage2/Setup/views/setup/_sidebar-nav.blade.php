@@ -13,6 +13,6 @@
     </div>
 
     <div class="list-group-item">
-        <a href="{{ route('setup.status.index') }}">Statuses</a>
+        <a href="{{ route('setup.project-status.index') }}">Project Statuses</a>
     </div>
 </div>

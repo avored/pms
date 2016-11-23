@@ -2,7 +2,6 @@
 
 namespace Mage2\Project\Controllers;
 
-use Illuminate\Http\Request;
 use Mage2\System\Controllers\Controller;
 use Mage2\Project\Models\Project;
 use Mage2\User\Models\AdminUser;

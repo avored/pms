@@ -19,7 +19,7 @@ class CreateTaskTable extends Migration
             $table->integer('admin_user_id')->unsigned();
             $table->string('title');
             $table->text('content');
-            $table->integer('status_id')->unsigned();
+            $table->integer('task_status_id')->unsigned();
             $table->timestamps();
         });
     }

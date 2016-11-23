@@ -5,10 +5,11 @@ namespace Mage2\Project\Models;
 use Illuminate\Database\Eloquent\Model;
 use Mage2\Project\Models\Project;
 use Mage2\User\Models\AdminUser;
+use Mage2\Setup\Models\TaskStatus;
 
 class Task extends Model
 {
-    protected $fillable = ['project_id','admin_user_id','title','content','status_id'];
+    protected $fillable = ['project_id','admin_user_id','title','content','task_status_id'];
     
    
             
