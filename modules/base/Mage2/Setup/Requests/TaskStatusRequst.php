@@ -4,7 +4,7 @@ namespace Mage2\Setup\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProjectStatusReqest extends FormRequest
+class TaskStatusRequst extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

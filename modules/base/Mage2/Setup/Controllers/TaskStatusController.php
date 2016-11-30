@@ -3,7 +3,7 @@
 namespace Mage2\Setup\Controllers;
 
 use Mage2\Setup\Models\TaskStatus;
-use Mage2\Setup\Requests\TaskStatusReqest;
+use Mage2\Setup\Requests\TaskStatusRequst;
 use Mage2\Framework\DataGrid\DataGridFacade as DataGrid;
 use Mage2\User\Models\AdminUser;
 use Illuminate\Support\Facades\Gate;
@@ -55,10 +55,10 @@ class TaskStatusController extends Controller {
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Mage2\Setup\Requests\TaskStatusReqest  $request
+     * @param  \Mage2\Setup\Requests\TaskStatusRequst  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TaskStatusReqest $request) {
+    public function store(TaskStatusRequst $request) {
         
         TaskStatus::create($request->all());
 
@@ -90,11 +90,11 @@ class TaskStatusController extends Controller {
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Mage2\Setup\Requests\TaskStatusReqest  $request
+     * @param  \Mage2\Setup\Requests\TaskStatusRequst  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TaskStatusReqest $request, $id) {
+    public function update(TaskStatusRequst $request, $id) {
         $taskStatus = TaskStatus::findorfail($id);
         $taskStatus->update($request->all());
 

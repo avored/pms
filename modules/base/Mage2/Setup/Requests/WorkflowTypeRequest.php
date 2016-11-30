@@ -4,7 +4,7 @@ namespace Mage2\Setup\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TaskStatusReqest extends FormRequest
+class WorkflowTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,8 @@ class TaskStatusReqest extends FormRequest
      */
     public function rules()
     {
-        $validation['name'] = 'required|max:255';
+         $validation['name'] = 'required|max:255';
         
         return $validation;
-        
     }
 }

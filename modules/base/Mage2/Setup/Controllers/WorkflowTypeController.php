@@ -2,14 +2,14 @@
 
 namespace Mage2\Setup\Controllers;
 
-use Mage2\Setup\Models\ProjectStatus;
-use Mage2\Setup\Requests\ProjectStatusRequst;
+use Mage2\Setup\Models\WorkflowType;
+use Mage2\Setup\Requests\WorkflowTypeRequest;
 use Mage2\Framework\DataGrid\DataGridFacade as DataGrid;
 use Mage2\User\Models\AdminUser;
 use Illuminate\Support\Facades\Gate;
 use Mage2\System\Controllers\Controller;
 
-class ProjectStatusController extends Controller {
+class WorkflowTypeController extends Controller {
 
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class ProjectStatusController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $model = new ProjectStatus();
+        $model = new WorkflowType();
         $dataGrid = DataGrid::make($model);
 
         $dataGrid->addColumn(DataGrid::textColumn('name', 'Status Name', ['sortable' => 'asc']));
@@ -55,12 +55,12 @@ class ProjectStatusController extends Controller {
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Mage2\Setup\Requests\ProjectStatusRequst  $request
+     * @param  \Mage2\Setup\Requests\WorkflowTypeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProjectStatusRequst $request) {
+    public function store(WorkflowTypeRequest $request) {
         
-        ProjectStatus::create($request->all());
+        WorkflowType::create($request->all());
 
         return redirect()->route('setup.project-status.index')->with('notificationText', 'Project Status Created Successfully');
     }
@@ -82,7 +82,7 @@ class ProjectStatusController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        $projectStatus = ProjectStatus::findorfail($id);
+        $projectStatus = WorkflowType::findorfail($id);
 
         return view('setup.project-status.edit')->with('projectStatus', $projectStatus);
     }
@@ -90,12 +90,12 @@ class ProjectStatusController extends Controller {
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Mage2\Setup\Requests\ProjectStatusRequst  $request
+     * @param  \Mage2\Setup\Requests\WorkflowTypeRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProjectStatusRequst $request, $id) {
-        $projectStatus = ProjectStatus::findorfail($id);
+    public function update(WorkflowTypeRequest $request, $id) {
+        $projectStatus = WorkflowType::findorfail($id);
         $projectStatus->update($request->all());
 
         return redirect()->route('setup.project-status.index');
@@ -108,7 +108,7 @@ class ProjectStatusController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        ProjectStatus::destroy($id);
+        WorkflowType::destroy($id);
 
         return redirect()->route('setup.project-status.index');
     }
