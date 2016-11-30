@@ -7,6 +7,7 @@ use Mage2\Setup\Requests\WorkflowTypeRequest;
 use Mage2\Framework\DataGrid\DataGridFacade as DataGrid;
 use Mage2\User\Models\AdminUser;
 use Illuminate\Support\Facades\Gate;
+use Mage2\Setup\Models\WorkflowStage;
 use Mage2\System\Controllers\Controller;
 
 class WorkflowTypeController extends Controller {
@@ -72,8 +73,16 @@ class WorkflowTypeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        //
-    }
+        $workflowTypes  = WorkflowType::all()->pluck('name','id');
+        $workflowType   = WorkflowType::findorfail($id);
+        $workflowStage  = new WorkflowStage();
+        
+        return view('setup.workflow-type.show')
+                    ->with('workflowType', $workflowType)
+                    ->with('workflowTypes', $workflowTypes)
+                    ->with('workflowStage', $workflowStage)
+                ;
+    }       
 
     /**
      * Show the form for editing the specified resource.

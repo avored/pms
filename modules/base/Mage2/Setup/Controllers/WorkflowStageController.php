@@ -15,11 +15,12 @@ class WorkflowStageController extends Controller
      */
     public function index()
     {
-        $workflowTypes = WorkflowType::all();
-        
-        return view('setup.workflow-stage.index')
-                ->with('workflowTypes', $workflowTypes)
-            ;
+       
+        $workflowType = WorkflowType::first();
+       
+        return redirect()->route('setup.workflow-type.show', $workflowType->id);
+
+       
     }
 
     /**

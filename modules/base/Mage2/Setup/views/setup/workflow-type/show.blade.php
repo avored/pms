@@ -15,7 +15,11 @@
         </div>
 
         <div class="col-md-12">
-
+                {!! Form::select('workflow_type',
+                                'Please Select Workflow Types', 
+                                $workflowTypes,
+                                ['value' => $workflowType->id,'class' => 'form-control'])
+                    !!}
         </div>
     </div>
 </div>
