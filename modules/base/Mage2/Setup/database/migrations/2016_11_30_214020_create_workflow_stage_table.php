@@ -16,6 +16,7 @@ class CreateWorkflowStageTable extends Migration {
             $table->increments('id');
             $table->integer('workflow_type_id');
             $table->string('name');
+            $table->integer('parent_id')->default(0);
             $table->timestamps();
 
             $table->foreign('workflow_type_id')

@@ -61,8 +61,9 @@ class WorkflowTypeController extends Controller {
      */
     public function store(WorkflowTypeRequest $request) {
         
-        WorkflowType::create($request->all());
-
+        $workflowType = WorkflowType::create($request->all());
+        WorkflowStage::create(['name' => 'Start','workflow_type_id' => $workflowType->id]);
+        
         return redirect()->route('setup.workflow-type.index')->with('notificationText', 'Workflow Type Created Successfully');
     }
 

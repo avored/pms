@@ -7,7 +7,7 @@ use Mage2\Setup\Models\WorkflowType;
 
 class WorkflowStage extends Model
 {
-    protected $fillable = ['workflow_type_id','name'];
+    protected $fillable = ['workflow_type_id','parent_id','name'];
     
     
     public function workflowType() {
@@ -15,7 +15,7 @@ class WorkflowStage extends Model
     }
     
     public function getRootStagesByTypeId($workflowTypeId) {
-        $rootStages = $this->where('workflow_type_id','=', $workflowTypeId);
+        $rootStages = $this->where('workflow_type_id','=', $workflowTypeId)->get();
         
         return $rootStages;
     }
