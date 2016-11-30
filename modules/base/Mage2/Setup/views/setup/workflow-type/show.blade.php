@@ -20,6 +20,21 @@
                                 $workflowTypes,
                                 ['value' => $workflowType->id,'class' => 'form-control'])
                     !!}
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            {{ $workflowType->name }} Stage Tree
+                        </div>
+                        <div class="panel-body">
+                            <div class="list-group">
+                                @foreach($workflowStage->getRootStagesByTypeId($workflowType->id) as $workflowStage)
+                                
+                                @include('setup.workflow-type.single-stage',['workflowStage' => $workflowStage])
+                             
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
         </div>
     </div>
 </div>

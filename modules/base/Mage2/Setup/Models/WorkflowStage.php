@@ -13,4 +13,10 @@ class WorkflowStage extends Model
     public function workflowType() {
         $this->belongsTo(WorkflowType::class);
     }
+    
+    public function getRootStagesByTypeId($workflowTypeId) {
+        $rootStages = $this->where('workflow_type_id','=', $workflowTypeId);
+        
+        return $rootStages;
+    }
 }
