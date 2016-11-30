@@ -8,12 +8,13 @@
         </div>
         <div class="col-md-9">
         <div class="col-md-12 main-title-wrap">
-            <span class="title">Task Status Edit</span>
+            <span class="title">Workflow Type Edit</span>
         </div>
         <div class="col-md-12">
-            {!! Form::bind($taskStatus, ['method' => 'PUT', 'action' => route('setup.task-status.update', $taskStatus->id)]) !!}
+            {!! Form::bind($workflowType, ['method' => 'PUT', 
+                                        'action' => route('setup.workflow-type.update', $workflowType->id)]) !!}
 
-            @include('setup.task-status._fields')
+            @include('setup.workflow-type._fields')
 
             {!! Form::submit('Save') !!}
 

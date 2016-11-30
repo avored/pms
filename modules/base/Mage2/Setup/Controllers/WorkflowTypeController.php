@@ -22,23 +22,23 @@ class WorkflowTypeController extends Controller {
 
         $dataGrid->addColumn(DataGrid::textColumn('name', 'Status Name', ['sortable' => 'asc']));
 
-        if (Gate::allows('hasPermission', [AdminUser::class, "setup.status.edit"])) {
+        if (Gate::allows('hasPermission', [AdminUser::class, "setup.workflow-type.edit"])) {
             $dataGrid->addColumn(DataGrid::linkColumn('edit', 'Edit', function ($row) {
-                        return "<a href='" . route('setup.project-status.edit', $row->id) . "'>Edit</a>";
+                        return "<a href='" . route('setup.workflow-type.edit', $row->id) . "'>Edit</a>";
                     }));
         }
 
 
-        if (Gate::allows('hasPermission', [AdminUser::class, "setup.status.destroy"])) {
+        if (Gate::allows('hasPermission', [AdminUser::class, "setup.workflow-type.destroy"])) {
             $dataGrid->addColumn(DataGrid::linkColumn('destroy', 'Destroy', function ($row) {
-                        return "<form method='post' action='" . route('setup.project-status.destroy', $row->id) . "'>" .
+                        return "<form method='post' action='" . route('setup.workflow-type.destroy', $row->id) . "'>" .
                                 "<input type='hidden' name='_method' value='delete'/>" .
                                 csrf_field() .
                                 '<a href="#" onclick="jQuery(this).parents(\'form:first\').submit()">Destroy</a>' .
                                 "</form>";
                     }));
         }
-        return view('setup.project-status.index')
+        return view('setup.workflow-type.index')
                         ->with('dataGrid', $dataGrid)
         ;
     }
@@ -49,7 +49,7 @@ class WorkflowTypeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('setup.project-status.create');
+        return view('setup.workflow-type.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class WorkflowTypeController extends Controller {
         
         WorkflowType::create($request->all());
 
-        return redirect()->route('setup.project-status.index')->with('notificationText', 'Project Status Created Successfully');
+        return redirect()->route('setup.workflow-type.index')->with('notificationText', 'Workflow Type Created Successfully');
     }
 
     /**
@@ -82,9 +82,9 @@ class WorkflowTypeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        $projectStatus = WorkflowType::findorfail($id);
+        $workflowType = WorkflowType::findorfail($id);
 
-        return view('setup.project-status.edit')->with('projectStatus', $projectStatus);
+        return view('setup.workflow-type.edit')->with('workflowType', $workflowType);
     }
 
     /**
@@ -95,10 +95,10 @@ class WorkflowTypeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(WorkflowTypeRequest $request, $id) {
-        $projectStatus = WorkflowType::findorfail($id);
-        $projectStatus->update($request->all());
+        $workflowType = WorkflowType::findorfail($id);
+        $workflowType->update($request->all());
 
-        return redirect()->route('setup.project-status.index');
+        return redirect()->route('setup.workflow-type.index');
     }
 
     /**
@@ -110,7 +110,7 @@ class WorkflowTypeController extends Controller {
     public function destroy($id) {
         WorkflowType::destroy($id);
 
-        return redirect()->route('setup.project-status.index');
+        return redirect()->route('setup.workflow-type.index');
     }
 
 }

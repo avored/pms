@@ -18,4 +18,7 @@
     <div class="list-group-item">
         <a href="{{ route('setup.task-status.index') }}">Task Statuses</a>
     </div>
+    <div class="list-group-item">
+        <a href="{{ route('setup.workflow-type.index') }}">Workflow Type</a>
+    </div>
 </div>
