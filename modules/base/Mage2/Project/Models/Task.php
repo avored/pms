@@ -31,4 +31,6 @@ class Task extends Model
     public function adminuser() {
         return $this->belongsTo(AdminUser::class, 'admin_user_id');
     }
+    
+    
 }

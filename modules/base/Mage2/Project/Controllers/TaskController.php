@@ -70,7 +70,10 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(TaskRequest $request, $id) {
-        //
+        $task = Task::findorfail($id);
+        $task->update($request->all());
+        
+        return redirect()->back()->with('notificationText', 'Task Updated Successfully!!');
     }
 
     /**
@@ -84,5 +87,12 @@ class TaskController extends Controller
         Task::destroy($id);
         
         return redirect()->back()->with('notificationText', 'Task Destroy Successfully!!');
+    }
+    
+    public function getTaskModel($projectId, $taskId) {
+        $task = Task::findorfail($taskId);
+        return view('project.project.get-task-model')
+            ->with('task', $task)
+            ->with('projectId', $projectId);
     }
 }

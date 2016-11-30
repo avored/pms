@@ -15,4 +15,7 @@
     <div class="list-group-item">
         <a href="{{ route('setup.project-status.index') }}">Project Statuses</a>
     </div>
+    <div class="list-group-item">
+        <a href="{{ route('setup.task-status.index') }}">Task Statuses</a>
+    </div>
 </div>

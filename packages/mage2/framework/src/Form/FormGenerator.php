@@ -177,6 +177,9 @@ class FormGenerator {
      */
     public function select($fieldName, $label = "", $options = [], $attributes = ['class' => 'form-control']) {
 
+        if(!isset($attributes['id'])) {
+            $attributes['id'] = $fieldName;
+        }
         $stub = $this->files->get($this->getStub('select'));
 
         $this->replaceStubText($stub, "DUMMYFIELDNAME", $fieldName);

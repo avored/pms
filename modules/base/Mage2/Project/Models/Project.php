@@ -51,9 +51,9 @@ class Project extends Model {
     /**
      * Project has one status
      * 
-     * @return \Mage2\Setup\Models\Status
+     * @return \Mage2\Setup\Models\ProjectStatus
      */
-    public function status() {
+    public function projectStatus() {
         return $this->belongsTo(ProjectStatus::class);
     }
     /**
@@ -80,7 +80,7 @@ class Project extends Model {
      * @return string
      */
     public function getStatusName() {
-        return $this->status->name;
+        return $this->projectStatus->name;
     }
 
 }

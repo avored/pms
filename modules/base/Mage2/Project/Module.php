@@ -58,6 +58,9 @@ class Module extends BaseModule {
     protected function registerViewComposer() {
 
         View::composer(
+            ['project.project.tasks','project.project.get-task-model'], 'Mage2\Project\ViewComposers\ProjectTaskCreateComposer'
+        );
+        View::composer(
             'project.project._fields', 'Mage2\Project\ViewComposers\ProjectComposer'
         );
     }
