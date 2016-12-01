@@ -3,6 +3,8 @@
 namespace Mage2\Setup\Controllers;
 
 use Illuminate\Http\Request;
+use Mage2\Setup\Models\WorkflowStage;
+use Mage2\Setup\Requests\WorkflowStageRequest;
 use Mage2\System\Controllers\Controller;
 use Mage2\Setup\Models\WorkflowType;
 
@@ -36,12 +38,13 @@ class WorkflowStageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Mage2\Setup\Requests\WorkflowStageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WorkflowStageRequest $request)
     {
-        //
+        WorkflowStage::create($request->all());
+        return redirect()->back()->with('notificationText','Workflow Stage Added Successfully!!');
     }
 
     /**
@@ -69,13 +72,13 @@ class WorkflowStageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Mage2\Setup\Requests\WorkflowStageRequest $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(WorkflowStageRequest $request, $id)
     {
-        //
+
     }
 
     /**

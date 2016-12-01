@@ -1,19 +1,31 @@
-<div class="list-group-item">
-    <span class="">{{ $workflowStage->name }}</span>
+<div class="{{ $class }}">
 
-    <div class="pull-right">
+
+{{ $workflowStage->name }}
+<span class="pull-right">
         <div class="dropdown">
-            <div class="dropdown-toggle" 
-                   id="dropdownMenu1" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-option-vertical"></span>
-            </div>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#">Edit</a></li>
-                <li><a href="#">Add Child Stage</a></li>
-                <li><a href="#">Add Next Stage</a></li>
+            </a>
+            <ul class="dropdown-menu workflow-stage-action" aria-labelledby="dropdownMenu1">
+
+                <li><a data-id="{{ $workflowStage->id }}"
+                       class="workflow-next-stage"
+                       href="#">Add Next Stage</a></li>
+
+                <li><a data-id="{{ $workflowStage->id }}"
+                       class="workflow-edit-stage"
+                       href="#">Edit Stage</a></li>
+
                 <li role="separator" class="divider"></li>
-                <li><a href="#">Destroy</a></li>
+
+                @if($workflowStage->previos_stage == 0)
+                    <li class="disabled"><a href="#">Destroy</a></li>
+                @else
+                    <li><a href="{{ route('setup.workflow-stage.destroy', $workflowStage->id) }}">Destroy</a></li>
+                @endif
+
             </ul>
         </div>
-    </div>
+    </span>
 </div>
