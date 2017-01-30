@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Kalnoy\Nestedset\NestedSet;
 
 class CreateWorkflowStageTable extends Migration {
 
@@ -16,12 +17,10 @@ class CreateWorkflowStageTable extends Migration {
             $table->increments('id');
             $table->integer('workflow_type_id');
             $table->string('name');
-            $table->integer('previous_stage')->default(0);
+            NestedSet::columns($table);
             $table->timestamps();
 
-            $table->foreign('workflow_type_id')
-                    ->references('id')->on('workflow_types')
-                    ->onDelete('cascade');
+
         });
     }
 

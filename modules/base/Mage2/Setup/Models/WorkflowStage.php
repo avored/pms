@@ -4,20 +4,18 @@ namespace Mage2\Setup\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Mage2\Setup\Models\WorkflowType;
+use Kalnoy\Nestedset\NodeTrait;
 
 class WorkflowStage extends Model
 {
-    protected $fillable = ['workflow_type_id','previous_stage','name'];
+    use NodeTrait;
+
+    protected $fillable = ['workflow_type_id','parent_id','name','_lft','_rgt'];
     
     
     public function workflowType() {
         $this->belongsTo(WorkflowType::class);
     }
     
-    public function getRootStagesByTypeId($workflowTypeId) {
-        $rootStages = $this->where('workflow_type_id','=', $workflowTypeId)
-                            ->where('previous_stage','=', 0)->get();
-        
-        return $rootStages;
-    }
+
 }

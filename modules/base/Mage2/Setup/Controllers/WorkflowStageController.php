@@ -19,7 +19,8 @@ class WorkflowStageController extends Controller
     {
        
         $workflowType = WorkflowType::first();
-       
+
+
         return redirect()->route('setup.workflow-type.show', $workflowType->id);
 
        
@@ -43,7 +44,19 @@ class WorkflowStageController extends Controller
      */
     public function store(WorkflowStageRequest $request)
     {
-        WorkflowStage::create($request->all());
+        //$currentStage = WorkflowStage::find($request->get('current_stage'));
+
+
+
+        $stage = WorkflowStage::create($request->all());
+
+        if($request->get('child_stage') !== NULL) {
+            $currentStage = WorkflowStage::find($request->get('current_stage'));
+            $currentStage->appendNode($stage);
+        }
+
+
+
         return redirect()->back()->with('notificationText','Workflow Stage Added Successfully!!');
     }
 

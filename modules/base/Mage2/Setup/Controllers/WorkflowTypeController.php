@@ -76,12 +76,19 @@ class WorkflowTypeController extends Controller {
     public function show($id) {
         $workflowTypes  = WorkflowType::all()->pluck('name','id');
         $workflowType   = WorkflowType::findorfail($id);
-        $workflowStage  = new WorkflowStage();
-        
+
+        //$rootstage = WorkflowStage::where('name','=','start')->get()->first();
+        //$childStage = WorkflowStage::create(['workflow_type_id' => 2, 'name' => 'second-child-of-start']);
+        //$rootstage->appendNode($childStage);
+
+
+        $tree = WorkflowStage::get()->toTree();
+
+
         return view('setup.workflow-type.show')
                     ->with('workflowType', $workflowType)
                     ->with('workflowTypes', $workflowTypes)
-                    ->with('workflowStage', $workflowStage)
+                    ->with('tree', $tree)
                 ;
     }       
 
