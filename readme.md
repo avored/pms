@@ -1,10 +1,18 @@
 # Laravel based Project Management System
 
 
-## Sorry but this project is on hold but i will get back on this project as soon as possible
+#### Restart Whole Project from scratch
 [![Total Downloads](https://poser.pugx.org/mage2/project-management-system/downloads)](https://packagist.org/packages/mage2/project-management-system)
 
 Mage2 Project Management System is an Open Source Laravel based.
+
+# Project Goal
+    Product Crud
+    Project Tasks
+    Project Contacts
+    Project Workflow (Maybe?)
+
+More commingsoon as i plan
 
 ## Installaton Instruction
 
