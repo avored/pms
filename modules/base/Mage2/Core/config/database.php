@@ -51,7 +51,7 @@ return [
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'strict' => true,
-            'engine' => null,
+            'engine' => 'InnoDB',
         ],
 
         'pgsql' => [
@@ -91,7 +91,7 @@ return [
     |
     */
 
-    'migrations' => 'migrations',
+    'migrations' => 'table_collections',
 
     /*
     |--------------------------------------------------------------------------

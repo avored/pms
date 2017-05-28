@@ -5,16 +5,8 @@ namespace Mage2\Core\Providers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
-class RouteServiceProvider extends ServiceProvider
+class Module extends ServiceProvider
 {
-    /**
-     * This namespace is applied to your controller routes.
-     *
-     * In addition, it is set as the URL generator's root namespace.
-     *
-     * @var string
-     */
-    protected $namespace = 'Mage2\Core\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -51,10 +43,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        $path = base_path('modules/base/Mage2/Core/routes/web.php');
         Route::middleware('web')
              ->namespace($this->namespace)
-             ->group($path);
+             ->group(base_path('routes/web.php'));
     }
 
     /**
@@ -66,10 +57,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        $path = base_path('modules/base/Mage2/Core/routes/api.php');
         Route::prefix('api')
              ->middleware('api')
              ->namespace($this->namespace)
-             ->group($path);
+             ->group(base_path('routes/api.php'));
     }
 }

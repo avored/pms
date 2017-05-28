@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => Mage2\Core\User::class,
+        'model' => Mage2\Core\Models\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

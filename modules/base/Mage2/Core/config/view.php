@@ -14,7 +14,7 @@ return [
     */
 
     'paths' => [
-        resource_path('views'),
+        base_path('modules/base/Mage2/Core/views'),
     ],
 
     /*

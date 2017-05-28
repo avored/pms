@@ -2,7 +2,7 @@
 
 namespace Mage2\Core\Http\Controllers\Auth;
 
-use Mage2\Core\User;
+use Mage2\Core\Models\User;
 use Mage2\Core\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;

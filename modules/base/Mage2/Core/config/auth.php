@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Mage2\Core\User::class,
+            'model' => Mage2\Core\Models\User::class,
         ],
 
         // 'users' => [

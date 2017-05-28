@@ -17,19 +17,9 @@ class Application extends LaravelApplication
     public function configPath($path = '')
     {
         $baseModulePath = $this->baseModulePath();
-        return $baseModulePath.DIRECTORY_SEPARATOR.'Mage2'. DIRECTORY_SEPARATOR . "Core". DIRECTORY_SEPARATOR ."config";
+        return $baseModulePath . DIRECTORY_SEPARATOR . 'Mage2' . DIRECTORY_SEPARATOR . "Core" . DIRECTORY_SEPARATOR . "config";
     }
 
-    /**
-     * Get the path to the base module .
-     *
-     * @param NULL
-     * @return string
-     */
-    public function baseModulePath($path = '')
-    {
-        return $this->basePath.DIRECTORY_SEPARATOR.'modules'. DIRECTORY_SEPARATOR . "base";
-    }
 
     /**
      * Get the path to the database directory.
@@ -40,10 +30,32 @@ class Application extends LaravelApplication
     public function databasePath($path = '')
     {
         $baseModulePath = $this->baseModulePath();
-        return $baseModulePath.DIRECTORY_SEPARATOR.'Mage2'. DIRECTORY_SEPARATOR . "Core". DIRECTORY_SEPARATOR ."database";
+        return $baseModulePath . DIRECTORY_SEPARATOR . 'Mage2' . DIRECTORY_SEPARATOR . "Core" . DIRECTORY_SEPARATOR . "database";
     }
 
 
+    /**
+     * Get the path to the language files.
+     *
+     * @return string
+     */
+    public function langPath()
+    {
+        $baseModulePath = $this->baseModulePath();
+        return $baseModulePath . DIRECTORY_SEPARATOR . 'Mage2' . DIRECTORY_SEPARATOR . "Core" . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "lang";
+    }
+
+
+    /**
+     * Get the path to the base module .
+     *
+     * @param NULL
+     * @return string
+     */
+    public function baseModulePath($path = '')
+    {
+        return $this->basePath . DIRECTORY_SEPARATOR . 'modules' . DIRECTORY_SEPARATOR . "base";
+    }
 
 
 }
