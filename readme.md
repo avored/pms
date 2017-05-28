@@ -1,51 +1,58 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Laravel based Project Management System
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
 
-## About Laravel
+#### Restart Whole Project from scratch
+[![Total Downloads](https://poser.pugx.org/mage2/project-management-system/downloads)](https://packagist.org/packages/mage2/project-management-system)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+Mage2 Project Management System is an Open Source Laravel based.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Project Goal
+    Product Crud
+    Project Tasks
+    Project Contacts
+    Project Workflow (Maybe?)
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+More commingsoon as i plan
 
-## Learning Laravel
+## Installaton Instruction
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+# Step 1: Install Mage2 Commerce using [Git](https://git-scm.com/).
 
-## Laravel Sponsors
+Clone the repository using command:
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+    git clone https://github.com/mage2/project-management-system.git
 
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
+    composer update
 
-## Contributing
+Set up your environment config file:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+    mage2/project-management-system/.env 
 
-## Security Vulnerabilities
+composer update/install
+# Step 1: Install Mage2 Commerce using [Composer](https://getcomposer.org/download/).
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Run composer to create the lavender application:
 
-## License
+    composer create-project mage2/project-management-system --stability=dev
+    
+Set up your environment config file:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+    mage2/project-management-system/.env    
+
+# Step 2: go to url
+
+    yoursite.com/install
+    
+    
+That's it!
+
+
+##Contributing
+
+
+Mage2 laravel5 Ecommerce is in active development and If you want to contribute in this project then simply do the [Pull Request](https://github.com/mage2/project-management-system/pulls)!
+
+If you find any bug or problem please submit here  [raise the issue here](https://github.com/mage2/project-management-system/issues/new).
+
+
