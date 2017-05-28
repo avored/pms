@@ -1,1 +1,0 @@
-{!! Form::text('name', 'Workflow Type Name',['autofocus' => true,'class' => 'form-control']) !!}
