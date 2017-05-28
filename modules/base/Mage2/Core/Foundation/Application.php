@@ -31,6 +31,18 @@ class Application extends LaravelApplication
         return $this->basePath.DIRECTORY_SEPARATOR.'modules'. DIRECTORY_SEPARATOR . "base";
     }
 
+    /**
+     * Get the path to the database directory.
+     *
+     * @param string $path Optionally, a path to append to the database path
+     * @return string
+     */
+    public function databasePath($path = '')
+    {
+        $baseModulePath = $this->baseModulePath();
+        return $baseModulePath.DIRECTORY_SEPARATOR.'Mage2'. DIRECTORY_SEPARATOR . "Core". DIRECTORY_SEPARATOR ."database";
+    }
+
 
 
 
