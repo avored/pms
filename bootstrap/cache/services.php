@@ -23,10 +23,13 @@
     19 => 'Illuminate\\Translation\\TranslationServiceProvider',
     20 => 'Illuminate\\Validation\\ValidationServiceProvider',
     21 => 'Illuminate\\View\\ViewServiceProvider',
-    22 => 'Mage2\\Core\\Providers\\AppServiceProvider',
-    23 => 'Mage2\\Core\\Providers\\AuthServiceProvider',
-    24 => 'Mage2\\Core\\Providers\\EventServiceProvider',
-    25 => 'Mage2\\Core\\Providers\\RouteServiceProvider',
+    22 => 'Collective\\Html\\HtmlServiceProvider',
+    23 => 'Mage2\\Core\\Providers\\AppServiceProvider',
+    24 => 'Mage2\\Core\\Providers\\AuthServiceProvider',
+    25 => 'Mage2\\Core\\Providers\\EventServiceProvider',
+    26 => 'Mage2\\Core\\Module',
+    27 => 'Mage2\\Install\\Module',
+    28 => 'Mage2\\User\\Module',
   ),
   'eager' => 
   array (
@@ -43,7 +46,9 @@
     10 => 'Mage2\\Core\\Providers\\AppServiceProvider',
     11 => 'Mage2\\Core\\Providers\\AuthServiceProvider',
     12 => 'Mage2\\Core\\Providers\\EventServiceProvider',
-    13 => 'Mage2\\Core\\Providers\\RouteServiceProvider',
+    13 => 'Mage2\\Core\\Module',
+    14 => 'Mage2\\Install\\Module',
+    15 => 'Mage2\\User\\Module',
   ),
   'deferred' => 
   array (
@@ -136,6 +141,10 @@
     'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
+    'html' => 'Collective\\Html\\HtmlServiceProvider',
+    'form' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
   ),
   'when' => 
   array (
@@ -173,6 +182,9 @@
     array (
     ),
     'Illuminate\\Validation\\ValidationServiceProvider' => 
+    array (
+    ),
+    'Collective\\Html\\HtmlServiceProvider' => 
     array (
     ),
   ),

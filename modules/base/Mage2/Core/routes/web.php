@@ -11,9 +11,16 @@
 |
 */
 
+Route::group(['middleware' => 'web', 'namespace' => "Mage2\Core\Controllers"], function () {
+
+    Route::get('/dummy',['as' =>'home','uses' => 'xty@test']);
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-Route::auth();
+    Route::get('/', function () {
+        return redirect('/admin');
+    })->name('home');
+
+
+});
+
+

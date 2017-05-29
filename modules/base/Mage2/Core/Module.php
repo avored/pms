@@ -1,12 +1,14 @@
 <?php
 
-namespace Mage2\Core\Providers;
+namespace Mage2\Core;
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class Module extends ServiceProvider
 {
+
+
+
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -15,9 +17,7 @@ class Module extends ServiceProvider
      */
     public function boot()
     {
-        //
 
-        parent::boot();
     }
 
     /**
@@ -25,13 +25,10 @@ class Module extends ServiceProvider
      *
      * @return void
      */
-    public function map()
+    public function register()
     {
-        $this->mapApiRoutes();
-
+        //$this->mapApiRoutes();
         $this->mapWebRoutes();
-
-        //
     }
 
     /**
@@ -39,27 +36,13 @@ class Module extends ServiceProvider
      *
      * These routes all receive session state, CSRF protection, etc.
      *
+     * @param \Illuminate\Routing\Router $router
+     *
      * @return void
      */
     protected function mapWebRoutes()
     {
-        Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+        require __DIR__ . '/routes/web.php';
     }
 
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapApiRoutes()
-    {
-        Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
-    }
 }

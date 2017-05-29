@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "laravel/framework": "5.4.*"
+        "laravel/framework": "5.4.*",
+        "laravelcollective/html": "^5.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -14,11 +15,10 @@
         "phpunit/phpunit": "~5.7"
     },
     "autoload": {
-        "classmap": [
-            "database"
-        ],
         "psr-4": {
-            "Mage2\\Core\\": "modules/base/Mage2/Core"
+            "Mage2\\Core\\": "modules/base/Mage2/Core",
+            "Mage2\\Install\\": "modules/base/Mage2/Install",
+            "Mage2\\User\\": "modules/base/Mage2/User"
         }
     },
     "autoload-dev": {

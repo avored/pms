@@ -166,6 +166,8 @@ return [
         /*
          * Package Service Providers...
          */
+
+        Collective\Html\HtmlServiceProvider::class,
        
 
         /*
@@ -175,8 +177,11 @@ return [
         Mage2\Core\Providers\AuthServiceProvider::class,
         // Mage2\Core\Providers\BroadcastServiceProvider::class,
         Mage2\Core\Providers\EventServiceProvider::class,
-        Mage2\Core\Providers\RouteServiceProvider::class,
+        //Mage2\Core\Providers\RouteServiceProvider::class,
 
+        Mage2\Core\Module::class,
+        Mage2\Install\Module::class,
+        Mage2\User\Module::class,
     ],
 
     /*
@@ -225,6 +230,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

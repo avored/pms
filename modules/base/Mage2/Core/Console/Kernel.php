@@ -35,6 +35,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        require base_path('routes/console.php');
+        $path = base_path('modules/base/Mage2/Core/routes/console.php');
+        require $path;
     }
 }
