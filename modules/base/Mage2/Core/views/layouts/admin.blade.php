@@ -14,6 +14,7 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/vendor.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/flat-admin.css') }}">
 
@@ -56,8 +57,13 @@
     </div>
 </div>
 
+
 <script type="text/javascript" src="{{ asset('js/vendor.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/moment.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
+
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 
 @stack('scripts')

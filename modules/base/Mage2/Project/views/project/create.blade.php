@@ -1,8 +1,9 @@
 @extends('layouts.admin')
 
+@section('main-title','Create Project')
 @section('content')
     <div class="container">
-        <h1>Create Category</h1>
+
 
 
         {!! Form::open(['route' => 'project.store']) !!}
@@ -13,4 +14,4 @@
         </div>
         {!! Form::close() !!}
     </div>
-@endsection
+@stop

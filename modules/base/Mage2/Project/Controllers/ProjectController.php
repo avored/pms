@@ -7,6 +7,9 @@ use Mage2\Project\Models\Project;
 use Mage2\Core\Http\Controllers\Controller;
 use Yajra\Datatables\Facades\Datatables;
 
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+
 class ProjectController extends Controller
 {
     /**

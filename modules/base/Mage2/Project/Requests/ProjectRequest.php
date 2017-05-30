@@ -46,7 +46,10 @@ class ProjectRequest extends Request
     public function rules()
     {
         $validationRule = [];
-        $validationRule['name'] = 'required|max:255';
+
+        $validationRule['name']         = 'required|max:255';
+        $validationRule['start_date']   = 'required|date';
+        $validationRule['end_date']     = 'required|date|after:start_date';
 
         return $validationRule;
     }

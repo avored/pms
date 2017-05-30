@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
+@section('main-title','Edit Project')
+
 @section('content')
     <div class="container">
-        <h1>Edit Category</h1>
-
 
         {!! Form::model($project, ['method' => "put",'route' => ['project.update', $project->id]]) !!}
 

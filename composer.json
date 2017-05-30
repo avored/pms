@@ -20,7 +20,8 @@
             "Mage2\\Core\\": "modules/base/Mage2/Core",
             "Mage2\\Install\\": "modules/base/Mage2/Install",
             "Mage2\\Project\\": "modules/base/Mage2/Project",
-            "Mage2\\User\\": "modules/base/Mage2/User"
+            "Mage2\\User\\": "modules/base/Mage2/User",
+            "Mage2\\Setup\\": "modules/base/Mage2/Setup"
 
         }
     },

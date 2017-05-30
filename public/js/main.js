@@ -4,7 +4,8 @@ jQuery(document).ready(function($){
     
 	$(".mainmenu-area").sticky({topSpacing:0});
     
-    
+    $('.datetimepicker').datetimepicker();
+
     $('.product-carousel').owlCarousel({
         loop:true,
         nav:true,

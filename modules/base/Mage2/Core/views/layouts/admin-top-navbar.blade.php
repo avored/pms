@@ -17,7 +17,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-left">
-                <li class="navbar-title">Dashboard</li>
+                <li class="navbar-title">@yield('main-title','Dashboard')</li>
                 <li class="navbar-search hidden-sm">
                     <input id="search" type="text" placeholder="Search..">
                     <button class="btn-search"><i class="fa fa-search"></i></button>
@@ -160,6 +160,7 @@
                                 </a>
                             </li>
                             -->
+
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
