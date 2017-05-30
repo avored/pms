@@ -15,6 +15,7 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>View</th>
                 <th>Edit</th>
                 <th>Destroy</th>
             </tr>
@@ -37,6 +38,14 @@
                 { data: 'id', name: 'id' },
                 { data: 'name', name: 'name' },
 
+                {
+                    data: 'view',
+                    name: 'view',
+                    sortable: false,
+                    render: function (data, type, object, meta) {
+                        return '<a href="/project/'+ object.id +'">view</a>';
+                    }
+                },
                 {
                     data: 'edit',
                     name: 'edit',
