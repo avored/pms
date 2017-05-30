@@ -3,16 +3,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-3 col-sm-12">
-            <div class="section">
-                <div class="section-title"><i class="icon fa fa-user" aria-hidden="true"></i> Bio</div>
-                <div class="section-body __indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</div>
-            </div>
-            <div class="section">
-                <div class="section-title"><i class="icon fa fa-book" aria-hidden="true"></i> Education</div>
-                <div class="section-body __indent">Computer Engineering, Khon Kaen University</div>
-            </div>
-        </div>
+        @include('mage2setup::setup.sidebar')
         <div class="col-md-9 col-sm-12">
             <div class="section">
                 <div class="section-title">Activities</div>

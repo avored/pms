@@ -34,8 +34,13 @@
   | and give it the controller to call when that URI is requested.
   |
  */
-Route::group(['middleware' => ['web','auth'], 'namespace' => "Mage2\Setup\Controllers"], function () {
+Route::group(['middleware' => ['web', 'auth'], 'namespace' => "Mage2\Setup\Controllers"], function () {
 
-    Route::get('/setup',['as' => 'setup.index','uses'=> 'SetupController@index']);
+    Route::get('/setup', ['as' => 'setup.index', 'uses' => 'SetupController@index']);
+
+
+    Route::resource('/setup/project-status', 'ProjectStatusController',['as' => 'setup']);
+    Route::get('/setup/project-status-data', ['as' => 'setup.project-status.datatables.data', 'uses' => 'ProjectStatusController@anyData']);
+
 
 });
