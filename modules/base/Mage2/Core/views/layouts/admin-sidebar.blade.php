@@ -17,16 +17,16 @@
             </li>
 
             <li class="dropdown ">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <a href="{{ route('project.index') }}" class="dropdown-toggle" data-toggle="dropdown">
                     <div class="icon">
                         <i class="fa fa-cube" aria-hidden="true"></i>
                     </div>
-                    <div class="title">Catalog</div>
+                    <div class="title">Project</div>
                 </a>
                 <div class="dropdown-menu">
                     <ul>
-                        <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Catalog</li>
-                        <li><a href="{{ route('home') }}">Products</a></li>
+                        <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Project</li>
+                        <li><a href="{{ route('project.index') }}">Project</a></li>
                         <li><a href="{{ route('home') }}">Category</a></li>
 
                         <!--

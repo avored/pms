@@ -2,7 +2,7 @@
 
 
 
-name        : Mage2 Install
-identifier  : mage2-install
-description : Mage2 Install Modules
+name        : Mage2 User
+identifier  : mage2-user
+description : Mage2 User Modules
 enable      : true

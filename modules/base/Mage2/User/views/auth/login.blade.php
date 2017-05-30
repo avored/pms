@@ -56,7 +56,7 @@
                                 <span class="input-group-addon" id="basic-addon1">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                 </span>
-                                <input type="text" class="form-control" name="email" placeholder="Email Address"
+                                <input autofocus type="text" class="form-control" name="email" placeholder="Email Address"
                                        aria-describedby="basic-addon1">
                             </div>
                             <div class="input-group">

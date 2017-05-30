@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/theme/blue-sky.css') }}">
 
 
+
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -58,6 +59,7 @@
 <script type="text/javascript" src="{{ asset('js/vendor.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
 @stack('scripts')
 
 

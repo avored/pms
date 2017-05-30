@@ -168,6 +168,7 @@ return [
          */
 
         Collective\Html\HtmlServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
        
 
         /*
@@ -182,6 +183,7 @@ return [
         Mage2\Core\Module::class,
         Mage2\Install\Module::class,
         Mage2\User\Module::class,
+        Mage2\Project\Module::class,
     ],
 
     /*
