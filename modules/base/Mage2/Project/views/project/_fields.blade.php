@@ -48,12 +48,21 @@
     </p>
 </div>
 
+<div class="form-group {{ ($errors->has('assigned_to_user_id') ? ' has-error' :'') }}">
+    {{ Form::label('assigned_to_user_id','Project Assigned to User') }}
+    {{ Form::select('assigned_to_user_id',$userOptions,null,['class' => 'form-control select2']) }}
+    <p class="help-block">
+        {{ $errors->first('assigned_to_user_id') }}
+    </p>
+</div>
+
 
 @push('scripts')
     <script>
         jQuery(document).ready(function() {
             jQuery('#start_date').datetimepicker({format : "DD-MMMM-YYYY"});
             jQuery('#end_date').datetimepicker({format : "DD-MMMM-YYYY"});
+            jQuery('.select2').select2();
         });
     </script>
 @endpush

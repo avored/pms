@@ -52,6 +52,7 @@ class ProjectRequest extends Request
         $validationRule['end_date']             = 'required|date|after:start_date';
         $validationRule['project_status_id']    = 'required';
         $validationRule['project_priority_id']  = 'required';
+        $validationRule['assigned_to_user_id']  = 'required';
 
 
         return $validationRule;

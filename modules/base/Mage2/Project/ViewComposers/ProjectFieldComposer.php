@@ -5,7 +5,7 @@ use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Mage2\Setup\Models\ProjectPriority;
 use Mage2\Setup\Models\ProjectStatus;
-
+use Mage2\User\Models\User;
 class ProjectFieldComposer
 {
 
@@ -17,11 +17,14 @@ class ProjectFieldComposer
      */
     public function compose(View $view)
     {
-        $options = Collection::make(['' => 'Please Select'])->merge(ProjectStatus::all()->pluck('name','id'));
-        $projectPrioritiesOption = Collection::make(['' => 'Please Select'])->merge(ProjectPriority::all()->pluck('name','id'));
+        $options                    = ['' => 'Please Select'] + ProjectStatus::all()->pluck('name','id')->toArray();
+        $projectPrioritiesOption    = ['' => 'Please Select'] + ProjectPriority::all()->pluck('name','id')->toArray();
+        $userOptions                = ['' => 'Please Select'] + User::all()->pluck('name','id')->toArray();
+
 
         $view->with('options', $options)
-                ->with('projectPrioritiesOption', $projectPrioritiesOption);
+                ->with('projectPrioritiesOption', $projectPrioritiesOption)
+                ->with('userOptions', $userOptions);
     }
 
 }

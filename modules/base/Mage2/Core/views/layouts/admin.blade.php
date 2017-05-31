@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="{{ asset('/css/bootstrap-datetimepicker.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/select2.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/vendor.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/flat-admin.css') }}">
 
@@ -59,7 +60,9 @@
 
 
 <script type="text/javascript" src="{{ asset('js/vendor.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/select2.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/moment.min.js') }}"></script>
+
 <script type="text/javascript" src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
 
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>

@@ -15,7 +15,8 @@ class Project extends Model
                     'start_date',
                     'end_date',
                     'project_status_id',
-                    'project_priority_id'
+                    'project_priority_id',
+                    'assigned_to_user_id'
     ];
 
     protected $dates = ['start_date','end_date','created_at','updated_at'];

@@ -17,11 +17,13 @@ class CreateProjectsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
-
             $table->timestamp('start_date');
             $table->timestamp('end_date');
-
+            $table->integer('assigned_to_user_id')->unsigned()->nullable();
             $table->timestamps();
+
+
+            $table->foreign('assigned_to_user_id')->references('id')->on('users');
         });
     }
 

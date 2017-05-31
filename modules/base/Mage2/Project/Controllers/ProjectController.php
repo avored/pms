@@ -34,7 +34,6 @@ class ProjectController extends Controller
      */
     public function index()
     {
-
         return view('mage2project::project.index');
     }
 
@@ -84,7 +83,6 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $project = Project::find($id);
-
 
         return view('mage2project::project.edit')->with('project', $project);
 
