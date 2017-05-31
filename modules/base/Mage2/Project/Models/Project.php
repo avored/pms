@@ -4,6 +4,8 @@ namespace Mage2\Project\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Mage2\Setup\Models\ProjectPriority;
+use Mage2\Setup\Models\ProjectStatus;
 
 class Project extends Model
 {
@@ -11,10 +13,13 @@ class Project extends Model
                     'name',
                     'description',
                     'start_date',
-                    'end_date'
+                    'end_date',
+                    'project_status_id',
+                    'project_priority_id'
     ];
 
     protected $dates = ['start_date','end_date','created_at','updated_at'];
+
 
 
     public function setStartDateAttribute($val) {
@@ -49,4 +54,11 @@ class Project extends Model
         return $value;
     }
 
+    public function projectStatus() {
+        return $this->belongsTo(ProjectStatus::class);
+    }
+
+    public function projectPriority() {
+        return $this->belongsTo(ProjectPriority::class);
+    }
 }

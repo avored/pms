@@ -27,7 +27,6 @@
                     <ul>
                         <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Project</li>
                         <li><a href="{{ route('project.index') }}">Project</a></li>
-                        <li><a href="{{ route('home') }}">Category</a></li>
 
                         <!--
                         <li><a href="./uikits/components.html">Components</a></li>
@@ -69,13 +68,34 @@
                 </div>
             </li>
             -->
-            <li class="@@menu.messaging">
-                <a href="{{ route('home') }}">
+            <li class="dropdown ">
+                <a href="{{ route('setup.index') }}" class="dropdown-toggle" data-toggle="dropdown">
                     <div class="icon">
-                        <i class="fa fa-list-alt" aria-hidden="true"></i>
+                        <i class="fa fa-cogs" aria-hidden="true"></i>
                     </div>
-                    <div class="title">Sales</div>
+                    <div class="title">Setup</div>
                 </a>
+                <div class="dropdown-menu">
+                    <ul>
+                        <li class="section"><i class="fa fa-cogs" aria-hidden="true"></i> Setup</li>
+                        <li><a href="{{ route('setup.project-status.index') }}">Project Status</a></li>
+                        <li><a href="{{ route('setup.project-priority.index') }}">Project Priority</a></li>
+
+                        <!--
+                        <li><a href="./uikits/components.html">Components</a></li>
+                        <li><a href="./uikits/card.html">Card</a></li>
+                        <li><a href="./uikits/form.html">Form</a></li>
+                        <li><a href="./uikits/table.html">Table</a></li>
+                        <li><a href="./uikits/icons.html">Icons</a></li>
+                        <li class="line"></li>
+                        <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Advanced Components</li>
+                        <li><a href="./uikits/pricing-table.html">Pricing Table</a></li>
+                        <li><a href="./uikits/timeline.html">Timeline</a></li>
+                        <li><a href="./uikits/chart.html">Chart</a></li>
+                        -->
+
+                    </ul>
+                </div>
             </li>
         </ul>
     </div>

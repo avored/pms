@@ -28,6 +28,7 @@ namespace Mage2\Project;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
+
 class Module extends ServiceProvider
 {
 
@@ -60,6 +61,14 @@ class Module extends ServiceProvider
         $this->mapWebRoutes();
         $this->registerViewPath();
         $this->registerDatabasePath();
+        $this->registerViewComposerData();
+    }
+
+
+    public function registerViewComposerData() {
+
+        View::composer(['mage2project::project._fields'], 'Mage2\Project\ViewComposers\ProjectFieldComposer');
+
     }
 
 
@@ -82,6 +91,7 @@ class Module extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__ . '/views', 'mage2project');
     }
+
 
 
     protected function registerDatabasePath()

@@ -15,6 +15,8 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Status</th>
+                <th>Priority</th>
                 <th>View</th>
                 <th>Edit</th>
                 <th>Destroy</th>
@@ -37,7 +39,8 @@
             columns: [
                 { data: 'id', name: 'id' },
                 { data: 'name', name: 'name' },
-
+                { data: 'project_status', name: 'project_status' },
+                { data: 'project_priority', name: 'project_priority' },
                 {
                     data: 'view',
                     name: 'view',

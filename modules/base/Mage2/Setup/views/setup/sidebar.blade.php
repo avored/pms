@@ -10,5 +10,10 @@
                 Project Status
             </a>
         </li>
+        <li class="list-group-item">
+            <a href="{{ route('setup.project-priority.index') }}">
+                Project Priority
+            </a>
+        </li>
     </ul>
 </div>

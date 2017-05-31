@@ -22,11 +22,11 @@
  * @copyright 2016-2017 Mage2
  * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License v3.0
  */
-namespace Mage2\Project\Requests;
+namespace Mage2\Setup\Requests;
 
 use Illuminate\Foundation\Http\FormRequest as Request;
 
-class ProjectRequest extends Request
+class ProjectPriorityRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -47,12 +47,7 @@ class ProjectRequest extends Request
     {
         $validationRule = [];
 
-        $validationRule['name']                 = 'required|max:255';
-        $validationRule['start_date']           = 'required|date';
-        $validationRule['end_date']             = 'required|date|after:start_date';
-        $validationRule['project_status_id']    = 'required';
-        $validationRule['project_priority_id']  = 'required';
-
+        $validationRule['name']         = 'required|max:255';
 
         return $validationRule;
     }

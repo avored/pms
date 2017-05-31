@@ -31,6 +31,24 @@
         </p>
 </div>
 
+
+<div class="form-group {{ ($errors->has('project_status_id') ? ' has-error' :'') }}">
+    {{ Form::label('project_status_id','Project Status') }}
+    {{ Form::select('project_status_id',$options,null,['class' => 'form-control']) }}
+    <p class="help-block">
+        {{ $errors->first('project_status_id') }}
+    </p>
+</div>
+
+<div class="form-group {{ ($errors->has('project_priority_id') ? ' has-error' :'') }}">
+    {{ Form::label('project_priority_id','Project Status') }}
+    {{ Form::select('project_priority_id',$projectPrioritiesOption,null,['class' => 'form-control']) }}
+    <p class="help-block">
+        {{ $errors->first('project_priority_id') }}
+    </p>
+</div>
+
+
 @push('scripts')
     <script>
         jQuery(document).ready(function() {

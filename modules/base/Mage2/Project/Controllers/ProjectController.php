@@ -19,7 +19,12 @@ class ProjectController extends Controller
      */
     public function anyData()
     {
-        return Datatables::of(Project::query())->make(true);
+        return Datatables::eloquent(Project::query())
+                        ->addColumn('project_status', function($model){
+                            return (isset($model->projectStatus->name)) ? $model->projectStatus->name : NULL;
+                        })->addColumn('project_priority', function($model){
+                            return (isset($model->projectPriority->name)) ? $model->projectPriority->name : NULL;
+                        })->make(true);
     }
 
     /**
@@ -29,6 +34,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
+
         return view('mage2project::project.index');
     }
 
@@ -63,7 +69,10 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $project = Project::find($id);
+
+        return view('mage2project::project.show')->with('project', $project);
+
     }
 
     /**
