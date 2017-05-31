@@ -4,9 +4,9 @@
 
 @section('content')
     <div class="row">
-        @include('mage2setup::setup.sidebar')
 
-        <div class="col-md-9">
+
+        <div class="col-md-12">
         {!! Form::model($projectPriority, ['method' => "put",'route' => ['setup.project-priority.update', $projectPriority->id]]) !!}
 
         @include('mage2setup::project-priority._fields')

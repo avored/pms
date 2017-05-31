@@ -81,6 +81,9 @@
                         <li><a href="{{ route('setup.project-status.index') }}">Project Status</a></li>
                         <li><a href="{{ route('setup.project-priority.index') }}">Project Priority</a></li>
 
+                        <li class="nav-divider"></li>
+                        <li><a href="{{ route('setup.user.index') }}">User</a></li>
+
                         <!--
                         <li><a href="./uikits/components.html">Components</a></li>
                         <li><a href="./uikits/card.html">Card</a></li>

@@ -3,9 +3,9 @@
 @section('main-title','Create Project Priority')
 @section('content')
     <div class="row">
-        @include('mage2setup::setup.sidebar')
 
-        <div class="col-md-9">
+
+        <div class="col-md-12">
 
             {!! Form::open(['route' => 'setup.project-priority.store']) !!}
 

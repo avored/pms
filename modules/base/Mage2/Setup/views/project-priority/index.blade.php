@@ -5,8 +5,8 @@
 @section('content')
 
         <div class="row">
-            @include('mage2setup::setup.sidebar')
-            <div class="col-md-9">
+
+            <div class="col-md-12">
                 <div class="pull-right">
                     <span><a class="btn btn-primary btn-raised pull-right"
                              href="{{ route('setup.project-priority.create') }}">Create</a></span>

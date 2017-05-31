@@ -42,6 +42,9 @@ Route::group(['middleware' => ['web', 'auth'], 'namespace' => "Mage2\Setup\Contr
     Route::resource('/setup/project-status', 'ProjectStatusController',['as' => 'setup']);
     Route::get('/setup/project-status-data', ['as' => 'setup.project-status.datatables.data', 'uses' => 'ProjectStatusController@anyData']);
 
+    Route::resource('/setup/user', 'UserController',['as' => 'setup']);
+    Route::get('/setup/user-data', ['as' => 'setup.user.datatables.data', 'uses' => 'UserController@anyData']);
+
     Route::resource('/setup/project-priority', 'ProjectPriorityController',['as' => 'setup']);
     Route::get('/setup/project-priority-data', ['as' => 'setup.project-priority.datatables.data', 'uses' => 'ProjectPriorityController@anyData']);
 
