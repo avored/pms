@@ -1,53 +1,51 @@
 @extends('layouts.admin')
 
-@section('main-title','Projects')
+@section('main-title','Contacts')
 
 @section('content')
+
     <div class="container">
         <div class="pull-right">
-            <span><a class="btn btn-primary btn-raised pull-right" href="{{ route('project.create') }}">Create</a></span>
+            <span><a class="btn btn-primary btn-raised pull-right" href="{{ route('contact.create') }}">Create</a></span>
         </div>
 
         <hr/>
         <div class="clearfix"></div>
 
-        <table class="table table-bordered" id="project-table">
+        <table class="table table-bordered" id="contact-table">
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Status</th>
-                <th>Priority</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
                 <th>View</th>
                 <th>Edit</th>
                 <th>Destroy</th>
             </tr>
             </thead>
         </table>
-
-
     </div>
-
 @endsection
 
 @push('scripts')
 <script>
     $(function() {
-        $('#project-table').DataTable({
+        $('#contact-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{!! route('project.datatables.data') !!}',
+            ajax: '{!! route('contact.datatables.data') !!}',
             columns: [
                 { data: 'id', name: 'id' },
-                { data: 'name', name: 'name' },
-                { data: 'project_status', name: 'project_status' },
-                { data: 'project_priority', name: 'project_priority' },
+                { data: 'first_name', name: 'first_name' },
+                { data: 'last_name', name: 'last_name' },
+                { data: 'email', name: 'email' },
                 {
                     data: 'view',
                     name: 'view',
                     sortable: false,
                     render: function (data, type, object, meta) {
-                        return '<a href="/project/'+ object.id +'">view</a>';
+                        return '<a href="/contact/'+ object.id +'">view</a>';
                     }
                 },
                 {
@@ -55,7 +53,7 @@
                     name: 'edit',
                     sortable: false,
                     render: function (data, type, object, meta) {
-                        return '<a href="/project/'+ object.id +'/edit">Edit</a>';
+                        return '<a href="/contact/'+ object.id +'/edit">Edit</a>';
                     }
                 },
                 {
@@ -63,7 +61,7 @@
                     name: 'destroy',
                     sortable: false,
                     render: function (data, type, object, meta) {
-                        return '<form id="project-destroy-'+object.id+'" method="post"  action="/project/'+object.id+'" ><input type="hidden" name="_method" value="DELETE"/><input type="hidden" name="_token" value="{{ csrf_token() }}"/> </form> <a onclick="event.preventDefault();jQuery(\'#project-destroy-'+object.id+'\').submit()"  href="project/'+object.id+'">Destroy</a>';
+                        return '<form id="contact-destroy-'+object.id+'" method="post"  action="/contact/'+object.id+'" ><input type="hidden" name="_method" value="DELETE"/><input type="hidden" name="_token" value="{{ csrf_token() }}"/> </form> <a onclick="event.preventDefault();jQuery(\'#contact-destroy-'+object.id+'\').submit()"  href="/contact/'+object.id+'">Destroy</a>';
                     }
                 }
             ]

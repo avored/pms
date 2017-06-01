@@ -180,6 +180,7 @@ return [
         Mage2\Core\Providers\EventServiceProvider::class,
         //Mage2\Core\Providers\RouteServiceProvider::class,
 
+        Mage2\Contact\Module::class,
         Mage2\Core\Module::class,
         Mage2\Install\Module::class,
         Mage2\User\Module::class,

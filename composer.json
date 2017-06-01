@@ -17,6 +17,7 @@
     },
     "autoload": {
         "psr-4": {
+            "Mage2\\Contact\\": "modules/base/Mage2/Contact",
             "Mage2\\Core\\": "modules/base/Mage2/Core",
             "Mage2\\Install\\": "modules/base/Mage2/Install",
             "Mage2\\Project\\": "modules/base/Mage2/Project",

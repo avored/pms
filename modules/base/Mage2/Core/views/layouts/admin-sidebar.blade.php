@@ -44,6 +44,14 @@
                     </ul>
                 </div>
             </li>
+            <li>
+                <a href="{{ route('contact.index') }}">
+                    <div class="icon">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </div>
+                    <div class="title">Contact</div>
+                </a>
+            </li>
             <!--
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
