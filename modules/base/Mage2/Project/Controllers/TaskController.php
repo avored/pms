@@ -2,15 +2,16 @@
 
 namespace Mage2\Project\Controllers;
 
-use Mage2\Project\Requests\ProjectRequest;
-use Mage2\Project\Models\Project;
+use Illuminate\Support\Facades\Auth;
+use Mage2\Project\Requests\TaskRequest;
+use Mage2\Project\Models\Task;
 use Mage2\Core\Http\Controllers\Controller;
 use Yajra\Datatables\Facades\Datatables;
-use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 
-class ProjectController extends Controller
+class TaskController extends Controller
 {
     /**
      * Process datatables ajax request.
@@ -19,12 +20,7 @@ class ProjectController extends Controller
      */
     public function anyData()
     {
-        return Datatables::eloquent(Project::query())
-                        ->addColumn('project_status', function($model){
-                            return (isset($model->projectStatus->name)) ? $model->projectStatus->name : NULL;
-                        })->addColumn('project_priority', function($model){
-                            return (isset($model->projectPriority->name)) ? $model->projectPriority->name : NULL;
-                        })->make(true);
+        return Datatables::eloquent(Task::query())->make(true);
     }
 
     /**
@@ -34,7 +30,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('mage2project::project.index');
+        return view('mage2task::task.index');
     }
 
     /**
@@ -44,21 +40,22 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('mage2project::project.create');
+        return view('mage2task::task.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Mage2\Project\Requests\ProjectRequest $request
+     * @param  \Mage2\Project\Requests\TaskRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProjectRequest $request)
+    public function store(TaskRequest $request)
     {
-        $request->merge(['created_by_user_id' => Auth::user()->id]);
-        Project::create($request->all());
 
-        return redirect()->route('project.index');
+        $request->merge(['created_by_user_id' => Auth::user()->id]);
+        Task::create($request->all());
+
+        return redirect()->back();
     }
 
     /**
@@ -69,9 +66,9 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $project = Project::find($id);
+        $task = Task::find($id);
 
-        return view('mage2project::project.show')->with('project', $project);
+        return view('mage2task::task.show')->with('task', $task);
 
     }
 
@@ -83,25 +80,25 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        $project = Project::find($id);
+        $task = Task::find($id);
 
-        return view('mage2project::project.edit')->with('project', $project);
+        return view('mage2task::task.edit')->with('task', $task);
 
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Mage2\Project\Requests\ProjectRequest $request
+     * @param  \Mage2\Project\Requests\TaskRequest $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProjectRequest $request, $id)
+    public function update(TaskRequest $request, $id)
     {
-        $project = Project::find($id);
-        $project->update($request->all());
+        $task = Task::find($id);
+        $task->update($request->all());
 
-        return redirect()->route('project.index');
+        return redirect()->route('task.index');
     }
 
     /**
@@ -112,8 +109,8 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        Project::destroy($id);
+        Task::destroy($id);
 
-        return redirect()->route('project.index');
+        return redirect()->route('task.index');
     }
 }

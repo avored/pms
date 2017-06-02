@@ -22,10 +22,10 @@
                 <div class="card-header">
                     <ul class="nav nav-tabs">
                         <li role="tab1" class="active">
-                            <a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">Task</a>
+                            <a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">Tasks</a>
                         </li>
                         <li role="tab3">
-                            <a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">Contact</a>
+                            <a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">Users</a>
                         </li>
                         <li role="tab4">
                             <a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab">Setting</a>
@@ -38,33 +38,54 @@
 
                             <div class="col-md-12 col-sm-12">
                                 <div class="section">
-                                    <div class="section-title">Activities</div>
+                                    <div class="section-title">
+                                        Task List
+                                        <a style="margin-left: 10px"
+                                           data-toggle="modal" data-target="#createTask"
+                                           href="#" class="btn btn-primary">Create Task</a>
+                                    </div>
+
                                     <div class="section-body">
-                                        <div class="media social-post">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img src="../assets/images/profile.png" />
-                                                </a>
-                                            </div>
+
+                                        @if(count($project->tasks) <= 0)
                                             <div class="media-body">
                                                 <div class="media-heading">
-                                                    <h4 class="title">Scott White</h4>
-                                                    <h5 class="timeing">20 mins ago</h5>
+                                                    <h4 class="title">Sorry No Task Found</h4>
                                                 </div>
-                                                <div class="media-content">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate.</div>
-                                                <div class="media-action">
-                                                    <button class="btn btn-link"><i class="fa fa-thumbs-o-up"></i> 2 Like</button>
-                                                    <button class="btn btn-link"><i class="fa fa-comments-o"></i> 10 Comments</button>
+
+                                            </div>
+
+                                        @else
+                                            @foreach($project->tasks as $task)
+                                            <div class="media social-post">
+                                                <div class="media-left">
+                                                    <a href="#">
+                                                        <img src="{{ asset('images/profile.png') }}" />
+                                                    </a>
                                                 </div>
-                                                <div class="media-comment">
-                                                    <input type="text" class="form-control" placeholder="comment...">
+                                                <div class="media-body">
+                                                    <div class="media-heading">
+                                                        <h4 class="title">{{ $task->name }}</h4>
+                                                        <h5 class="timeing">Due Date: {{ $task->due_date }}</h5>
+                                                    </div>
+                                                    <div class="media-content">{{ $task->description }}</div>
+                                                    <!--div class="media-action">
+                                                        <button class="btn btn-link"><i class="fa fa-thumbs-o-up"></i> 2 Like</button>
+                                                        <button class="btn btn-link"><i class="fa fa-comments-o"></i> 10 Comments</button>
+                                                    </div>
+                                                    <div class="media-comment">
+                                                        <input type="text" class="form-control" placeholder="comment...">
+                                                    </div-->
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="media social-post">
+                                            @endforeach
+
+                                        @endif
+
+                                        <!--div class="media social-post">
                                             <div class="media-left">
                                                 <a href="#">
-                                                    <img src="../assets/images/profile.png" />
+                                                    <img src="{{ asset('images/profile.png') }}" />
                                                 </a>
                                             </div>
                                             <div class="media-body">
@@ -91,7 +112,7 @@
                                                     <input type="text" class="form-control" placeholder="comment...">
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div-->
                                     </div>
                                 </div>
                             </div>
@@ -108,5 +129,8 @@
         </div>
     </div>
 
+
+
+    @include('mage2project::project.task-modal')
 
 @endsection

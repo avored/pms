@@ -15,22 +15,13 @@
 </div>
 
 
-<div class="form-group col-md-6 {{ ($errors->has('start_date') ? ' has-error' :'') }}" >
-    {{ Form::label('start_date','Start Date') }}
-    {{ Form::text('start_date',null,['class' => 'form-control datetimepicker' . ($errors->has('start_date') ? ' has-error' :'')]) }}
+<div class="form-group {{ ($errors->has('due_date') ? ' has-error' :'') }}" >
+    {{ Form::label('due_date','Due Date') }}
+    {{ Form::text('due_date',null,['class' => 'form-control datetimepicker' . ($errors->has('due_date') ? ' has-error' :'')]) }}
     <p class="help-block">
-    {{ $errors->first('start_date') }}
+    {{ $errors->first('due_date') }}
     </p>
 </div>
-
-<div class="form-group col-md-6 {{ ($errors->has('end_date') ? ' has-error' :'') }}">
-    {{ Form::label('end_date','End Date') }}
-    {{ Form::text('end_date',null,['class' => 'form-control datetimepicker']) }}
-        <p class="help-block">
-        {{ $errors->first('end_date') }}
-        </p>
-</div>
-
 
 <div class="form-group {{ ($errors->has('project_status_id') ? ' has-error' :'') }}">
     {{ Form::label('project_status_id','Project Status') }}
@@ -41,7 +32,7 @@
 </div>
 
 <div class="form-group {{ ($errors->has('project_priority_id') ? ' has-error' :'') }}">
-    {{ Form::label('project_priority_id','Project Status') }}
+    {{ Form::label('project_priority_id','Project Priority') }}
     {{ Form::select('project_priority_id',$projectPrioritiesOption,null,['class' => 'form-control']) }}
     <p class="help-block">
         {{ $errors->first('project_priority_id') }}
@@ -60,8 +51,7 @@
 @push('scripts')
     <script>
         jQuery(document).ready(function() {
-            jQuery('#start_date').datetimepicker({format : "DD-MMMM-YYYY"});
-            jQuery('#end_date').datetimepicker({format : "DD-MMMM-YYYY"});
+            jQuery('#due_date').datetimepicker({format : "DD-MMMM-YYYY"});
             jQuery('.select2').select2();
         });
     </script>

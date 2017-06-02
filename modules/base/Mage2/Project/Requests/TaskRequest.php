@@ -26,7 +26,7 @@ namespace Mage2\Project\Requests;
 
 use Illuminate\Foundation\Http\FormRequest as Request;
 
-class ProjectRequest extends Request
+class TaskRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -49,11 +49,6 @@ class ProjectRequest extends Request
 
         $validationRule['name']                 = 'required|max:255';
         $validationRule['due_date']             = 'required|date';
-
-        $validationRule['project_status_id']    = 'required';
-        $validationRule['project_priority_id']  = 'required';
-        $validationRule['assigned_to_user_id']  = 'required';
-
 
         return $validationRule;
     }

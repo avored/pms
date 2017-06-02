@@ -16,14 +16,14 @@
                 </a>
             </li>
 
-            <li class="dropdown ">
-                <a href="{{ route('project.index') }}" class="dropdown-toggle" data-toggle="dropdown">
+            <li>
+                <a href="{{ route('project.index') }}" >
                     <div class="icon">
                         <i class="fa fa-cube" aria-hidden="true"></i>
                     </div>
                     <div class="title">Project</div>
                 </a>
-                <div class="dropdown-menu">
+                <!--div class="dropdown-menu">
                     <ul>
                         <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Project</li>
                         <li><a href="{{ route('project.index') }}">Project</a></li>
@@ -39,10 +39,10 @@
                         <li><a href="./uikits/pricing-table.html">Pricing Table</a></li>
                         <li><a href="./uikits/timeline.html">Timeline</a></li>
                         <li><a href="./uikits/chart.html">Chart</a></li>
-                        -->
+
 
                     </ul>
-                </div>
+                </div-->
             </li>
             <li>
                 <a href="{{ route('contact.index') }}">
