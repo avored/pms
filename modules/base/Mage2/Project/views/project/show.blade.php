@@ -46,9 +46,7 @@
                                     </div>
 
                                     <div class="section-body">
-
-
-                                        @include('mage2project::task.index')
+                                        @include($viewPath)
 
                                     </div>
                                 </div>

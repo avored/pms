@@ -46,7 +46,6 @@ class TaskRequest extends Request
     public function rules()
     {
         $validationRule = [];
-
         $validationRule['name']                 = 'required|max:255';
         $validationRule['due_date']             = 'required|date';
 

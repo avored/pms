@@ -39,11 +39,9 @@ Route::group(['middleware' => ['web','auth'], 'namespace' => "Mage2\Project\Cont
     Route::resource('/project','ProjectController');
     Route::get('/project-data',['as' => 'project.datatables.data' , 'uses' => 'ProjectController@anyData']);
 
-    Route::get('/project-task-data',['as' => 'project.task.datatables.data' , 'uses' => 'ProjectController@taskAnyData']);
 
-
-    Route::resource('/task','TaskController');
-    Route::get('/task-data',['as' => 'task.datatables.data' , 'uses' => 'TaskController@anyData']);
+    Route::resource('/project-task','ProjectTaskController');
+    Route::get('/project-task-data',['as' => 'project.task.datatables.data' , 'uses' => 'ProjectTaskController@anyData']);
 
 
 });

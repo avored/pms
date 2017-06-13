@@ -29,22 +29,6 @@ class ProjectController extends Controller
     }
 
     /**
-     * Process datatables ajax request for Project Tasks.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function taskAnyData(Request $request)
-    {
-        $project = Project::find($request->get('project_id'));
-
-        return Datatables::of($project->tasks)
-                            ->addColumn('due_date', function($model){
-                                //dd($model->due_date);
-                                return $model->due_date;
-                            })->make(true);
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -87,8 +71,11 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::find($id);
+        $viewPath = "mage2project::task.index";
 
-        return view('mage2project::project.show')->with('project', $project);
+        return view('mage2project::project.show')
+                            ->with('project', $project)
+                            ->with('viewPath', $viewPath);
 
     }
 
@@ -101,8 +88,6 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $project = Project::find($id);
-
-
 
         return view('mage2project::project.edit')->with('project', $project);
 
