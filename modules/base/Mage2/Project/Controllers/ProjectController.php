@@ -2,6 +2,7 @@
 
 namespace Mage2\Project\Controllers;
 
+use Illuminate\Http\Request;
 use Mage2\Project\Requests\ProjectRequest;
 use Mage2\Project\Models\Project;
 use Mage2\Core\Http\Controllers\Controller;
@@ -25,6 +26,22 @@ class ProjectController extends Controller
                         })->addColumn('project_priority', function($model){
                             return (isset($model->projectPriority->name)) ? $model->projectPriority->name : NULL;
                         })->make(true);
+    }
+
+    /**
+     * Process datatables ajax request for Project Tasks.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function taskAnyData(Request $request)
+    {
+        $project = Project::find($request->get('project_id'));
+
+        return Datatables::of($project->tasks)
+                            ->addColumn('due_date', function($model){
+                                //dd($model->due_date);
+                                return $model->due_date;
+                            })->make(true);
     }
 
     /**
@@ -84,6 +101,8 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $project = Project::find($id);
+
+
 
         return view('mage2project::project.edit')->with('project', $project);
 

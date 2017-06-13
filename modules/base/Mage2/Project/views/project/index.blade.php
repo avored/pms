@@ -18,7 +18,7 @@
                 <th>Name</th>
                 <th>Status</th>
                 <th>Priority</th>
-                <th>View</th>
+                <th>Show</th>
                 <th>Edit</th>
                 <th>Destroy</th>
             </tr>
@@ -43,11 +43,11 @@
                 { data: 'project_status', name: 'project_status' },
                 { data: 'project_priority', name: 'project_priority' },
                 {
-                    data: 'view',
-                    name: 'view',
+                    data: 'show',
+                    name: 'show',
                     sortable: false,
                     render: function (data, type, object, meta) {
-                        return '<a href="/project/'+ object.id +'">view</a>';
+                        return '<a href="/project/'+ object.id +'">Show</a>';
                     }
                 },
                 {
