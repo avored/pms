@@ -12,7 +12,7 @@ Mage2 Project Management System is an Open Source Laravel based.
     Project Contacts
     Project Workflow (Maybe?)
 
-More commingsoon as i plan
+More comming soon as I plan.
 
 ## Installaton Instruction
 
@@ -27,7 +27,7 @@ Clone the repository using command:
 
 Set up your environment config file:
 
-    mage2/project-management-system/.env 
+    mage2/project-management-system/.env
 
 composer update/install
 # Step 1: Install Mage2 Commerce using [Composer](https://getcomposer.org/download/).
@@ -48,11 +48,9 @@ Set up your environment config file:
 That's it!
 
 
-##Contributing
+## Contributing
 
 
 Mage2 laravel5 Ecommerce is in active development and If you want to contribute in this project then simply do the [Pull Request](https://github.com/mage2/project-management-system/pulls)!
 
-If you find any bug or problem please submit here  [raise the issue here](https://github.com/mage2/project-management-system/issues/new).
-
-
+If you find any bug or problem please submit here  [raise an issue here](https://github.com/mage2/project-management-system/issues/new).
