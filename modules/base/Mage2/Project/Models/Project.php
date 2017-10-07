@@ -15,7 +15,8 @@ class Project extends Model
                     'due_date',
                     'project_status_id',
                     'project_priority_id',
-                    'assigned_to_user_id'
+                    'assigned_to_user_id',
+                    'created_by_user_id'
     ];
 
     protected $dates = ['due_date','created_at','updated_at'];
