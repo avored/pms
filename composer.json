@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "avored/pms",
+    "description": "AvoRed an Project Management Systm",
+    "keywords": ["framework", "laravel", "project-management"],
     "license": "MIT",
     "type": "project",
     "require": {
