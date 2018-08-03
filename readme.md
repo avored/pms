@@ -30,7 +30,7 @@ Set up your environment config file:
     avored/pms/.env
 
 composer update/install
-# Step 1: Install AvoRed Project Management System using [Composer](https://getcomposer.org/download/).
+### Step 1: Install AvoRed Project Management System using [Composer](https://getcomposer.org/download/).
 
 Run composer to create the lavender application:
 
