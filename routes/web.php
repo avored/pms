@@ -12,10 +12,18 @@
 */
 
 Auth::routes();
+Route::get('logout','Auth\LoginController@logout')->name('logout');
 
 Route::middleware('auth')->group(function() {
     
     Route::get('/', 'HomeController@index');
     Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('account', 'Account\IndexController@index')->name('my_account.index');
+
+    Route::get('account/profile', 'Account\ProfileController@index')->name('profile.index');
+
+    Route::get('account/profile/edit', 'Account\ProfileController@edit')->name('profile.edit');
+    Route::put('account/profile', 'Account\ProfileController@update')->name('profile.update');
 });
 
