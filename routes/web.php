@@ -25,5 +25,8 @@ Route::middleware('auth')->group(function() {
 
     Route::get('account/profile/edit', 'Account\ProfileController@edit')->name('profile.edit');
     Route::put('account/profile', 'Account\ProfileController@update')->name('profile.update');
+
+    Route::get('account/profile/upload', 'Account\ProfileController@uploadImage')->name('profile.image');
+    Route::put('account/profile/upload', 'Account\ProfileController@storeImage')->name('profile.image.store');
 });
 

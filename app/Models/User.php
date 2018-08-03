@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name' ,'email', 'password',
+        'first_name', 'last_name' ,'email', 'password', 'path'
     ];
 
     /**
@@ -31,5 +31,13 @@ class User extends Authenticatable
     protected   function getFullNameAttribute() 
     {
         return $this->attributes['first_name'] . " " . $this->attributes['last_name'];
+    }
+    protected   function getPathAttribute($val) 
+    {
+        if($val == null || $val == "") {
+            return "https://www.placehold.it/250x250";
+        }
+
+        return "storage" . DIRECTORY_SEPARATOR .  $val;
     }
 }
