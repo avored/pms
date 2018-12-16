@@ -13,8 +13,15 @@
 
                     </ul>
 
+                    
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        @foreach(Menu::all() as $menu)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route($menu->route()) }}">{{ __($menu->label()) }}</a>
+                            </li>
+
+                        @endforeach
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

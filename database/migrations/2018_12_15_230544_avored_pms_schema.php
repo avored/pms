@@ -28,6 +28,15 @@ class AvoredPmsSchema extends Migration
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
+
+        Schema::create('projects', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title')->nullable()->default(null);
+            $table->text('description')->nullable()->default(null);
+            $table->timestamp('due_date')->nullable()->default(null);
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -39,5 +48,6 @@ class AvoredPmsSchema extends Migration
     {
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_resets');
+        Schema::dropIfExists('projects');
     }
 }
